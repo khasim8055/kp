@@ -1,0 +1,46 @@
+---
+title: Predictive Maintenance Pipeline
+slug: predictive-maintenance
+date: "2025-07"
+url: https://github.com/khasim8055/predictive-ml-pipeline
+linkLabel: github
+summary: 22 derived features from 8 sensor streams, 5 models compared on F1 under class imbalance, 14 pytest tests, and a one-command Docker setup.
+stats:
+  - "22 features"
+  - "5 models"
+  - "14 pytest tests"
+stack:
+  - XGBoost
+  - Docker
+  - pytest
+featured: 3
+---
+
+{/* DRAFT: Khasim to review */}
+
+## Problem
+
+Sensor streams for maintenance are uneven, and the failure class is small. I needed a comparison that would not hide the rare cases.
+
+## What I built
+
+I derived 22 features from 8 sensor streams and added automated data quality checks. I benchmarked 5 models with stratified cross-validation: logistic regression, random forest, gradient boosting, XGBoost, and SVM. The choice used F1 under class imbalance.
+
+## Architecture
+
+Training is deterministic. Evaluation reports are generated automatically. pytest covers 14 tests. Docker starts the pipeline with one command.
+
+## Results
+
+- 22 derived features from 8 sensor streams
+- 5 models compared with stratified cross-validation
+- Selection by F1 under class imbalance
+- 14 pytest tests and automated evaluation reports
+
+## What I learned
+
+I picked the model by F1 because the classes were imbalanced.
+
+## Stack
+
+The benchmark included XGBoost. Docker packages the run. pytest locks the checks.

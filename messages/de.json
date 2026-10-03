@@ -1,0 +1,178 @@
+{
+  "Meta": {
+    "title": "Khasim Bin Saleh",
+    "description": "AI/ML Engineer in Berlin. Ich baue LLM- und ML-Systeme von Anfang bis Ende, und ich messe sie, bevor ich ihnen vertraue."
+  },
+  "Nav": {
+    "primary": "Hauptnavigation",
+    "home": "Start",
+    "research": "Forschung",
+    "papers": "Papers",
+    "learning": "Lernen",
+    "projects": "Projekte",
+    "experience": "Werdegang",
+    "contact": "Kontakt",
+    "menu": "Menü",
+    "close": "Schließen",
+    "skip": "Zum Inhalt springen",
+    "command": "Befehlsmenü öffnen",
+    "commandTitle": "Zu einer Seite",
+    "themeToggle": "Farbschema wechseln",
+    "language": "Sprache"
+  },
+  "Hero": {
+    "title": "AI/ML Engineer",
+    "location": "Berlin, Deutschland",
+    "oneLiner": "Ich baue LLM- und ML-Systeme von Anfang bis Ende, und ich messe sie, bevor ich ihnen vertraue.",
+    "focus": "// fokus",
+    "availability": "Offen für Rollen ab Februar 2027",
+    "requestCv": "Lebenslauf anfragen",
+    "latestPaper": "Neueste Paper-Analyse lesen",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "scholar": "Google Scholar",
+    "scholarMissing": "Google-Scholar-Link folgt noch",
+    "photoAlt": "Porträt von Khasim Bin Saleh"
+  },
+  "About": {
+    "eyebrow": "// über mich",
+    "title": "Über mich",
+    "p1": "Ich habe zwei Jahre lang ML- und LLM-Systeme von Anfang bis Ende gebaut. Die Arbeit reicht von Datenpipelines und Feature Engineering bis zu Evaluation und getestetem Deployment mit Docker.",
+    "p2": "Bei Coschool habe ich einen KI-Tutor an mehr als 1.000 Beta-Nutzer ausgeliefert. Jetzt baue ich Klindok, eine Offline-Software für klinische Dokumentation im DACH-Markt. Sie ist DSGVO-konform und läuft auf meinem eigenen kleinen Sprachmodell.",
+    "p3": "In meiner Masterarbeit baue ich einen LLM-Agenten, der prüft, ob synthetische Gesundheitsdaten sicher geteilt werden können. Ich schaue auf Nutzen und Privatsphäre unter der DSGVO."
+  },
+  "CurrentWork": {
+    "eyebrow": "// aktuelle arbeit",
+    "title": "Aktuelle Arbeit",
+    "inProgress": "In Arbeit",
+    "building": "Im Aufbau",
+    "ongoing": "Laufend",
+    "site": "Seite"
+  },
+  "Lab": {
+    "eyebrow": "// zuletzt aus dem labor",
+    "title": "Zuletzt aus dem Labor",
+    "paper": "Letzte Paper-Analyse",
+    "learning": "Diese Woche gelernt",
+    "readPaper": "Analyse lesen",
+    "readWeek": "Woche lesen",
+    "streak": "Woche {week} · {count, plural, one {# Woche in Folge} other {# Wochen in Folge}}",
+    "paperLabel": "// paper #{week}",
+    "weekLabel": "// woche {week}",
+    "paperMissing": "Noch keine Paper-Analyse.",
+    "learningMissing": "Noch keine Lernwoche.",
+    "range": "{start} bis {end}"
+  },
+  "Learning": {
+    "indexEyebrow": "// lernen",
+    "indexTitle": "Lernen",
+    "viewAll": "Alle Wochen",
+    "heatmap": "Letzte 52 Wochen",
+    "heatmapLabel": "{count, plural, one {# Woche in den letzten 52 Wochen} other {# Wochen in den letzten 52 Wochen}}",
+    "legendEmpty": "Kein Eintrag",
+    "legendSome": "Wenige Stunden",
+    "legendMore": "Mehr Stunden",
+    "currentStreak": "Aktuelle Serie",
+    "longestStreak": "Längste Serie",
+    "weeks": "{count, plural, one {# Woche} other {# Wochen}}",
+    "allTopics": "Alle Themen",
+    "empty": "Keine Wochen zu diesem Thema.",
+    "week": "Woche {week}",
+    "range": "{start} bis {end}",
+    "readWeek": "Woche lesen",
+    "hours": "{count} Std.",
+    "hoursMissing": "Stunden folgen noch",
+    "missing": "Folgt noch"
+  },
+  "Papers": {
+    "indexEyebrow": "// papers",
+    "indexTitle": "Papers",
+    "viewAll": "Alle Papers",
+    "paperOfTheWeek": "Paper der Woche",
+    "search": "Papers durchsuchen",
+    "verdict": "Urteil",
+    "year": "Jahr",
+    "sort": "Sortierung",
+    "allTopics": "Alle Themen",
+    "allVerdicts": "Alle Urteile",
+    "allYears": "Alle Jahre",
+    "sortNewest": "Neueste",
+    "sortScore": "Höchste Bewertung",
+    "empty": "Keine Papers für diese Filter.",
+    "week": "Woche {week}",
+    "difficulty": "Schwierigkeit {value} von 5",
+    "minutes": "{count} Min.",
+    "missing": "Folgt noch",
+    "paperLink": "Paper",
+    "codeLink": "Code",
+    "scores": "Bewertung",
+    "scoresMissing": "Bewertung folgt noch.",
+    "novelty": "Neuheit",
+    "rigor": "Strenge",
+    "reproducibility": "Reproduzierbarkeit",
+    "practicalImpact": "Praktischer Nutzen",
+    "prev": "Vorheriges",
+    "next": "Nächstes",
+    "related": "Verwandte Analysen"
+  },
+  "Projects": {
+    "eyebrow": "// ausgewählte projekte",
+    "title": "Ausgewählte Projekte",
+    "viewAll": "Alle Projekte",
+    "indexEyebrow": "// projekte",
+    "indexTitle": "Projekte",
+    "caseStudy": "Fallstudie",
+    "site": "Seite",
+    "github": "GitHub",
+    "building": "Im Aufbau"
+  },
+  "Skills": {
+    "eyebrow": "// kenntnisse",
+    "title": "Kenntnisse",
+    "programming": "Programmierung",
+    "ml": "ML und Deep Learning",
+    "genai": "GenAI und LLM",
+    "evaluation": "Evaluation und Benchmarks",
+    "vision": "Computer Vision",
+    "tools": "Tools und Infrastruktur"
+  },
+  "Experience": {
+    "eyebrow": "// werdegang",
+    "title": "Werdegang",
+    "viewAll": "Vollständiger Werdegang",
+    "range": "{start} bis {end}",
+    "educationEyebrow": "// ausbildung",
+    "educationTitle": "Ausbildung"
+  },
+  "Beyond": {
+    "eyebrow": "// neben dem code",
+    "title": "Neben dem Code",
+    "patent": "Patent",
+    "council": "Studierendenvertretung",
+    "interests": "Interessen",
+    "languages": "Sprachen"
+  },
+  "Contact": {
+    "eyebrow": "// kontakt",
+    "title": "Lass uns sprechen",
+    "cta": "Du stellst ein, forschst oder baust im Bereich Healthcare AI? Lass uns sprechen.",
+    "linkedin": "LinkedIn",
+    "location": "Berlin, Deutschland",
+    "availability": "Offen für Rollen ab Februar 2027"
+  },
+  "Footer": {
+    "updated": "Zuletzt aktualisiert {date}",
+    "rss": "RSS",
+    "built": "Gebaut mit Next.js"
+  },
+  "Placeholder": {
+    "eyebrow": "// notiz",
+    "body": "Diese Seite schreibe ich noch."
+  },
+  "NotFound": {
+    "eyebrow": "// 404",
+    "title": "Diese Seite gibt es hier nicht.",
+    "body": "Der Link ist vielleicht alt, oder die Seite ist noch nicht geschrieben.",
+    "home": "Zur Startseite"
+  }
+}

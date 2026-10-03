@@ -1,0 +1,45 @@
+---
+title: AI Tutor at Coschool
+slug: ai-tutor-coschool
+date: "2023"
+summary: Built and shipped a 0 to 1 AI tutor serving 1,000+ beta users.
+stats:
+  - "1,000+ beta users"
+  - "80%+ fewer off-topic answers"
+  - "+35% contextual accuracy"
+  - "-40% retrieval latency"
+stack:
+  - RAG
+  - Milvus
+  - GPT
+featured: 2
+---
+
+{/* DRAFT: Khasim to review */}
+
+## Problem
+
+The tutor had to stay on topic. Incorrect or off-topic answers were the gap I measured.
+
+## What I built
+
+I built and shipped a 0 to 1 AI tutor for 1,000+ beta users. Evaluation pipelines caught unsafe or off-topic outputs. I fine-tuned GPT models with guardrails.
+
+## Architecture
+
+A RAG pipeline sits in front of the model. Documents are split with semantic chunking and stored in Milvus. The ingestion path covered 10K+ documents.
+
+## Results
+
+- 1,000+ beta users
+- 80%+ fewer incorrect or off-topic answers across 500+ test cases
+- 35%+ higher contextual accuracy
+- 40% lower retrieval latency
+
+## What I learned
+
+A guardrail is only real if I measure it. The 500+ test cases were how I knew the off-topic rate had dropped.
+
+## Stack
+
+GPT for the tutor, RAG for context, Milvus for the document index.

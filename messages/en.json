@@ -1,0 +1,178 @@
+{
+  "Meta": {
+    "title": "Khasim Bin Saleh",
+    "description": "AI/ML engineer in Berlin. I build LLM and ML systems end to end, and I measure them before I trust them."
+  },
+  "Nav": {
+    "primary": "Primary",
+    "home": "Home",
+    "research": "Research",
+    "papers": "Papers",
+    "learning": "Learning",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "skip": "Skip to content",
+    "command": "Open command menu",
+    "commandTitle": "Go to a page",
+    "themeToggle": "Toggle color theme",
+    "language": "Language"
+  },
+  "Hero": {
+    "title": "AI/ML Engineer",
+    "location": "Berlin, Germany",
+    "oneLiner": "I build LLM and ML systems end to end, and I measure them before I trust them.",
+    "focus": "// focus",
+    "availability": "Open to roles from February 2027",
+    "requestCv": "Request CV",
+    "latestPaper": "Read my latest paper breakdown",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "scholar": "Google Scholar",
+    "scholarMissing": "Google Scholar link not added yet",
+    "photoAlt": "Portrait of Khasim Bin Saleh"
+  },
+  "About": {
+    "eyebrow": "// about",
+    "title": "About",
+    "p1": "I have spent two years building ML and LLM systems end to end. The work runs from data pipelines and feature engineering to evaluation and Dockerized deployment with tests.",
+    "p2": "At Coschool I shipped an AI tutor to more than 1,000 beta users. Now I am building Klindok, offline GDPR-compliant clinical documentation software for the DACH market. It runs on my own small language model.",
+    "p3": "My MSc thesis builds an LLM agent that checks whether synthetic health data is safe to share. I look at usefulness and privacy under GDPR."
+  },
+  "CurrentWork": {
+    "eyebrow": "// current work",
+    "title": "Current work",
+    "inProgress": "In progress",
+    "building": "Building",
+    "ongoing": "Ongoing",
+    "site": "Site"
+  },
+  "Lab": {
+    "eyebrow": "// latest from the lab",
+    "title": "Latest from the lab",
+    "paper": "Latest paper breakdown",
+    "learning": "This week I learned",
+    "readPaper": "Read breakdown",
+    "readWeek": "Read the week",
+    "streak": "Week {week} · {count} week streak",
+    "paperLabel": "// paper #{week}",
+    "weekLabel": "// week {week}",
+    "paperMissing": "No paper breakdown yet.",
+    "learningMissing": "No learning week yet.",
+    "range": "{start} to {end}"
+  },
+  "Learning": {
+    "indexEyebrow": "// learning",
+    "indexTitle": "Learning",
+    "viewAll": "All weeks",
+    "heatmap": "Last 52 weeks",
+    "heatmapLabel": "{count, plural, one {# week logged in the last 52 weeks} other {# weeks logged in the last 52 weeks}}",
+    "legendEmpty": "No entry",
+    "legendSome": "Some hours",
+    "legendMore": "More hours",
+    "currentStreak": "Current streak",
+    "longestStreak": "Longest streak",
+    "weeks": "{count, plural, one {# week} other {# weeks}}",
+    "allTopics": "All topics",
+    "empty": "No weeks for this topic.",
+    "week": "Week {week}",
+    "range": "{start} to {end}",
+    "readWeek": "Read the week",
+    "hours": "{count} h",
+    "hoursMissing": "Hours not added yet",
+    "missing": "Not added yet"
+  },
+  "Papers": {
+    "indexEyebrow": "// papers",
+    "indexTitle": "Papers",
+    "viewAll": "All papers",
+    "paperOfTheWeek": "Paper of the week",
+    "search": "Search papers",
+    "verdict": "Verdict",
+    "year": "Year",
+    "sort": "Sort",
+    "allTopics": "All topics",
+    "allVerdicts": "All verdicts",
+    "allYears": "All years",
+    "sortNewest": "Newest",
+    "sortScore": "Highest score",
+    "empty": "No papers match these filters.",
+    "week": "Week {week}",
+    "difficulty": "Difficulty {value} of 5",
+    "minutes": "{count} min",
+    "missing": "Not added yet",
+    "paperLink": "Paper",
+    "codeLink": "Code",
+    "scores": "Scores",
+    "scoresMissing": "Scores not added yet.",
+    "novelty": "Novelty",
+    "rigor": "Rigor",
+    "reproducibility": "Reproducibility",
+    "practicalImpact": "Practical impact",
+    "prev": "Previous",
+    "next": "Next",
+    "related": "Related breakdowns"
+  },
+  "Projects": {
+    "eyebrow": "// selected projects",
+    "title": "Selected projects",
+    "viewAll": "All projects",
+    "indexEyebrow": "// projects",
+    "indexTitle": "Projects",
+    "caseStudy": "Case study",
+    "site": "Site",
+    "github": "GitHub",
+    "building": "Building"
+  },
+  "Skills": {
+    "eyebrow": "// skills",
+    "title": "Skills",
+    "programming": "Programming",
+    "ml": "ML and Deep Learning",
+    "genai": "GenAI and LLM",
+    "evaluation": "Evaluation and Benchmarking",
+    "vision": "Computer Vision",
+    "tools": "Tools and Infrastructure"
+  },
+  "Experience": {
+    "eyebrow": "// experience",
+    "title": "Experience",
+    "viewAll": "Full timeline",
+    "range": "{start} to {end}",
+    "educationEyebrow": "// education",
+    "educationTitle": "Education"
+  },
+  "Beyond": {
+    "eyebrow": "// beyond code",
+    "title": "Beyond code",
+    "patent": "Patent",
+    "council": "Student Council",
+    "interests": "Interests",
+    "languages": "Languages"
+  },
+  "Contact": {
+    "eyebrow": "// contact",
+    "title": "Let's talk",
+    "cta": "Hiring, researching or building in Healthcare AI? Let's talk.",
+    "linkedin": "LinkedIn",
+    "location": "Berlin, Germany",
+    "availability": "Open to roles from February 2027"
+  },
+  "Footer": {
+    "updated": "Last updated {date}",
+    "rss": "RSS",
+    "built": "Built with Next.js"
+  },
+  "Placeholder": {
+    "eyebrow": "// note",
+    "body": "I am still writing this page."
+  },
+  "NotFound": {
+    "eyebrow": "// 404",
+    "title": "This page is not here.",
+    "body": "The link may be old, or the page is not written yet.",
+    "home": "Back home"
+  }
+}

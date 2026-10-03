@@ -1,0 +1,50 @@
+---
+title: Klindok
+slug: klindok
+date: "2026-03"
+place: Berlin
+status: building
+url: https://klindok.xyz
+linkLabel: site
+summary: Offline, privacy-first AI medical documentation. GDPR-compliant Arztbriefe in under 30 seconds for DACH private practices.
+stats:
+  - "< 30s per Arztbrief"
+  - "100% offline"
+  - "GDPR Art. 30 audit log"
+stack:
+  - SQLite
+  - Fernet
+  - bcrypt
+  - pytest
+featured: 1
+---
+
+{/* DRAFT: Khasim to review */}
+
+## Problem
+
+Private practices in the DACH market need clinical letters (Arztbriefe) without sending patient data to a cloud service.
+
+## What I built
+
+Klindok is offline, privacy-first AI medical documentation. It writes GDPR-compliant Arztbriefe in under 30 seconds. It runs on my own small language model.
+
+Doctors and admins have separate access. Passwords use bcrypt. Patient data sits in a Fernet-encrypted SQLite database. Every patient-level action is written to a GDPR Art. 30 audit log.
+
+## Architecture
+
+The app stays on the practice machine. The database schema comes first. Input is validated before it is stored. pytest covers auth and the audit log.
+
+## Results
+
+- Under 30 seconds per Arztbrief
+- 100% offline
+- GDPR Art. 30 audit log of every patient-level action
+
+## What I learned
+
+Privacy is part of the build, not a later checklist. Encryption, separate roles, and an audit log have to exist before a letter is useful to a clinic.
+
+## Stack
+
+SQLite holds the data. Fernet encrypts it. bcrypt covers passwords. pytest checks auth and the audit log.
