@@ -44,13 +44,6 @@ export async function Hero() {
             </li>
           ))}
         </ul>
-        <p className="mt-6 inline-flex items-center gap-2 border border-border px-3 py-1 font-mono text-xs">
-          <span
-            className="pulse-dot h-1.5 w-1.5 rounded-full bg-status"
-            aria-hidden
-          />
-          {t("availability")}
-        </p>
         <ul className="mt-6 flex flex-wrap gap-2">
           <li>
             <IconLink href={profile.linkedin} label={t("linkedin")} external>

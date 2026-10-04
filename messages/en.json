@@ -31,7 +31,6 @@
     "location": "Berlin, Germany",
     "oneLiner": "I build LLM and ML systems end to end, and I measure them before I trust them.",
     "focus": "// focus",
-    "availability": "Open to roles from February 2027",
     "requestCv": "Request CV",
     "latestPaper": "Read my latest paper breakdown",
     "linkedin": "LinkedIn",
@@ -163,8 +162,7 @@
     "title": "Let's talk",
     "cta": "Hiring, researching or building in Healthcare AI? Let's talk.",
     "linkedin": "LinkedIn",
-    "location": "Berlin, Germany",
-    "availability": "Open to roles from February 2027"
+    "location": "Berlin, Germany"
   },
   "Footer": {
     "updated": "Last updated {date}",
@@ -188,8 +186,6 @@
     "roleValue": "AI/ML Engineer",
     "location": "Location",
     "locationValue": "Berlin, Germany",
-    "availability": "Availability",
-    "availabilityValue": "Open to roles from February 2027",
     "skills": "Focus",
     "proof": "Proof",
     "proof1": "Shipped an AI tutor to 1,000+ beta users.",

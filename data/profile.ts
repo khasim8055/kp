@@ -6,12 +6,12 @@ export const profile = {
   github: "https://github.com/khasim8055",
   scholar: "TODO_SCHOLAR_URL",
   photo: "/profile.svg",
-  availability: "Available from February 2027",
   focus: [
     "Deep Learning",
     "LLMs and RAG",
     "Agent Reliability",
     "Real-Time Voice AI",
     "MLOps",
+    "Robotics",
   ],
 } as const;

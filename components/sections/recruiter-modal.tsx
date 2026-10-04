@@ -34,10 +34,6 @@ export function RecruiterModal() {
             <dt className="font-mono text-[11px] text-muted">{t("location")}</dt>
             <dd>{t("locationValue")}</dd>
           </div>
-          <div>
-            <dt className="font-mono text-[11px] text-muted">{t("availability")}</dt>
-            <dd>{t("availabilityValue")}</dd>
-          </div>
         </dl>
         <h3 className="mt-6 text-sm font-medium">{t("skills")}</h3>
         <ul className="mt-2 flex flex-wrap gap-2">

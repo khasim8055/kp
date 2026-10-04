@@ -6,8 +6,8 @@ export const achievements = {
   studentCouncil: "Student Council candidate, SRH (2026).",
   interests: [
     "Business and research reading",
-    "Trekking",
-    "Biking",
+    "Travel",
+    "Philosophy",
     "Healthcare AI",
   ],
   languages: [

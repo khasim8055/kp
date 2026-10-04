@@ -31,7 +31,6 @@
     "location": "Berlin, Deutschland",
     "oneLiner": "Ich baue LLM- und ML-Systeme von Anfang bis Ende, und ich messe sie, bevor ich ihnen vertraue.",
     "focus": "// fokus",
-    "availability": "Offen für Rollen ab Februar 2027",
     "requestCv": "Lebenslauf anfragen",
     "latestPaper": "Neueste Paper-Analyse lesen",
     "linkedin": "LinkedIn",
@@ -163,8 +162,7 @@
     "title": "Lass uns sprechen",
     "cta": "Du stellst ein, forschst oder baust im Bereich Healthcare AI? Lass uns sprechen.",
     "linkedin": "LinkedIn",
-    "location": "Berlin, Deutschland",
-    "availability": "Offen für Rollen ab Februar 2027"
+    "location": "Berlin, Deutschland"
   },
   "Footer": {
     "updated": "Zuletzt aktualisiert {date}",
@@ -188,8 +186,6 @@
     "roleValue": "AI/ML Engineer",
     "location": "Ort",
     "locationValue": "Berlin, Deutschland",
-    "availability": "Verfügbarkeit",
-    "availabilityValue": "Offen für Rollen ab Februar 2027",
     "skills": "Fokus",
     "proof": "Belege",
     "proof1": "Einen KI-Tutor an 1.000+ Beta-Nutzer ausgeliefert.",

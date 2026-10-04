@@ -55,20 +55,6 @@ body {
   outline-offset: 2px;
 }
 
-@keyframes pulse-dot {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.35;
-  }
-}
-
-.pulse-dot {
-  animation: pulse-dot 1.8s ease-in-out infinite;
-}
-
 @keyframes rise-in {
   from {
     opacity: 0;
@@ -96,7 +82,6 @@ dialog:not([open]) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pulse-dot,
   .rise-in {
     animation: none;
   }

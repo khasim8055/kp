@@ -18,7 +18,6 @@ export default async function ContactPage({ params }: Props) {
     <div className="mx-auto max-w-[760px] px-4 py-16 md:py-20">
       <ContactCta heading="h1" />
       <p className="mt-6 text-sm text-muted">{t("location")}</p>
-      <p className="mt-2 font-mono text-xs text-muted">{t("availability")}</p>
     </div>
   );
 }
