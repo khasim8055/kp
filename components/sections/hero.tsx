@@ -2,6 +2,7 @@ import { GraduationCap } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/brand";
+import { RecruiterModal } from "@/components/sections/recruiter-modal";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { Link } from "@/i18n/navigation";
@@ -84,6 +85,7 @@ export async function Hero() {
               {t("requestCv")}
             </a>
           </Button>
+          <RecruiterModal />
           <Button asChild variant="outline">
             <Link href={latestPaper ? `/papers/${latestPaper.slug}` : "/papers"}>
               {t("latestPaper")}

@@ -8,6 +8,7 @@ import { MotionProvider } from "@/components/providers/motion-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { routing } from "@/i18n/routing";
 import { resolveLocale } from "@/lib/locale";
+import { siteUrl } from "@/lib/site";
 import "../globals.css";
 
 const inter = Inter({
@@ -44,6 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "Meta" });
 
   return {
+    metadataBase: new URL(siteUrl()),
     title: {
       default: t("title"),
       template: `%s · ${t("title")}`,

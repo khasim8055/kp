@@ -17,6 +17,12 @@
     "skip": "Skip to content",
     "command": "Open command menu",
     "commandTitle": "Go to a page",
+    "commandSearch": "Search pages, papers, projects",
+    "commandEmpty": "Nothing matches.",
+    "pages": "Pages",
+    "actions": "Actions",
+    "now": "Now",
+    "requestCv": "Request CV",
     "themeToggle": "Toggle color theme",
     "language": "Language"
   },
@@ -164,6 +170,32 @@
     "updated": "Last updated {date}",
     "rss": "RSS",
     "built": "Built with Next.js"
+  },
+  "Now": {
+    "title": "Now",
+    "eyebrow": "// now",
+    "updatedToday": "Updated today",
+    "updatedOne": "Updated 1 day ago",
+    "updatedMany": "Updated {count} days ago",
+    "missing": "Updated date not added yet"
+  },
+  "Recruiter": {
+    "open": "60 second summary",
+    "eyebrow": "// 60 seconds",
+    "title": "60 second summary",
+    "role": "Role",
+    "roleValue": "AI/ML Engineer",
+    "location": "Location",
+    "locationValue": "Berlin, Germany",
+    "availability": "Availability",
+    "availabilityValue": "Open to roles from February 2027",
+    "skills": "Focus",
+    "proof": "Proof",
+    "proof1": "Shipped an AI tutor to 1,000+ beta users.",
+    "proof2": "Cut incorrect or off-topic answers by 80%+ across 500+ test cases.",
+    "proof3": "Klindok writes an Arztbrief in under 30 seconds, fully offline.",
+    "requestCv": "Request CV",
+    "close": "Close"
   },
   "Placeholder": {
     "eyebrow": "// note",

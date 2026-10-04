@@ -48,6 +48,11 @@ Until Reflexion has a real date, ReAct stays paper of the week.
 - Topic tag is `agents`. Change it if you want a different topic cloud.
 - Mood and links are optional. Add them in the frontmatter if you want them on the week.
 
+## Phase 5
+
+- Rewrite `content/now.mdx`. It is marked DRAFT. The facts are the thesis, Klindok, weekly papers, and German B1.
+- Set `NEXT_PUBLIC_SITE_URL` to the public site address before launch. RSS, the sitemap, and OG links use `http://localhost:3000` until then.
+
 ## Already handled
 
 - Request CV opens LinkedIn. There is no CV file and no `/cv` route.

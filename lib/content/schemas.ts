@@ -73,6 +73,12 @@ export const learningSchema = z.object({
     .default([]),
 });
 
+export const nowSchema = z.object({
+  title: z.string().min(1),
+  updated: z.union([z.string().regex(/^\d{4}-\d{2}-\d{2}$/), todo]),
+});
+
 export type ProjectFrontmatter = z.infer<typeof projectSchema>;
 export type PaperFrontmatter = z.infer<typeof paperSchema>;
 export type LearningFrontmatter = z.infer<typeof learningSchema>;
+export type NowFrontmatter = z.infer<typeof nowSchema>;

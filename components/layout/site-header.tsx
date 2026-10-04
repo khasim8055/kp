@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { CommandButton } from "@/components/layout/command-button";
+import { CommandMenu } from "@/components/layout/command-menu";
 import { LocaleToggle } from "@/components/layout/locale-toggle";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { NavLinks } from "@/components/layout/nav-links";
@@ -22,7 +22,7 @@ export async function SiteHeader() {
         <div className="flex items-center gap-2">
           <LocaleToggle />
           <ThemeToggle />
-          <CommandButton />
+          <CommandMenu />
           <MobileNav />
         </div>
       </div>

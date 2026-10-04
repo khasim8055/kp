@@ -1,0 +1,120 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { Command } from "cmdk";
+import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
+import { useRouter } from "@/i18n/navigation";
+
+export type CommandLink = {
+  group: "pages" | "papers" | "projects" | "learning";
+  label: string;
+  href: string;
+};
+
+const groups = ["pages", "papers", "projects", "learning"] as const;
+
+export function CommandDialog({
+  links,
+  linkedin,
+}: {
+  links: CommandLink[];
+  linkedin: string;
+}) {
+  const t = useTranslations("Nav");
+  const { resolvedTheme, setTheme } = useTheme();
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    function onKey(event: KeyboardEvent) {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setOpen((value) => !value);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  function go(href: string) {
+    setOpen(false);
+    router.push(href as "/");
+  }
+
+  return (
+    <>
+      <button
+        type="button"
+        className="inline-flex h-9 items-center border border-border px-2 font-mono text-[11px]"
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        aria-label={t("command")}
+        onClick={() => setOpen(true)}
+      >
+        ⌘K
+      </button>
+      <Command.Dialog
+        open={open}
+        onOpenChange={setOpen}
+        label={t("commandTitle")}
+        overlayClassName="fixed inset-0 z-50 bg-black/40"
+        contentClassName="fixed left-1/2 top-[18vh] z-50 w-[min(100%-2rem,28rem)] -translate-x-1/2 border border-border bg-background"
+      >
+        <Command.Input
+          placeholder={t("commandSearch")}
+          className="w-full border-b border-border bg-transparent px-3 py-3 text-sm outline-none"
+        />
+        <Command.List className="max-h-80 overflow-y-auto p-2">
+          <Command.Empty className="px-2 py-3 text-sm text-muted">
+            {t("commandEmpty")}
+          </Command.Empty>
+          {groups.map((group) => {
+            const items = links.filter((link) => link.group === group);
+            if (items.length === 0) return null;
+            return (
+              <Command.Group
+                key={group}
+                heading={t(group)}
+                className="mt-2"
+              >
+                {items.map((item) => (
+                  <Command.Item
+                    key={`${group}-${item.href}`}
+                    value={`${item.label} ${item.href}`}
+                    onSelect={() => go(item.href)}
+                    className="cursor-pointer px-2 py-2 text-sm text-foreground data-[selected=true]:bg-border"
+                  >
+                    {item.label}
+                  </Command.Item>
+                ))}
+              </Command.Group>
+            );
+          })}
+          <Command.Group heading={t("actions")} className="mt-2">
+            <Command.Item
+              value={t("themeToggle")}
+              onSelect={() => {
+                setTheme(resolvedTheme === "dark" ? "light" : "dark");
+                setOpen(false);
+              }}
+              className="cursor-pointer px-2 py-2 text-sm text-foreground data-[selected=true]:bg-border"
+            >
+              {t("themeToggle")}
+            </Command.Item>
+            <Command.Item
+              value={t("requestCv")}
+              onSelect={() => {
+                window.open(linkedin, "_blank", "noopener,noreferrer");
+                setOpen(false);
+              }}
+              className="cursor-pointer px-2 py-2 text-sm text-foreground data-[selected=true]:bg-border"
+            >
+              {t("requestCv")}
+            </Command.Item>
+          </Command.Group>
+        </Command.List>
+      </Command.Dialog>
+    </>
+  );
+}

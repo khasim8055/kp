@@ -17,6 +17,12 @@
     "skip": "Zum Inhalt springen",
     "command": "Befehlsmenü öffnen",
     "commandTitle": "Zu einer Seite",
+    "commandSearch": "Seiten, Papers, Projekte suchen",
+    "commandEmpty": "Nichts passt.",
+    "pages": "Seiten",
+    "actions": "Aktionen",
+    "now": "Jetzt",
+    "requestCv": "Lebenslauf anfragen",
     "themeToggle": "Farbschema wechseln",
     "language": "Sprache"
   },
@@ -164,6 +170,32 @@
     "updated": "Zuletzt aktualisiert {date}",
     "rss": "RSS",
     "built": "Gebaut mit Next.js"
+  },
+  "Now": {
+    "title": "Jetzt",
+    "eyebrow": "// jetzt",
+    "updatedToday": "Heute aktualisiert",
+    "updatedOne": "Vor 1 Tag aktualisiert",
+    "updatedMany": "Vor {count} Tagen aktualisiert",
+    "missing": "Aktualisierungsdatum folgt noch"
+  },
+  "Recruiter": {
+    "open": "Überblick in 60 Sekunden",
+    "eyebrow": "// 60 sekunden",
+    "title": "Überblick in 60 Sekunden",
+    "role": "Rolle",
+    "roleValue": "AI/ML Engineer",
+    "location": "Ort",
+    "locationValue": "Berlin, Deutschland",
+    "availability": "Verfügbarkeit",
+    "availabilityValue": "Offen für Rollen ab Februar 2027",
+    "skills": "Fokus",
+    "proof": "Belege",
+    "proof1": "Einen KI-Tutor an 1.000+ Beta-Nutzer ausgeliefert.",
+    "proof2": "Falsche oder themenfremde Antworten um 80%+ über 500+ Testfälle gesenkt.",
+    "proof3": "Klindok schreibt einen Arztbrief in unter 30 Sekunden, vollständig offline.",
+    "requestCv": "Lebenslauf anfragen",
+    "close": "Schließen"
   },
   "Placeholder": {
     "eyebrow": "// notiz",

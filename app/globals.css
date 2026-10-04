@@ -69,6 +69,13 @@ body {
   animation: pulse-dot 1.8s ease-in-out infinite;
 }
 
+[cmdk-group-heading] {
+  padding: 8px 8px 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pulse-dot {
     animation: none;

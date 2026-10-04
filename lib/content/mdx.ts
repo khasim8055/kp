@@ -19,7 +19,7 @@ export function readMdxCollection<T>(
     .map((file) => {
       const raw = fs.readFileSync(path.join(dir, file), "utf8");
       const { data, content } = matter(raw);
-      for (const key of ["date", "dateStart", "dateEnd"] as const) {
+      for (const key of ["date", "dateStart", "dateEnd", "updated"] as const) {
         const value = data[key];
         if (value instanceof Date) {
           data[key] = value.toISOString().slice(0, 10);

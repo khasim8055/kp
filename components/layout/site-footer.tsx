@@ -24,6 +24,11 @@ export async function SiteFooter() {
               </Link>
             </li>
           ))}
+          <li>
+            <Link href="/now" className="hover:text-foreground">
+              {nav("now")}
+            </Link>
+          </li>
         </ul>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs text-muted">
           <p>{t("updated", { date: updated })}</p>
