@@ -12,50 +12,26 @@ Open items to provide or rewrite. Each phase adds a section here.
 Rewrite the case studies. Each file is marked `DRAFT: Khasim to review`.
 
 - [x] `content/projects/klindok.mdx`: keep the current draft. Rewrite after deployment.
-- `content/projects/ai-tutor-coschool.mdx`
-- `content/projects/predictive-maintenance.mdx`
+- [x] `content/projects/ai-tutor-coschool.mdx`: keep the current draft. Rewrite after deployment.
+- [x] `content/projects/predictive-maintenance.mdx`: keep the current draft. Rewrite after deployment.
 
 ## Phase 3
 
-`content/papers/week-01-react.mdx` is marked DRAFT. Still open:
-
-- `TODO_DIAGRAM`
-- `TODO_RESULTS` (benchmark numbers)
-- `TODO_QUESTIONS`
-- `TODO_CODE_URL` (`codeUrl` is empty)
-
-`content/papers/week-02-reflexion.mdx` is marked DRAFT. Still open:
-
-- `TODO_DATE`
-- `TODO_VENUE`
-- `TODO_PAPER_URL`
-- `TODO_DIFFICULTY`
-- `TODO_READING_TIME`
-- `TODO_VERDICT`
-- `TODO_SCORE` on novelty, rigor, reproducibility, and practical impact
-- `TODO_TLDR`
-- `TODO_PROBLEM`, `TODO_METHOD`, `TODO_BENCHMARK`, `TODO_RESULT`, `TODO_QUESTIONS`, `TODO_USE`, `TODO_REPRODUCE`
-- `codeUrl` is empty
-
-Until Reflexion has a real date, ReAct stays paper of the week.
+- [x] `content/papers/week-01-react.mdx`: keep the current draft, including `TODO_DIAGRAM`, `TODO_RESULTS`, `TODO_QUESTIONS`, and the empty `codeUrl`. Rewrite after deployment.
+- [x] `content/papers/week-02-reflexion.mdx`: keep the current draft, including every `TODO_` field and the empty `codeUrl`. Rewrite after deployment. Until Reflexion has a real date, ReAct stays paper of the week.
 
 ## Phase 4
 
-`content/learning/week-01.mdx` is marked DRAFT. Still open:
-
-- `TODO_HOURS` (the heatmap can only show that the week exists until this is a number)
-- `TODO_BUILT`, `TODO_CONFUSED`, `TODO_NEXT`
-- Topic tag is `agents`. Change it if you want a different topic cloud.
-- Mood and links are optional. Add them in the frontmatter if you want them on the week.
+- [x] `content/learning/week-01.mdx`: keep the current draft, including `TODO_HOURS`, `TODO_BUILT`, `TODO_CONFUSED`, and `TODO_NEXT`. Topic stays `agents`. Rewrite after deployment.
 
 ## Phase 5
 
-- Rewrite `content/now.mdx`. It is marked DRAFT. The facts are the thesis, Klindok, weekly papers, and German B1.
+- [x] `content/now.mdx`: keep the current draft. The facts are the thesis, Klindok, weekly papers, and German B1. Rewrite after deployment.
 
 ## Phase 6
 
-- Do not deploy until the drafts above are rewritten.
-- The public address is one value: `NEXT_PUBLIC_SITE_URL` in `.env.example`. It is set to `https://khasimsaleh.com`. Change that line if the domain is different, then set the same variable on Vercel. Until then, local RSS, sitemap, and OG links stay on `http://localhost:3000`.
+- [x] Drafts stay on the site for the first deploy. Rewrite them after the site is public.
+- The public address is one value: `NEXT_PUBLIC_SITE_URL` in `.env.example`. It is set to `https://khasimsaleh.com`. `khasimsaleh.com` does not resolve yet. Leave this unset on Vercel until the domain is live. A Vercel deploy uses its own `https://….vercel.app` address until then.
 
 ## Already handled
 

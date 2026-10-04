@@ -32,12 +32,10 @@ Invalid MDX frontmatter fails the build. Files in `content/` that start with `_`
 
 ## Deploy
 
-Do not deploy yet. Drafts listed in `LAUNCH_CHECKLIST.md` are still open, and the domain is not live.
+The drafts stay as they are for the first deploy. `khasimsaleh.com` does not resolve yet.
 
-When those drafts are done:
-
-1. If the domain is not `https://khasimsaleh.com`, change `NEXT_PUBLIC_SITE_URL` in `.env.example`.
-2. Import `https://github.com/khasim8055/kp` in Vercel. The framework is Next.js. Leave the build command as `npm run build`.
-3. In the Vercel project settings, set `NEXT_PUBLIC_SITE_URL` to the same value. Vercel does not read `.env.example`.
-4. Deploy, then attach the domain in Vercel and point DNS at Vercel.
+1. Import `https://github.com/khasim8055/kp` in Vercel. The framework is Next.js. Leave the build command as `npm run build`.
+2. Do not set `NEXT_PUBLIC_SITE_URL` yet. The live site uses its `https://….vercel.app` address until the domain exists.
+3. When the domain is live, change `NEXT_PUBLIC_SITE_URL` in `.env.example` if it is not `https://khasimsaleh.com`, set that same variable in the Vercel project, and redeploy. Vercel does not read `.env.example`.
+4. Attach the domain in Vercel and point DNS at Vercel.
 5. Open `/sitemap.xml`, `/robots.txt`, and `/rss.xml` and confirm they use the public address.
