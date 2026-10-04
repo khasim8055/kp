@@ -4,14 +4,14 @@ Open items to provide or rewrite. Each phase adds a section here.
 
 ## Phase 1
 
-- Portrait: replace `public/profile.svg` when you have a photo.
-- Google Scholar: `data/profile.ts` still has `TODO_SCHOLAR_URL`. The icon stays a placeholder until that is a real URL.
+- [x] Portrait: `public/profile.jpg`. Wooden wall replaced with a plain warm off-white background.
+- [x] Google Scholar: removed from the site. No Scholar icon and no Scholar URL.
 
 ## Phase 2
 
 Rewrite the case studies. Each file is marked `DRAFT: Khasim to review`.
 
-- `content/projects/klindok.mdx`
+- [x] `content/projects/klindok.mdx`: keep the current draft. Rewrite after deployment.
 - `content/projects/ai-tutor-coschool.mdx`
 - `content/projects/predictive-maintenance.mdx`
 

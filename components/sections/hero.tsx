@@ -1,4 +1,3 @@
-import { GraduationCap } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/brand";
@@ -8,11 +7,9 @@ import { Chip } from "@/components/ui/chip";
 import { Link } from "@/i18n/navigation";
 import { profile } from "@/data/profile";
 import { getPapers, paperOfTheWeek } from "@/lib/content/papers";
-import { isPlaceholderUrl } from "@/lib/utils";
 
 export async function Hero() {
   const t = await getTranslations("Hero");
-  const scholarReady = !isPlaceholderUrl(profile.scholar);
   const latestPaper = paperOfTheWeek(getPapers());
 
   return (
@@ -22,7 +19,6 @@ export async function Hero() {
         alt={t("photoAlt")}
         width={160}
         height={160}
-        unoptimized
         priority
         className="h-28 w-28 rounded-full border border-border object-cover md:h-36 md:w-36"
       />
@@ -54,22 +50,6 @@ export async function Hero() {
             <IconLink href={profile.github} label={t("github")} external>
               <GitHubIcon className="h-4 w-4" />
             </IconLink>
-          </li>
-          <li>
-            {scholarReady ? (
-              <IconLink href={profile.scholar} label={t("scholar")} external>
-                <GraduationCap className="h-4 w-4" aria-hidden />
-              </IconLink>
-            ) : (
-              <span
-                role="img"
-                className="inline-flex h-9 w-9 items-center justify-center border border-dashed border-border text-muted"
-                title={t("scholarMissing")}
-                aria-label={t("scholarMissing")}
-              >
-                <GraduationCap className="h-4 w-4" aria-hidden />
-              </span>
-            )}
           </li>
         </ul>
         <div className="mt-6 flex flex-wrap gap-3">

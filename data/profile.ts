@@ -4,8 +4,7 @@ export const profile = {
   location: "Berlin, Germany",
   linkedin: "https://linkedin.com/in/khasim-bin-saleh",
   github: "https://github.com/khasim8055",
-  scholar: "TODO_SCHOLAR_URL",
-  photo: "/profile.svg",
+  photo: "/profile.jpg",
   focus: [
     "Deep Learning",
     "LLMs and RAG",
