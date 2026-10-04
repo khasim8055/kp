@@ -18,10 +18,13 @@ export function RecruiterModal() {
       </Button>
       <dialog
         ref={dialogRef}
+        aria-labelledby="recruiter-title"
         className="w-[min(100%-2rem,40rem)] border border-border bg-background p-6 text-foreground backdrop:bg-black/40"
       >
         <p className="font-mono text-xs text-accent">{t("eyebrow")}</p>
-        <h2 className="mt-2 text-2xl font-medium tracking-tight">{t("title")}</h2>
+        <h2 id="recruiter-title" className="mt-2 text-2xl font-medium tracking-tight">
+          {t("title")}
+        </h2>
         <dl className="mt-6 space-y-3 text-sm">
           <div>
             <dt className="font-mono text-[11px] text-muted">{t("role")}</dt>

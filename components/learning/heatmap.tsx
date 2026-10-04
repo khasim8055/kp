@@ -18,20 +18,22 @@ export function LearningHeatmap({
   label: string;
 }) {
   return (
-    <div className="overflow-x-auto" role="img" aria-label={label}>
+    <div className="overflow-x-auto">
+      <p className="sr-only">{label}</p>
       <div className="flex w-max gap-1">
         {cells.map((cell) => {
           const className = cn(
-            "h-3.5 w-3.5 border border-border",
+            "h-6 w-6 border border-border",
             levelClass[cell.level],
           );
           if (!cell.slug) {
-            return <span key={cell.start} title={cell.label} className={className} />;
+            return <span key={cell.start} className={className} aria-hidden />;
           }
           return (
             <Link
               key={cell.start}
               href={`/learning/${cell.slug}`}
+              aria-label={cell.label}
               title={cell.label}
               className={className}
             />

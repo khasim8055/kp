@@ -51,7 +51,11 @@ Until Reflexion has a real date, ReAct stays paper of the week.
 ## Phase 5
 
 - Rewrite `content/now.mdx`. It is marked DRAFT. The facts are the thesis, Klindok, weekly papers, and German B1.
-- Set `NEXT_PUBLIC_SITE_URL` to the public site address before launch. RSS, the sitemap, and OG links use `http://localhost:3000` until then.
+
+## Phase 6
+
+- Do not deploy until the drafts above are rewritten.
+- The public address is one value: `NEXT_PUBLIC_SITE_URL` in `.env.example`. It is set to `https://khasimsaleh.com`. Change that line if the domain is different, then set the same variable on Vercel. Until then, local RSS, sitemap, and OG links stay on `http://localhost:3000`.
 
 ## Already handled
 

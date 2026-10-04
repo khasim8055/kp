@@ -168,6 +168,7 @@
   },
   "Footer": {
     "updated": "Last updated {date}",
+    "nav": "Footer",
     "rss": "RSS",
     "built": "Built with Next.js"
   },

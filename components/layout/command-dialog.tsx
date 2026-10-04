@@ -49,10 +49,10 @@ export function CommandDialog({
         className="inline-flex h-9 items-center border border-border px-2 font-mono text-[11px]"
         aria-haspopup="dialog"
         aria-expanded={open}
-        aria-label={t("command")}
+        aria-label={`${t("command")} ⌘K`}
         onClick={() => setOpen(true)}
       >
-        ⌘K
+        <span aria-hidden>⌘K</span>
       </button>
       <Command.Dialog
         open={open}
@@ -63,7 +63,8 @@ export function CommandDialog({
       >
         <Command.Input
           placeholder={t("commandSearch")}
-          className="w-full border-b border-border bg-transparent px-3 py-3 text-sm outline-none"
+          aria-label={t("commandSearch")}
+          className="w-full border-b border-border bg-transparent px-3 py-3 text-sm outline-none focus-visible:border-accent"
         />
         <Command.List className="max-h-80 overflow-y-auto p-2">
           <Command.Empty className="px-2 py-3 text-sm text-muted">
