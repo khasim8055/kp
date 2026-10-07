@@ -24,7 +24,9 @@
     "now": "Now",
     "requestCv": "Request CV",
     "themeToggle": "Toggle color theme",
-    "language": "Language"
+    "language": "Language",
+    "backToTop": "Back to top",
+    "scrollProgress": "Page scroll"
   },
   "Hero": {
     "title": "AI/ML Engineer",
@@ -201,5 +203,27 @@
     "title": "This page is not here.",
     "body": "The link may be old, or the page is not written yet.",
     "home": "Back home"
+  },
+  "Status": {
+    "building": "Building",
+    "inProgress": "In progress",
+    "shipped": "Shipped",
+    "ongoing": "Ongoing",
+    "done": "Done"
+  },
+  "Styleguide": {
+    "title": "Style guide",
+    "intro": "These components are not linked in the navigation.",
+    "eyebrow": "Signal",
+    "sectionTitle": "Section header",
+    "sectionSubtitle": "A short line under the title.",
+    "serifLine": "How do you know an AI system is safe to trust?",
+    "readoutLabel": "Sample readout",
+    "readoutStatic": "Static value",
+    "cardBody": "Cards lift slightly, and the border picks up the signal colour.",
+    "tag": "RAG",
+    "reveal": "This block fades up once.",
+    "darkSample": "Dark",
+    "lightSample": "Light"
   }
 }

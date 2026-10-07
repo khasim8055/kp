@@ -1,0 +1,29 @@
+import { Eyebrow } from "@/components/ui/eyebrow";
+import { cn } from "@/lib/utils";
+
+export function SectionHeader({
+  eyebrow,
+  title,
+  subtitle,
+  serifLine,
+  id,
+  className,
+}: {
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+  serifLine?: string;
+  id?: string;
+  className?: string;
+}) {
+  return (
+    <header className={cn("max-w-[760px]", className)}>
+      <Eyebrow>{eyebrow}</Eyebrow>
+      <h2 id={id} className="type-h2 mt-3 text-balance">
+        {title}
+      </h2>
+      {subtitle ? <p className="mt-3 text-muted">{subtitle}</p> : null}
+      {serifLine ? <p className="type-serif mt-4 text-balance">{serifLine}</p> : null}
+    </header>
+  );
+}

@@ -24,7 +24,9 @@
     "now": "Jetzt",
     "requestCv": "Lebenslauf anfragen",
     "themeToggle": "Farbschema wechseln",
-    "language": "Sprache"
+    "language": "Sprache",
+    "backToTop": "Nach oben",
+    "scrollProgress": "Seitenfortschritt"
   },
   "Hero": {
     "title": "AI/ML Engineer",
@@ -201,5 +203,27 @@
     "title": "Diese Seite gibt es hier nicht.",
     "body": "Der Link ist vielleicht alt, oder die Seite ist noch nicht geschrieben.",
     "home": "Zur Startseite"
+  },
+  "Status": {
+    "building": "Im Aufbau",
+    "inProgress": "In Arbeit",
+    "shipped": "Ausgeliefert",
+    "ongoing": "Laufend",
+    "done": "Fertig"
+  },
+  "Styleguide": {
+    "title": "Komponenten",
+    "intro": "Diese Bausteine sind nicht in der Navigation verlinkt.",
+    "eyebrow": "Signal",
+    "sectionTitle": "Abschnittskopf",
+    "sectionSubtitle": "Eine kurze Zeile unter dem Titel.",
+    "serifLine": "Woran erkennt man, dass ein KI-System vertrauenswürdig ist?",
+    "readoutLabel": "Beispielwert",
+    "readoutStatic": "Fester Wert",
+    "cardBody": "Karten heben sich leicht, und der Rand nimmt die Signalfarbe auf.",
+    "tag": "RAG",
+    "reveal": "Dieser Block blendet einmal nach oben ein.",
+    "darkSample": "Dunkel",
+    "lightSample": "Hell"
   }
 }
