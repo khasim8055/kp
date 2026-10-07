@@ -53,11 +53,65 @@
     "scroll": "SCROLLEN"
   },
   "About": {
-    "eyebrow": "// über mich",
-    "title": "Über mich",
-    "p1": "Ich habe zwei Jahre lang ML- und LLM-Systeme von Anfang bis Ende gebaut. Die Arbeit reicht von Datenpipelines und Feature Engineering bis zu Evaluation und getestetem Deployment mit Docker.",
-    "p2": "Bei Coschool habe ich einen KI-Tutor an mehr als 1.000 Beta-Nutzer ausgeliefert. Jetzt baue ich Klindok, eine Offline-Software für klinische Dokumentation im DACH-Markt. Sie ist DSGVO-konform und läuft auf meinem eigenen kleinen Sprachmodell.",
-    "p3": "In meiner Masterarbeit baue ich einen LLM-Agenten, der prüft, ob synthetische Gesundheitsdaten sicher geteilt werden können. Ich schaue auf Nutzen und Privatsphäre unter der DSGVO."
+    "eyebrow": "ÜBER MICH",
+    "title": "Vom IoT-Basteln zu vertrauenswürdiger KI",
+    "p1": "Ich habe mit einem B.Tech in Informatik an der Lovely Professional University begonnen, mit Schwerpunkt IoT. 2023 wurde ich Mit-Erfinder eines Patents für einen internetgesteuerten Futterspender für Haustiere.",
+    "p2": "Bei Coschool habe ich einen KI-Tutor gebaut, der 1.000+ Beta-Nutzer erreicht hat. Dabei habe ich gelernt: ein Modell ist nur so gut wie die Art, wie man es testet.",
+    "p3": "Für den MSc in KI bin ich nach Berlin gezogen. Jetzt baue ich Klindok und schreibe eine Thesis darüber, ob synthetische Gesundheitsdaten nützlich und privat sind.",
+    "years": "Jahre mit ML- und LLM-Systemen",
+    "users": "erreichte Beta-Nutzer",
+    "patent": "Patent",
+    "languages": "Sprachen",
+    "languagesLine": "Hindi · Englisch · Deutsch (B1, lerne)"
+  },
+  "Journey": {
+    "eyebrow": "WEG",
+    "title": "Wie ich hierher kam",
+    "serif": "Jeder Schritt hat einen weiteren Test hinzugefügt.",
+    "full": "Voller Werdegang",
+    "stops": {
+      "btech": {
+        "year": "2020",
+        "title": "B.Tech CSE begonnen",
+        "body": "IoT-Schwerpunkt an der Lovely Professional University.",
+        "tag": "Studium"
+      },
+      "patent": {
+        "year": "2023",
+        "title": "Mit-Erfinder eines IoT-Patents",
+        "body": "Eingereicht im Oktober 2023.",
+        "tag": "Patent"
+      },
+      "coschool": {
+        "year": "2023",
+        "title": "ML-Praktikum bei Coschool",
+        "body": "KI-Tutor für 1.000+ Beta-Nutzer ausgeliefert.",
+        "tag": "Praktikum"
+      },
+      "berlin": {
+        "year": "2025",
+        "title": "Nach Berlin gezogen",
+        "body": "MSc KI an der SRH Berlin.",
+        "tag": "MSc"
+      },
+      "research": {
+        "year": "2026",
+        "title": "Wissenschaftliche Hilfskraft",
+        "body": "Enterprise-KI-Agenten und Agent-Design-Patterns.",
+        "tag": "Forschung"
+      },
+      "klindok": {
+        "year": "2026",
+        "title": "Klindok gestartet",
+        "body": "Offline-Dokumentation für Praxen.",
+        "tag": "Klindok"
+      },
+      "thesis": {
+        "year": "Als Nächstes",
+        "title": "MSc-Thesis",
+        "body": "Synthetische Gesundheitsdaten und die DSGVO."
+      }
+    }
   },
   "CurrentWork": {
     "eyebrow": "// aktuelle arbeit",

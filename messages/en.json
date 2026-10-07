@@ -53,11 +53,65 @@
     "scroll": "SCROLL"
   },
   "About": {
-    "eyebrow": "// about",
-    "title": "About",
-    "p1": "I have spent two years building ML and LLM systems end to end. The work runs from data pipelines and feature engineering to evaluation and Dockerized deployment with tests.",
-    "p2": "At Coschool I shipped an AI tutor to more than 1,000 beta users. Now I am building Klindok, offline GDPR-compliant clinical documentation software for the DACH market. It runs on my own small language model.",
-    "p3": "My MSc thesis builds an LLM agent that checks whether synthetic health data is safe to share. I look at usefulness and privacy under GDPR."
+    "eyebrow": "ABOUT",
+    "title": "From IoT tinkering to trustworthy AI",
+    "p1": "I started with a B.Tech in Computer Science at Lovely Professional University, with a specialisation in IoT. In 2023 I became a co-inventor on a patent for an internet controlled pet food dispenser.",
+    "p2": "At Coschool I built an AI tutor that reached 1,000+ beta users. That work taught me a model is only as good as how you test it.",
+    "p3": "I moved to Berlin for an MSc in AI. Now I am building Klindok, and writing a thesis on whether synthetic health data is useful and private.",
+    "years": "years building ML and LLM systems",
+    "users": "beta users reached",
+    "patent": "patent",
+    "languages": "languages",
+    "languagesLine": "Hindi · English · German (B1, learning)"
+  },
+  "Journey": {
+    "eyebrow": "JOURNEY",
+    "title": "How I got here",
+    "serif": "Every step added one more test.",
+    "full": "Full experience",
+    "stops": {
+      "btech": {
+        "year": "2020",
+        "title": "Started B.Tech CSE",
+        "body": "IoT specialisation at Lovely Professional University.",
+        "tag": "Education"
+      },
+      "patent": {
+        "year": "2023",
+        "title": "Co-inventor on an IoT patent",
+        "body": "Filed in October 2023.",
+        "tag": "Patent"
+      },
+      "coschool": {
+        "year": "2023",
+        "title": "ML Intern at Coschool",
+        "body": "Shipped an AI tutor to 1,000+ beta users.",
+        "tag": "Internship"
+      },
+      "berlin": {
+        "year": "2025",
+        "title": "Moved to Berlin",
+        "body": "MSc AI at SRH Berlin.",
+        "tag": "MSc"
+      },
+      "research": {
+        "year": "2026",
+        "title": "Research Assistant",
+        "body": "Enterprise AI agents and agent design patterns.",
+        "tag": "Research"
+      },
+      "klindok": {
+        "year": "2026",
+        "title": "Started building Klindok",
+        "body": "Offline clinical documentation for private practices.",
+        "tag": "Klindok"
+      },
+      "thesis": {
+        "year": "Next",
+        "title": "MSc thesis",
+        "body": "Synthetic health data and GDPR."
+      }
+    }
   },
   "CurrentWork": {
     "eyebrow": "// current work",

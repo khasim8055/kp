@@ -33,6 +33,10 @@ Rewrite the case studies. Each file is marked `DRAFT: Khasim to review`.
 - [x] Drafts stay on the site for the first deploy. Rewrite them after the site is public.
 - The public address is one value: `NEXT_PUBLIC_SITE_URL` in `.env.example`. It is set to `https://khasimsaleh.com`. `khasimsaleh.com` does not resolve yet. Leave this unset on Vercel until the domain is live. A Vercel deploy uses its own `https://….vercel.app` address until then.
 
+## Cinematic redesign
+
+- [ ] Home About story copy (`About.p1` to `About.p3` in `messages/en.json` and `messages/de.json`): marked `DRAFT: Khasim to review`. Facts only from the CV path (LPU IoT, patent 2023, Coschool tutor, Berlin MSc, Klindok, synthetic health data thesis). Rewrite after review.
+
 ## Already handled
 
 - Request CV opens LinkedIn. There is no CV file and no `/cv` route.
