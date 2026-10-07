@@ -39,7 +39,18 @@
     "latestPaper": "Read my latest paper breakdown",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "photoAlt": "Portrait of Khasim Bin Saleh"
+    "photoAlt": "Portrait of Khasim Bin Saleh",
+    "eyebrow": "BERLIN · MSC AI · AI/ML ENGINEER",
+    "role1": "AI/ML Engineer",
+    "role2": "Evaluation first",
+    "role3": "Building Klindok",
+    "role4": "Healthcare AI",
+    "question": "Can we trust what AI tells us?",
+    "line": "I build AI systems for places where mistakes matter, and I measure them before I trust them.",
+    "explore": "Explore my research",
+    "built": "See what I built",
+    "online": "ONLINE · BERLIN",
+    "scroll": "SCROLL"
   },
   "About": {
     "eyebrow": "// about",

@@ -39,7 +39,18 @@
     "latestPaper": "Neueste Paper-Analyse lesen",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "photoAlt": "Porträt von Khasim Bin Saleh"
+    "photoAlt": "Porträt von Khasim Bin Saleh",
+    "eyebrow": "BERLIN · MSC KI · KI/ML-INGENIEUR",
+    "role1": "KI/ML-Ingenieur",
+    "role2": "Evaluation zuerst",
+    "role3": "Klindok bauen",
+    "role4": "Gesundheits-KI",
+    "question": "Können wir dem vertrauen, was KI uns sagt?",
+    "line": "Ich baue KI-Systeme für Orte, an denen Fehler zählen, und ich messe sie, bevor ich ihnen vertraue.",
+    "explore": "Forschung ansehen",
+    "built": "Was ich gebaut habe",
+    "online": "ONLINE · BERLIN",
+    "scroll": "SCROLLEN"
   },
   "About": {
     "eyebrow": "// über mich",

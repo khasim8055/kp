@@ -1,94 +1,74 @@
 import { getTranslations } from "next-intl/server";
-import Image from "next/image";
-import { GitHubIcon, LinkedInIcon } from "@/components/icons/brand";
-import { RecruiterModal } from "@/components/sections/recruiter-modal";
+import { NeuralSlot, PortraitSlot } from "@/components/sections/hero-canvas";
+import { RoleLine } from "@/components/sections/role-line";
 import { Button } from "@/components/ui/button";
-import { Chip } from "@/components/ui/chip";
-import { Link } from "@/i18n/navigation";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { profile } from "@/data/profile";
-import { getPapers, paperOfTheWeek } from "@/lib/content/papers";
 
 export async function Hero() {
   const t = await getTranslations("Hero");
-  const latestPaper = paperOfTheWeek(getPapers());
+  const roles = [t("role1"), t("role2"), t("role3"), t("role4")];
 
   return (
-    <div className="mx-auto grid max-w-[1100px] gap-8 px-4 py-14 md:grid-cols-[auto_1fr] md:items-start md:py-20">
-      <Image
-        src={profile.photo}
-        alt={t("photoAlt")}
-        width={160}
-        height={160}
-        priority
-        className="h-28 w-28 rounded-full border border-border object-cover md:h-36 md:w-36"
+    <section
+      aria-labelledby="hero-title"
+      className="relative -mt-20 flex min-h-[100svh] flex-col overflow-hidden bg-background"
+    >
+      <NeuralSlot />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, transparent 28%, var(--bg) 78%), linear-gradient(to bottom, transparent 42%, var(--bg) 100%)",
+        }}
       />
-      <div>
-        <h1 className="text-4xl font-medium tracking-tight text-balance">
-          {profile.name}
-        </h1>
-        <p className="mt-2 text-muted">
-          {t("title")}, {t("location")}
-        </p>
-        <p className="mt-5 max-w-[640px] text-lg leading-relaxed text-balance">
-          {t("oneLiner")}
-        </p>
-        <p className="mt-6 font-mono text-xs text-accent">{t("focus")}</p>
-        <ul className="mt-2 flex flex-wrap gap-2">
-          {profile.focus.map((tag) => (
-            <li key={tag}>
-              <Chip>{tag}</Chip>
-            </li>
-          ))}
-        </ul>
-        <ul className="mt-6 flex flex-wrap gap-2">
-          <li>
-            <IconLink href={profile.linkedin} label={t("linkedin")} external>
-              <LinkedInIcon className="h-4 w-4" />
-            </IconLink>
-          </li>
-          <li>
-            <IconLink href={profile.github} label={t("github")} external>
-              <GitHubIcon className="h-4 w-4" />
-            </IconLink>
-          </li>
-        </ul>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Button asChild>
-            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-              {t("requestCv")}
-            </a>
-          </Button>
-          <RecruiterModal />
-          <Button asChild variant="outline">
-            <Link href={latestPaper ? `/papers/${latestPaper.slug}` : "/papers"}>
-              {t("latestPaper")}
-            </Link>
-          </Button>
+      <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-1 flex-col items-center gap-10 px-4 pb-24 pt-28 md:flex-row md:items-center md:justify-between md:gap-12">
+        <div className="order-2 w-full max-w-[640px] md:order-1">
+          <Eyebrow>{t("eyebrow")}</Eyebrow>
+          <h1 id="hero-title" className="type-h1 mt-4 text-balance">
+            {profile.name}
+          </h1>
+          <RoleLine roles={roles} />
+          <p className="mt-5 font-serif text-[44px] italic leading-tight text-balance text-foreground">
+            {t("question")}
+          </p>
+          <p className="mt-4 max-w-[540px] text-muted">{t("line")}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button asChild>
+              <a href="#research">{t("explore")}</a>
+            </Button>
+            <Button asChild variant="outline">
+              <a href="#projects">{t("built")}</a>
+            </Button>
+          </div>
+        </div>
+        <div className="order-1 flex flex-col items-center md:order-2">
+          <div className="portrait-slot relative h-[220px] w-[220px] md:h-[320px] md:w-[320px]">
+            {/* Plain img is the fallback for reduced motion, no JS, and screen readers. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={profile.photo}
+              alt={t("photoAlt")}
+              width={320}
+              height={320}
+              fetchPriority="high"
+              className="portrait-photo absolute inset-0 h-full w-full object-cover"
+            />
+            <PortraitSlot />
+          </div>
+          <p className="mt-4 inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-pass-ink">
+            <span className="status-pulse inline-block h-1.5 w-1.5 rounded-full bg-pass" aria-hidden="true" />
+            {t("online")}
+          </p>
         </div>
       </div>
-    </div>
-  );
-}
-
-function IconLink({
-  href,
-  label,
-  external,
-  children,
-}: {
-  href: string;
-  label: string;
-  external?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <a
-      href={href}
-      aria-label={label}
-      className="inline-flex h-9 w-9 items-center justify-center border border-border hover:border-accent hover:text-accent"
-      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-    >
-      {children}
-    </a>
+      <div className="pointer-events-none absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
+        <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink">{t("scroll")}</span>
+        <span className="scroll-cue-line" aria-hidden="true">
+          <span className="scroll-cue-dot" />
+        </span>
+      </div>
+    </section>
   );
 }
