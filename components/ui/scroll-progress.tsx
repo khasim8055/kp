@@ -27,7 +27,7 @@ export function ScrollProgress() {
       aria-valuemax={100}
       aria-valuenow={progress}
     >
-      <div className="h-full bg-accent" style={{ width: `${progress}%` }} />
+      <div className="h-full bg-signal" style={{ width: `${progress}%` }} />
     </div>
   );
 }

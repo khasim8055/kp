@@ -22,8 +22,8 @@ export function SectionHeader({
       <h2 id={id} className="type-h2 mt-3 text-balance">
         {title}
       </h2>
-      {subtitle ? <p className="mt-3 text-muted">{subtitle}</p> : null}
       {serifLine ? <p className="type-serif mt-4 text-balance">{serifLine}</p> : null}
+      {subtitle ? <p className="mt-3 text-muted">{subtitle}</p> : null}
     </header>
   );
 }

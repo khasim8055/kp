@@ -3,37 +3,45 @@
 /* Dark is the default. .light overrides it when the theme toggle is on. */
 :root,
 .dark {
-  --bg: #0b0d0c;
-  --surface: #121614;
-  --surface-2: #181d1a;
-  --border: #232a26;
-  --text: #ecefea;
-  --muted: #9aa39d;
-  --accent: #f2b544;
-  --accent-2: #3dd6b5;
-  --warn: #f2795b;
-  --on-accent: #0b0d0c;
-  --accent-ink: #f2b544;
-  --accent-2-ink: #3dd6b5;
-  --warn-ink: #f2795b;
+  --bg: #07090a;
+  --surface: #0e1214;
+  --surface-2: #151b1e;
+  --border: #1f282c;
+  --text: #eef2f0;
+  --muted: #8d9893;
+  --signal: #f5b947;
+  --pass: #34d6b0;
+  --pulse: #7c9cff;
+  --on-signal: #07090a;
+  --signal-ink: #f5b947;
+  --pass-ink: #34d6b0;
+  --accent: var(--signal);
+  --accent-2: var(--pass);
+  --on-accent: var(--on-signal);
+  --accent-ink: var(--signal-ink);
+  --accent-2-ink: var(--pass-ink);
   color-scheme: dark;
 }
 
 .light {
-  --bg: #f7f6f2;
+  --bg: #f6f5f1;
   --surface: #ffffff;
-  --surface-2: #f0eee8;
-  --border: #e3e0d8;
-  --text: #151815;
-  --muted: #5f665f;
-  --accent: #b7791f;
-  --accent-2: #0f8a72;
-  --warn: #c2502f;
-  --on-accent: #151815;
-  /* Darker than the fills so 12px labels stay WCAG AA on --bg. */
-  --accent-ink: #9b661a;
-  --accent-2-ink: #0d806a;
-  --warn-ink: #bc4d2d;
+  --surface-2: #eeece6;
+  --border: #e0ddd5;
+  --text: #121514;
+  --muted: #5c635f;
+  --signal: #b5781a;
+  --pass: #0e8a70;
+  --pulse: #3e5bd6;
+  --on-signal: #121514;
+  /* Darker than the fills so 12px labels stay WCAG AA on light surfaces. */
+  --signal-ink: #926011;
+  --pass-ink: #0c7962;
+  --accent: var(--signal);
+  --accent-2: var(--pass);
+  --on-accent: var(--on-signal);
+  --accent-ink: var(--signal-ink);
+  --accent-2-ink: var(--pass-ink);
   color-scheme: light;
 }
 
@@ -42,20 +50,28 @@
   --color-foreground: var(--text);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
+  --color-pass: var(--pass);
+  --color-pass-ink: var(--pass-ink);
+  --color-pulse: var(--pulse);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--on-accent);
   --color-accent-ink: var(--accent-ink);
   --color-accent-2: var(--accent-2);
   --color-accent-2-ink: var(--accent-2-ink);
-  --color-warn: var(--warn);
-  --color-warn-ink: var(--warn-ink);
   --color-card: var(--surface);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
-  --color-ring: var(--accent);
-  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-ring: var(--signal);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
   --font-serif: var(--font-instrument), ui-serif, georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -65,26 +81,16 @@ body {
   line-height: 1.65;
 }
 
-body::before {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    linear-gradient(to right, color-mix(in srgb, var(--text) 4%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, var(--text) 4%, transparent) 1px, transparent 1px);
-  background-size: 32px 32px;
-  mask-image: linear-gradient(to bottom, #000 0, #000 28vh, transparent 88vh);
-}
-
-body > * {
-  position: relative;
-  z-index: 1;
+#about,
+#research,
+#projects,
+#lab,
+#contact {
+  scroll-margin-top: 96px;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 28%, transparent);
+  background: color-mix(in srgb, var(--signal) 28%, transparent);
 }
 
 :focus-visible {
@@ -93,18 +99,20 @@ body > * {
 }
 
 .type-h1 {
-  font-size: 40px;
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: 44px;
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.05;
+  line-height: 0.95;
   color: var(--text);
 }
 
 .type-h2 {
-  font-size: 30px;
-  font-weight: 650;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
   color: var(--text);
 }
 
@@ -119,11 +127,11 @@ body > * {
 
 @media (min-width: 768px) {
   .type-h1 {
-    font-size: 56px;
+    font-size: 72px;
   }
 
   .type-h2 {
-    font-size: 40px;
+    font-size: 48px;
   }
 
   .type-serif {
@@ -131,18 +139,56 @@ body > * {
   }
 }
 
-.lab-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  transition:
-    transform 200ms ease,
-    border-color 200ms ease;
+.glow-card {
+  --glow-x: 50%;
+  --glow-y: 50%;
 }
 
-.lab-card:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    180px circle at var(--glow-x) var(--glow-y),
+    color-mix(in srgb, var(--pulse) 45%, transparent),
+    transparent 65%
+  );
+  transition: opacity 200ms ease;
+}
+
+.glow-card:hover::before {
+  opacity: 1;
+}
+
+.section-divider {
+  position: relative;
+  height: 1px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.section-divider-dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--signal);
+  box-shadow: 0 0 10px var(--signal);
+  transform: translateY(-50%);
+  animation: divider-travel 4.5s linear infinite;
+}
+
+@keyframes divider-travel {
+  from {
+    left: 0;
+  }
+  to {
+    left: calc(100% - 6px);
+  }
 }
 
 @keyframes rise-in {
@@ -186,16 +232,17 @@ dialog:not([open]) {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .rise-in,
-  .status-pulse {
+  .status-pulse,
+  .section-divider-dot {
     animation: none;
   }
 
-  .lab-card {
-    transition: none;
-  }
-
-  .lab-card:hover {
-    transform: none;
+  .glow-card::before {
+    display: none;
   }
 }

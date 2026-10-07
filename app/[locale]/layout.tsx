@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Instrument_Serif, Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -12,17 +12,25 @@ import { resolveLocale } from "@/lib/locale";
 import { siteUrl } from "@/lib/site";
 import "../globals.css";
 
-const geist = Geist({
+const inter = Inter({
   subsets: ["latin"],
-  weight: "variable",
-  variable: "--font-geist",
+  weight: ["400", "500"],
+  variable: "--font-inter",
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const space = Space_Grotesk({
   subsets: ["latin"],
-  weight: "variable",
-  variable: "--font-geist-mono",
+  weight: ["500", "700"],
+  variable: "--font-space",
+  display: "swap",
+  preload: false,
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-jetbrains",
   display: "swap",
   preload: false,
 });
@@ -76,7 +84,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${geist.variable} ${geistMono.variable} ${instrument.variable} h-full`}
+      className={`${inter.variable} ${space.variable} ${jetbrains.variable} ${instrument.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground antialiased">
         <ThemeProvider>
@@ -89,7 +97,7 @@ export default async function LocaleLayout({ children, params }: Props) {
               {t("skip")}
             </a>
             <SiteHeader />
-            <main id="main" tabIndex={-1} className="flex-1">
+            <main id="main" tabIndex={-1} className="flex-1 pt-20">
               {children}
             </main>
             <SiteFooter />

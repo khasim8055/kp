@@ -13,7 +13,7 @@ export function HomePage() {
   return (
     <>
       <Hero />
-      <Section labelledBy="about-title">
+      <Section id="about" labelledBy="about-title">
         <FadeIn>
           <About />
         </FadeIn>
@@ -23,12 +23,12 @@ export function HomePage() {
           <CurrentWork />
         </FadeIn>
       </Section>
-      <Section labelledBy="lab-title">
+      <Section id="lab" labelledBy="lab-title">
         <FadeIn>
           <LatestLab />
         </FadeIn>
       </Section>
-      <Section labelledBy="projects-title">
+      <Section id="projects" labelledBy="projects-title">
         <FadeIn>
           <SelectedProjects />
         </FadeIn>
@@ -49,6 +49,7 @@ export function HomePage() {
         </FadeIn>
       </Section>
       <section
+        id="contact"
         className="border-t border-border"
         aria-labelledby="contact-title"
       >
@@ -63,14 +64,16 @@ export function HomePage() {
 }
 
 function Section({
+  id,
   children,
   labelledBy,
 }: {
+  id?: string;
   children: React.ReactNode;
   labelledBy?: string;
 }) {
   return (
-    <section className="border-t border-border" aria-labelledby={labelledBy}>
+    <section id={id} className="border-t border-border" aria-labelledby={labelledBy}>
       <div className="mx-auto max-w-[1100px] px-4 py-14 md:py-20">
         {children}
       </div>

@@ -6,19 +6,19 @@ import { cn } from "@/lib/utils";
 export type Status = "building" | "in-progress" | "shipped" | "ongoing" | "done";
 
 const dotClass: Record<Status, string> = {
-  building: "bg-accent status-pulse",
-  "in-progress": "bg-warn status-pulse",
-  shipped: "bg-accent-2",
-  ongoing: "bg-accent-2",
-  done: "bg-accent-2",
+  building: "bg-signal status-pulse",
+  "in-progress": "bg-signal status-pulse",
+  shipped: "bg-pass",
+  ongoing: "bg-pass",
+  done: "bg-pass",
 };
 
 const textClass: Record<Status, string> = {
-  building: "text-accent-ink",
-  "in-progress": "text-warn-ink",
-  shipped: "text-accent-2-ink",
-  ongoing: "text-accent-2-ink",
-  done: "text-accent-2-ink",
+  building: "text-signal-ink",
+  "in-progress": "text-signal-ink",
+  shipped: "text-pass-ink",
+  ongoing: "text-pass-ink",
+  done: "text-pass-ink",
 };
 
 const messageKey = {

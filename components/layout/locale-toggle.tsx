@@ -12,7 +12,7 @@ export function LocaleToggle() {
 
   return (
     <div
-      className="flex items-center border border-border font-mono text-[11px]"
+      className="flex items-center font-mono text-[11px]"
       role="group"
       aria-label={t("language")}
     >
@@ -46,7 +46,7 @@ function LocaleLink({
       className={cn(
         "px-2 py-1.5 uppercase",
         current
-          ? "bg-accent text-accent-foreground"
+          ? "text-signal-ink"
           : "text-muted hover:text-foreground",
       )}
     >

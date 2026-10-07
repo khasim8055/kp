@@ -33,8 +33,15 @@ export function CommandDialog({
         setOpen((value) => !value);
       }
     }
+    function onOpen() {
+      setOpen(true);
+    }
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    window.addEventListener("command-menu:open", onOpen);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("command-menu:open", onOpen);
+    };
   }, []);
 
   function go(href: string) {
@@ -46,7 +53,7 @@ export function CommandDialog({
     <>
       <button
         type="button"
-        className="inline-flex h-9 items-center border border-border px-2 font-mono text-[11px]"
+        className="inline-flex h-8 items-center px-2 font-mono text-[11px] text-muted"
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-label={`${t("command")} ⌘K`}
