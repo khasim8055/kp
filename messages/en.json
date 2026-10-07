@@ -121,6 +121,28 @@
     "ongoing": "Ongoing",
     "site": "Site"
   },
+  "ResearchHome": {
+    "eyebrow": "RESEARCH",
+    "title": "Research and academic work",
+    "coreEyebrow": "CORE RESEARCH QUESTION",
+    "question": "Can we trust what AI tells us?",
+    "coreP1": "My thesis asks whether synthetic health data can be useful and private under GDPR.",
+    "coreP2": "Klindok keeps clinical data offline, so the model does not need to leave the practice.",
+    "coreP3": "My agent work looks at why reported adoption swings so widely, and which design patterns hold up in real deployments.",
+    "thesisTitle": "MSc thesis",
+    "thesisBody": "An LLM agent that checks if synthetic health data is useful and private under GDPR.",
+    "agentsTitle": "Enterprise AI agents",
+    "agentsBody": "Compared four 2026 surveys where reported adoption ranged from 17% to 65%, and traced why.",
+    "patternsTitle": "Agent design patterns",
+    "patternsBody": "ReAct, Reflection, Planning, Tool use and Multi-agent, matched to real deployments and to MCP and A2A.",
+    "interestAgent": "Agent Reliability",
+    "interestEval": "LLM Evaluation",
+    "interestPrivacy": "Privacy in Healthcare AI",
+    "interestVoice": "Real-Time Voice AI",
+    "interestRobotics": "Robotics (learning)",
+    "collab": "Open to research collaborations",
+    "linkedin": "LinkedIn"
+  },
   "Lab": {
     "eyebrow": "// latest from the lab",
     "title": "Latest from the lab",

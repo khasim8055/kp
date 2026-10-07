@@ -36,6 +36,7 @@ Rewrite the case studies. Each file is marked `DRAFT: Khasim to review`.
 ## Cinematic redesign
 
 - [ ] Home About story copy (`About.p1` to `About.p3` in `messages/en.json` and `messages/de.json`): marked `DRAFT: Khasim to review`. Facts only from the CV path (LPU IoT, patent 2023, Coschool tutor, Berlin MSc, Klindok, synthetic health data thesis). Rewrite after review.
+- [ ] Home Research core question copy (`ResearchHome.coreP1` to `coreP3`): marked `DRAFT: Khasim to review`. Links thesis, Klindok offline data, and agent survey/pattern work only. Rewrite after review.
 
 ## Already handled
 

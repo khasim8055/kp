@@ -1,10 +1,9 @@
 import { About } from "@/components/sections/about";
-import { BeyondCode } from "@/components/sections/beyond-code";
 import { ContactCta } from "@/components/sections/contact-cta";
-import { CurrentWork } from "@/components/sections/current-work";
-import { ExperiencePreview } from "@/components/sections/experience-preview";
 import { Hero } from "@/components/sections/hero";
+import { Journey } from "@/components/sections/journey";
 import { LatestLab } from "@/components/sections/latest-lab";
+import { Research } from "@/components/sections/research";
 import { SelectedProjects } from "@/components/sections/selected-projects";
 import { Skills } from "@/components/sections/skills";
 import { FadeIn } from "@/components/ui/fade-in";
@@ -18,9 +17,10 @@ export function HomePage() {
           <About />
         </FadeIn>
       </Section>
-      <Section labelledBy="current-work-title">
+      <Journey />
+      <Section id="research" labelledBy="research-title">
         <FadeIn>
-          <CurrentWork />
+          <Research />
         </FadeIn>
       </Section>
       <Section id="lab" labelledBy="lab-title">
@@ -36,16 +36,6 @@ export function HomePage() {
       <Section labelledBy="skills-title">
         <FadeIn>
           <Skills />
-        </FadeIn>
-      </Section>
-      <Section labelledBy="experience-title">
-        <FadeIn>
-          <ExperiencePreview />
-        </FadeIn>
-      </Section>
-      <Section labelledBy="beyond-title">
-        <FadeIn>
-          <BeyondCode />
         </FadeIn>
       </Section>
       <section
@@ -73,7 +63,11 @@ function Section({
   labelledBy?: string;
 }) {
   return (
-    <section id={id} className="border-t border-border" aria-labelledby={labelledBy}>
+    <section
+      id={id}
+      className="border-t border-border"
+      aria-labelledby={labelledBy}
+    >
       <div className="mx-auto max-w-[1100px] px-4 py-14 md:py-20">
         {children}
       </div>

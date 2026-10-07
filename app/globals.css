@@ -82,11 +82,45 @@ body {
 }
 
 #about,
+#journey,
 #research,
 #projects,
 #lab,
 #contact {
   scroll-margin-top: 96px;
+}
+
+/* Tall pin: vertical scroll drives the horizontal journey track. */
+.journey-pin {
+  --journey-span: 340vh;
+}
+
+.journey-cards {
+  --card-w: 320px;
+}
+
+.journey-glow {
+  background: var(--signal);
+  box-shadow:
+    0 0 8px var(--signal),
+    0 0 18px color-mix(in srgb, var(--signal) 70%, transparent);
+}
+
+@media (min-width: 768px) {
+  .journey-pin {
+    height: var(--journey-span);
+  }
+
+  .journey-sticky {
+    position: sticky;
+    top: 0;
+    display: flex;
+    width: 100%;
+    height: 100svh;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
 }
 
 ::selection {
@@ -160,6 +194,21 @@ body {
 
 .glow-card:hover::before {
   opacity: 1;
+}
+
+.glow-card-signal {
+  border-color: color-mix(in srgb, var(--signal) 40%, transparent);
+  animation: breathe-glow 4.5s ease-in-out infinite;
+}
+
+@keyframes breathe-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 0%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 36px 0 color-mix(in srgb, var(--signal) 22%, transparent);
+  }
 }
 
 .section-divider {
@@ -291,7 +340,8 @@ dialog:not([open]) {
   .status-pulse,
   .section-divider-dot,
   .scroll-cue-dot,
-  .caret-blink {
+  .caret-blink,
+  .glow-card-signal {
     animation: none;
   }
 
@@ -301,5 +351,24 @@ dialog:not([open]) {
 
   .glow-card::before {
     display: none;
+  }
+
+  .journey-pin {
+    height: auto;
+  }
+
+  .journey-sticky {
+    position: static;
+    height: auto;
+    overflow: visible;
+    display: block;
+  }
+
+  .journey-horizontal {
+    display: none !important;
+  }
+
+  .journey-vertical {
+    display: block !important;
   }
 }

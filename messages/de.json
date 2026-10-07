@@ -121,6 +121,28 @@
     "ongoing": "Laufend",
     "site": "Seite"
   },
+  "ResearchHome": {
+    "eyebrow": "FORSCHUNG",
+    "title": "Forschung und akademische Arbeit",
+    "coreEyebrow": "ZENTRALE FORSCHUNGSFRAGE",
+    "question": "Können wir dem vertrauen, was KI uns sagt?",
+    "coreP1": "Meine Thesis fragt, ob synthetische Gesundheitsdaten unter der DSGVO nützlich und privat sein können.",
+    "coreP2": "Klindok hält klinische Daten offline, damit das Modell die Praxis nicht verlassen muss.",
+    "coreP3": "Meine Agentenarbeit schaut, warum gemeldete Adoption so stark schwankt, und welche Designmuster in echten Einsätzen halten.",
+    "thesisTitle": "Masterarbeit",
+    "thesisBody": "Ein LLM-Agent, der prüft, ob synthetische Gesundheitsdaten unter der DSGVO nützlich und privat sind.",
+    "agentsTitle": "KI-Agenten in Unternehmen",
+    "agentsBody": "Vier Umfragen aus 2026 verglichen, in denen die gemeldete Adoption zwischen 17% und 65% lag, und den Gründen nachgegangen.",
+    "patternsTitle": "Agenten-Designmuster",
+    "patternsBody": "ReAct, Reflection, Planning, Tool use und Multi-agent, abgeglichen mit echten Einsätzen und mit MCP und A2A.",
+    "interestAgent": "Agent Reliability",
+    "interestEval": "LLM Evaluation",
+    "interestPrivacy": "Privacy in Healthcare AI",
+    "interestVoice": "Real-Time Voice AI",
+    "interestRobotics": "Robotics (lerne)",
+    "collab": "Offen für Forschungskooperationen",
+    "linkedin": "LinkedIn"
+  },
   "Lab": {
     "eyebrow": "// zuletzt aus dem labor",
     "title": "Zuletzt aus dem Labor",
