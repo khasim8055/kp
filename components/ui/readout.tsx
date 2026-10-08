@@ -43,8 +43,10 @@ export function Readout({
 
   return (
     <div ref={ref}>
-      <p className="font-mono text-[36px] leading-none text-signal">{shown}</p>
-      <p className="mt-2 font-mono text-[12px] uppercase tracking-[0.2em] text-muted">{label}</p>
+      <p className="font-mono text-[28px] leading-none text-signal sm:text-[36px]">{shown}</p>
+      <p className="mt-2 break-words font-mono text-[11px] uppercase tracking-[0.16em] text-muted sm:text-[12px] sm:tracking-[0.2em]">
+        {label}
+      </p>
     </div>
   );
 }

@@ -44,7 +44,7 @@ function LocaleLink({
       hrefLang={locale}
       aria-current={current ? "true" : undefined}
       className={cn(
-        "px-2 py-1.5 uppercase",
+        "rounded-full px-2 py-1.5 uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)]",
         current
           ? "text-signal-ink"
           : "text-muted hover:text-foreground",

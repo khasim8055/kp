@@ -53,7 +53,7 @@ export function CommandDialog({
     <>
       <button
         type="button"
-        className="inline-flex h-8 items-center px-2 font-mono text-[11px] text-muted"
+        className="inline-flex h-8 items-center rounded-full px-2 font-mono text-[11px] text-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)]"
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-label={`${t("command")} ⌘K`}
@@ -71,7 +71,7 @@ export function CommandDialog({
         <Command.Input
           placeholder={t("commandSearch")}
           aria-label={t("commandSearch")}
-          className="w-full border-b border-border bg-transparent px-3 py-3 text-sm outline-none focus-visible:border-accent"
+          className="w-full border-b border-border bg-transparent px-3 py-3 text-sm outline-none focus-visible:border-[var(--signal)] focus-visible:shadow-[inset_0_-2px_0_0_var(--signal)]"
         />
         <Command.List className="max-h-80 overflow-y-auto p-2">
           <Command.Empty className="px-2 py-3 text-sm text-muted">

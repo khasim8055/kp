@@ -68,13 +68,13 @@ async function Flagship({ project }: { project: Project }) {
             </p>
             {project.status === "building" ? <StatusBadge status="building" /> : null}
           </div>
-          <h3 className="mt-3 font-display text-[36px] font-bold tracking-tight">
+          <h3 className="mt-3 font-display text-[28px] font-bold tracking-tight sm:text-[36px]">
             {project.title}
           </h3>
-          <p className="mt-3 font-serif text-[28px] italic leading-snug text-balance md:text-[32px]">
+          <p className="mt-3 font-serif text-[24px] italic leading-snug text-balance sm:text-[28px] md:text-[32px]">
             {t("klindokSerif")}
           </p>
-          <div className="mt-6 grid grid-cols-3 gap-3">
+          <div className="mt-6 grid grid-cols-1 gap-3 min-[420px]:grid-cols-3">
             {klindokReadouts.map((item) => (
               <Readout key={item.labelKey} value={item.value} label={t(item.labelKey)} />
             ))}

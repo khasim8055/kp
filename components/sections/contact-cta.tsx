@@ -32,11 +32,11 @@ export async function ContactCta({
             "radial-gradient(ellipse at center, transparent 20%, var(--bg) 82%), linear-gradient(to bottom, color-mix(in srgb, var(--bg) 55%, transparent) 0%, transparent 35%, color-mix(in srgb, var(--bg) 70%, transparent) 100%)",
         }}
       />
-      <div className="relative z-10 mx-auto flex max-w-[920px] flex-col items-center px-4 py-20 text-center md:py-28">
+      <div className="relative z-10 mx-auto flex w-full min-w-0 max-w-[920px] flex-col items-center px-4 py-16 text-center sm:py-20 md:py-28">
         <Eyebrow>{t("eyebrow")}</Eyebrow>
         <Heading
           id="contact-title"
-          className="mt-5 font-serif text-[40px] italic leading-[1.1] text-balance md:text-[56px]"
+          className="mt-5 max-w-full font-serif text-[32px] italic leading-[1.1] text-balance sm:text-[40px] md:text-[56px]"
         >
           {t("title")}
         </Heading>

@@ -77,8 +77,8 @@ export function FloatingNav({ command }: { command: React.ReactNode }) {
         <div className="pointer-events-auto flex max-w-full items-center gap-1 rounded-full border border-border bg-background/70 px-2 py-1.5 shadow-[0_8px_30px_rgb(0_0_0/0.18)] backdrop-blur-md">
           <Link
             href="/"
-            className="font-display px-2 text-sm font-bold tracking-tight"
-            aria-label={t("home")}
+            className="font-display rounded-full px-2 text-sm font-bold tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)]"
+            aria-label={`KS · ${t("home")}`}
           >
             KS
           </Link>
@@ -91,7 +91,7 @@ export function FloatingNav({ command }: { command: React.ReactNode }) {
                     aria-current={isCurrent(item.id) ? "true" : undefined}
                     onClick={(event) => goToSection(event, item.id)}
                     className={cn(
-                      "px-2.5 py-1 text-sm",
+                      "rounded-full px-2.5 py-1 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)]",
                       isCurrent(item.id) ? "text-signal-ink" : "text-muted hover:text-foreground",
                     )}
                   >
@@ -108,7 +108,7 @@ export function FloatingNav({ command }: { command: React.ReactNode }) {
           </div>
           <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center lg:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)] lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? t("close") : t("menu")}
@@ -134,7 +134,7 @@ export function FloatingNav({ command }: { command: React.ReactNode }) {
                   aria-current={isCurrent(item.id) ? "true" : undefined}
                   onClick={(event) => goToSection(event, item.id)}
                   className={cn(
-                    "font-display block py-2 text-4xl font-bold tracking-tight",
+                    "font-display block py-2 text-4xl font-bold tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--signal)]",
                     isCurrent(item.id) ? "text-signal-ink" : "text-foreground",
                   )}
                 >

@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { preload } from "react-dom";
 import { NeuralSlot, PortraitSlot } from "@/components/sections/hero-canvas";
 import { RoleLine } from "@/components/sections/role-line";
 import { Button } from "@/components/ui/button";
@@ -8,13 +9,14 @@ import { profile } from "@/data/profile";
 export async function Hero() {
   const t = await getTranslations("Hero");
   const roles = [t("role1"), t("role2"), t("role3"), t("role4")];
+  preload("/profile-320.jpg", { as: "image", fetchPriority: "high" });
 
   return (
     <section
       aria-labelledby="hero-title"
       className="relative -mt-20 flex min-h-[100svh] flex-col overflow-hidden bg-background"
     >
-      <NeuralSlot />
+      <NeuralSlot defer />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-[1]"
@@ -23,14 +25,14 @@ export async function Hero() {
             "radial-gradient(ellipse at center, transparent 28%, var(--bg) 78%), linear-gradient(to bottom, transparent 42%, var(--bg) 100%)",
         }}
       />
-      <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-1 flex-col items-center gap-10 px-4 pb-24 pt-28 md:flex-row md:items-center md:justify-between md:gap-12">
-        <div className="order-2 w-full max-w-[640px] md:order-1">
+      <div className="relative z-10 mx-auto flex w-full min-w-0 max-w-[1100px] flex-1 flex-col items-center gap-10 px-4 pb-24 pt-28 md:flex-row md:items-center md:justify-between md:gap-12">
+        <div className="w-full min-w-0 max-w-[640px]">
           <Eyebrow>{t("eyebrow")}</Eyebrow>
           <h1 id="hero-title" className="type-h1 mt-4 text-balance">
             {profile.name}
           </h1>
           <RoleLine roles={roles} />
-          <p className="mt-5 font-serif text-[44px] italic leading-tight text-balance text-foreground">
+          <p className="mt-5 font-serif text-[32px] italic leading-tight text-balance text-foreground sm:text-[40px] md:text-[44px]">
             {t("question")}
           </p>
           <p className="mt-4 max-w-[540px] text-muted">{t("line")}</p>
@@ -43,16 +45,19 @@ export async function Hero() {
             </Button>
           </div>
         </div>
-        <div className="order-1 flex flex-col items-center md:order-2">
+        <div className="flex flex-col items-center">
           <div className="portrait-slot relative h-[220px] w-[220px] md:h-[320px] md:w-[320px]">
             {/* Plain img is the fallback for reduced motion, no JS, and screen readers. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={profile.photo}
+              src="/profile-640.jpg"
+              srcSet="/profile-320.jpg 320w, /profile-640.jpg 640w"
+              sizes="(max-width: 768px) 220px, 320px"
               alt={t("photoAlt")}
               width={320}
               height={320}
               fetchPriority="high"
+              decoding="sync"
               className="portrait-photo absolute inset-0 h-full w-full object-cover"
             />
             <PortraitSlot />

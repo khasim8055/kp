@@ -32,8 +32,8 @@ export async function SiteFooter() {
         <div className="flex flex-col gap-10 md:flex-row md:justify-between">
           <Link
             href="/"
-            className="font-display self-start text-2xl font-bold tracking-tight"
-            aria-label={nav("home")}
+            className="font-display self-start text-2xl font-bold tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--signal)]"
+            aria-label={`KS · ${nav("home")}`}
           >
             KS
           </Link>

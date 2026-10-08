@@ -76,7 +76,10 @@ export function ParticlePortrait() {
     };
 
     image.onload = sample;
-    image.src = "/profile.jpg";
+    image.src =
+      typeof window !== "undefined" && window.innerWidth < 768
+        ? "/profile-320.jpg"
+        : "/profile-640.jpg";
 
     const onMove = (event: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();

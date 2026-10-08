@@ -13,7 +13,7 @@ export function ProjectDetails({ bullets }: { bullets: string[] }) {
     <div className="mt-4">
       <button
         type="button"
-        className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink"
+        className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--signal)]"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
       >

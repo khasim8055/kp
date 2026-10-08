@@ -39,8 +39,7 @@
     "latestPaper": "Neueste Paper-Analyse lesen",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "photoAlt": "Porträt von Khasim Bin Saleh",
-    "eyebrow": "BERLIN · MSC KI · KI/ML-INGENIEUR",
+    "eyebrow": "BERLIN · MSC AI · AI/ML ENGINEER",
     "role1": "KI/ML-Ingenieur",
     "role2": "Evaluation zuerst",
     "role3": "Klindok bauen",
@@ -49,8 +48,9 @@
     "line": "Ich baue KI-Systeme für Orte, an denen Fehler zählen, und ich messe sie, bevor ich ihnen vertraue.",
     "explore": "Forschung ansehen",
     "built": "Was ich gebaut habe",
-    "online": "ONLINE · BERLIN",
-    "scroll": "SCROLLEN"
+    "scroll": "SCROLLEN",
+    "photoAlt": "Porträt von Khasim Bin Saleh",
+    "online": "ONLINE · BERLIN"
   },
   "About": {
     "eyebrow": "ÜBER MICH",

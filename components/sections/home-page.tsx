@@ -60,7 +60,7 @@ function Section({
       className="border-t border-border"
       aria-labelledby={labelledBy}
     >
-      <div className="mx-auto max-w-[1100px] px-4 py-14 md:py-20">
+      <div className="mx-auto w-full min-w-0 max-w-[1100px] px-4 py-14 md:py-20">
         {children}
       </div>
     </section>

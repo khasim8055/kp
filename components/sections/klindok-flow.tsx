@@ -70,6 +70,7 @@ export function KlindokFlow({
         <circle r="4.5" fill="var(--signal)" className="flow-dot">
           <animateMotion dur="2.8s" repeatCount="indefinite" path="M52 108 H288" />
         </circle>
+        <circle cx="170" cy="108" r="4.5" fill="var(--signal)" className="flow-dot-static" />
         <g transform="translate(178 36)">
           <rect
             x="-15"

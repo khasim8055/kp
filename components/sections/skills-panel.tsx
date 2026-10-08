@@ -76,7 +76,7 @@ export function SkillsPanel() {
               aria-controls={`${baseId}-panel-${item.id}`}
               tabIndex={selected ? 0 : -1}
               className={cn(
-                "border px-3 py-1.5 font-mono text-[12px] uppercase tracking-[0.16em]",
+                "border px-3 py-1.5 font-mono text-[12px] uppercase tracking-[0.16em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--signal)]",
                 selected
                   ? "border-signal bg-signal text-[var(--on-signal)]"
                   : "border-border text-muted hover:text-foreground",
@@ -104,7 +104,7 @@ export function SkillsPanel() {
               className="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between"
             >
               <div className="min-w-0">
-                <p className="font-medium">{skill.name}</p>
+                <p className="break-words font-medium">{skill.name}</p>
                 <p className="mt-1 text-sm text-muted">
                   {skill.usedInKey ? t(`usedIn.${skill.usedInKey}`) : t("usedPending")}
                 </p>

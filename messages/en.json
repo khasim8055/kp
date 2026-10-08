@@ -39,7 +39,6 @@
     "latestPaper": "Read my latest paper breakdown",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "photoAlt": "Portrait of Khasim Bin Saleh",
     "eyebrow": "BERLIN · MSC AI · AI/ML ENGINEER",
     "role1": "AI/ML Engineer",
     "role2": "Evaluation first",
@@ -49,8 +48,9 @@
     "line": "I build AI systems for places where mistakes matter, and I measure them before I trust them.",
     "explore": "Explore my research",
     "built": "See what I built",
-    "online": "ONLINE · BERLIN",
-    "scroll": "SCROLL"
+    "scroll": "SCROLL",
+    "photoAlt": "Portrait of Khasim Bin Saleh",
+    "online": "ONLINE · BERLIN"
   },
   "About": {
     "eyebrow": "ABOUT",
