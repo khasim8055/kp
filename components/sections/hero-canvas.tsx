@@ -8,11 +8,6 @@ const NeuralField = dynamic(
   { ssr: false },
 );
 
-const ParticlePortrait = dynamic(
-  () => import("@/components/sections/particle-portrait").then((mod) => mod.ParticlePortrait),
-  { ssr: false },
-);
-
 function useNearViewport(rootMargin = "200px", deferMs = 0) {
   const ref = useRef<HTMLDivElement>(null);
   const [show, setShow] = useState(false);
@@ -61,15 +56,6 @@ export function NeuralSlot({
   return (
     <div ref={ref} className="pointer-events-none absolute inset-0" aria-hidden="true">
       {show ? <NeuralField density={density} /> : null}
-    </div>
-  );
-}
-
-export function PortraitSlot() {
-  const { ref, show } = useNearViewport("80px", 900);
-  return (
-    <div ref={ref} className="absolute inset-0" aria-hidden="true">
-      {show ? <ParticlePortrait /> : null}
     </div>
   );
 }
