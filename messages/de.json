@@ -284,17 +284,29 @@
     "languages": "Sprachen"
   },
   "Contact": {
-    "eyebrow": "// kontakt",
-    "title": "Lass uns sprechen",
-    "cta": "Du stellst ein, forschst oder baust im Bereich Healthcare AI? Lass uns sprechen.",
+    "eyebrow": "KONTAKT",
+    "title": "Lass uns KI bauen, der man vertrauen kann.",
+    "line": "Du stellst ein, forschst oder baust im Bereich Healthcare AI? Ich würde gern von dir hören.",
     "linkedin": "LinkedIn",
-    "location": "Berlin, Deutschland"
+    "github": "GitHub",
+    "based": "Mit Sitz in Berlin",
+    "interests": {
+      "llmEval": "LLM Evaluation",
+      "healthcare": "Healthcare AI",
+      "agents": "Agenten",
+      "robotics": "Robotik"
+    }
   },
   "Footer": {
     "updated": "Zuletzt aktualisiert {date}",
     "nav": "Fußzeile",
     "rss": "RSS",
-    "built": "Gebaut mit Next.js"
+    "built": "Entworfen und gebaut von Khasim",
+    "site": "Seite",
+    "lab": "Labor",
+    "elsewhere": "Anderswo",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
   },
   "Now": {
     "title": "Jetzt",

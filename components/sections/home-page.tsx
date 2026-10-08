@@ -38,17 +38,9 @@ export function HomePage() {
           <Skills />
         </FadeIn>
       </Section>
-      <section
-        id="contact"
-        className="border-t border-border"
-        aria-labelledby="contact-title"
-      >
-        <div className="mx-auto max-w-[1100px] px-4 py-14 md:py-20">
-          <FadeIn>
-            <ContactCta />
-          </FadeIn>
-        </div>
-      </section>
+      <FadeIn>
+        <ContactCta />
+      </FadeIn>
     </>
   );
 }

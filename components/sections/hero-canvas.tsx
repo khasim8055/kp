@@ -12,8 +12,8 @@ const ParticlePortrait = dynamic(
   { ssr: false },
 );
 
-export function NeuralSlot() {
-  return <NeuralField />;
+export function NeuralSlot({ density = 1 }: { density?: number }) {
+  return <NeuralField density={density} />;
 }
 
 export function PortraitSlot() {

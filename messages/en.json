@@ -284,17 +284,29 @@
     "languages": "Languages"
   },
   "Contact": {
-    "eyebrow": "// contact",
-    "title": "Let's talk",
-    "cta": "Hiring, researching or building in Healthcare AI? Let's talk.",
+    "eyebrow": "CONTACT",
+    "title": "Let's build AI people can trust.",
+    "line": "Hiring, researching or building in Healthcare AI? I would like to hear from you.",
     "linkedin": "LinkedIn",
-    "location": "Berlin, Germany"
+    "github": "GitHub",
+    "based": "Based in Berlin",
+    "interests": {
+      "llmEval": "LLM Evaluation",
+      "healthcare": "Healthcare AI",
+      "agents": "Agents",
+      "robotics": "Robotics"
+    }
   },
   "Footer": {
     "updated": "Last updated {date}",
     "nav": "Footer",
     "rss": "RSS",
-    "built": "Built with Next.js"
+    "built": "Designed and built by Khasim",
+    "site": "Site",
+    "lab": "Lab",
+    "elsewhere": "Elsewhere",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
   },
   "Now": {
     "title": "Now",

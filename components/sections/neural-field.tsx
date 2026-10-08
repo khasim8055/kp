@@ -13,7 +13,7 @@ function makeNodes(width: number, height: number, count: number): Node[] {
   });
 }
 
-export function NeuralField() {
+export function NeuralField({ density = 1 }: { density?: number }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -26,6 +26,7 @@ export function NeuralField() {
     const fine = window.matchMedia("(pointer: fine)").matches;
     let nodes: Node[] = [];
     let builtWidth = 0;
+    let builtCount = 0;
     let frame = 0;
     let last = 0;
     let visible = true;
@@ -34,6 +35,7 @@ export function NeuralField() {
     let path: number[] = [];
     let progress = 0;
     const mouse = { x: -9999, y: -9999, on: false };
+    const alpha = Math.min(1, Math.max(0.25, density));
 
     const colors = () => {
       const style = getComputedStyle(canvas);
@@ -44,10 +46,16 @@ export function NeuralField() {
     };
 
     const ensure = (width: number, height: number) => {
-      const count = width < 768 ? 30 : 70;
-      if (!nodes.length || nodes.length !== count || Math.abs(width - builtWidth) > 80) {
+      const count = Math.max(8, Math.round((width < 768 ? 30 : 70) * density));
+      if (
+        !nodes.length ||
+        nodes.length !== count ||
+        builtCount !== count ||
+        Math.abs(width - builtWidth) > 80
+      ) {
         nodes = makeNodes(width, height, count);
         builtWidth = width;
+        builtCount = count;
         path = [];
       }
     };
@@ -97,7 +105,7 @@ export function NeuralField() {
 
       ctx.clearRect(0, 0, width, height);
       ctx.lineWidth = 1;
-      ctx.strokeStyle = rgba(pulse, 0.16);
+      ctx.strokeStyle = rgba(pulse, 0.16 * alpha);
       for (let i = 0; i < nodes.length; i += 1) {
         for (let j = i + 1; j < nodes.length; j += 1) {
           const a = nodes[i];
@@ -110,7 +118,7 @@ export function NeuralField() {
           ctx.stroke();
         }
       }
-      ctx.fillStyle = rgba(pulse, 0.55);
+      ctx.fillStyle = rgba(pulse, 0.55 * alpha);
       for (const node of nodes) {
         ctx.beginPath();
         ctx.arc(node.x, node.y, 1.4, 0, Math.PI * 2);
@@ -178,7 +186,7 @@ export function NeuralField() {
       if (fine) window.removeEventListener("mousemove", onMove);
       ro.disconnect();
     };
-  }, []);
+  }, [density]);
 
   return (
     <canvas ref={ref} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" />

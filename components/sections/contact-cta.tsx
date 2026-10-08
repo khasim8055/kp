@@ -1,6 +1,11 @@
 import { getTranslations } from "next-intl/server";
+import { NeuralSlot } from "@/components/sections/hero-canvas";
 import { Button } from "@/components/ui/button";
+import { Eyebrow } from "@/components/ui/eyebrow";
+import { Tag } from "@/components/ui/tag";
 import { profile } from "@/data/profile";
+
+const interestKeys = ["llmEval", "healthcare", "agents", "robotics"] as const;
 
 export async function ContactCta({
   heading = "h2",
@@ -11,22 +16,54 @@ export async function ContactCta({
   const Heading = heading;
 
   return (
-    <div className="border border-border p-6 md:p-8">
-      <p className="font-mono text-xs text-accent">{t("eyebrow")}</p>
-      <Heading
-        id="contact-title"
-        className="mt-2 text-2xl font-medium tracking-tight"
-      >
-        {t("title")}
-      </Heading>
-      <p className="mt-3 max-w-[640px] leading-relaxed">{t("cta")}</p>
-      <div className="mt-6 flex flex-wrap gap-3">
-        <Button asChild>
-          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-            {t("linkedin")}
-          </a>
-        </Button>
+    <section
+      id="contact"
+      className="relative overflow-hidden border-t border-border"
+      aria-labelledby="contact-title"
+    >
+      <div className="pointer-events-none absolute inset-0 opacity-55" aria-hidden="true">
+        <NeuralSlot density={0.42} />
       </div>
-    </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, transparent 20%, var(--bg) 82%), linear-gradient(to bottom, color-mix(in srgb, var(--bg) 55%, transparent) 0%, transparent 35%, color-mix(in srgb, var(--bg) 70%, transparent) 100%)",
+        }}
+      />
+      <div className="relative z-10 mx-auto flex max-w-[920px] flex-col items-center px-4 py-20 text-center md:py-28">
+        <Eyebrow>{t("eyebrow")}</Eyebrow>
+        <Heading
+          id="contact-title"
+          className="mt-5 font-serif text-[40px] italic leading-[1.1] text-balance md:text-[56px]"
+        >
+          {t("title")}
+        </Heading>
+        <p className="mt-5 max-w-[560px] text-muted md:text-lg">{t("line")}</p>
+        <ul className="mt-8 flex flex-wrap justify-center gap-2">
+          {interestKeys.map((key) => (
+            <li key={key}>
+              <Tag>{t(`interests.${key}`)}</Tag>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <Button asChild>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+              {t("linkedin")}
+            </a>
+          </Button>
+          <Button asChild variant="outline">
+            <a href={profile.github} target="_blank" rel="noopener noreferrer">
+              {t("github")}
+            </a>
+          </Button>
+        </div>
+        <p className="mt-8 font-mono text-[12px] uppercase tracking-[0.2em] text-muted">
+          {t("based")}
+        </p>
+      </div>
+    </section>
   );
 }
