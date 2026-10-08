@@ -13,17 +13,20 @@ const levelClass = {
 export function LearningHeatmap({
   cells,
   label,
+  compact = false,
 }: {
   cells: HeatCell[];
   label: string;
+  compact?: boolean;
 }) {
   return (
     <div className="overflow-x-auto">
       <p className="sr-only">{label}</p>
-      <div className="flex w-max gap-1">
+      <div className={cn("flex w-max", compact ? "gap-0.5" : "gap-1")}>
         {cells.map((cell) => {
           const className = cn(
-            "h-6 w-6 border border-border",
+            "border border-border",
+            compact ? "h-3.5 w-3.5" : "h-6 w-6",
             levelClass[cell.level],
           );
           if (!cell.slug) {

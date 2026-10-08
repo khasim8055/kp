@@ -144,18 +144,21 @@
     "linkedin": "LinkedIn"
   },
   "Lab": {
-    "eyebrow": "// latest from the lab",
-    "title": "Latest from the lab",
-    "paper": "Latest paper breakdown",
-    "learning": "This week I learned",
-    "readPaper": "Read breakdown",
-    "readWeek": "Read the week",
-    "streak": "Week {week} · {count} week streak",
-    "paperLabel": "// paper #{week}",
-    "weekLabel": "// week {week}",
+    "eyebrow": "THE LAB",
+    "title": "Learning in public, every week",
+    "serif": "One paper. One lesson. Every week.",
+    "streak": "current streak",
+    "papers": "papers read",
+    "weeks": "weeks logged",
+    "paperOfWeek": "Paper of the week",
+    "learned": "This week I learned",
+    "tracks": "Research tracks",
+    "heatmap": "Last 12 weeks",
+    "allPapers": "All paper breakdowns",
+    "allLearning": "Full learning log",
     "paperMissing": "No paper breakdown yet.",
     "learningMissing": "No learning week yet.",
-    "range": "{start} to {end}"
+    "scoreMissing": "Not scored yet"
   },
   "Learning": {
     "indexEyebrow": "// learning",

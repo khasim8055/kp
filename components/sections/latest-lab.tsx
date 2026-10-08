@@ -1,84 +1,195 @@
 import { getTranslations } from "next-intl/server";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { LearningHeatmap } from "@/components/learning/heatmap";
+import { LabScoreBars, type LabScore } from "@/components/sections/lab-scores";
+import { Button } from "@/components/ui/button";
+import { GlowCard } from "@/components/ui/glow-card";
+import { Readout } from "@/components/ui/readout";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Tag } from "@/components/ui/tag";
+import { tracks } from "@/data/tracks";
 import { Link } from "@/i18n/navigation";
-import { Chip } from "@/components/ui/chip";
+import {
+  heatmapWeeks,
+  learningStreak,
+  newestLearning,
+} from "@/lib/content/learning-shared";
 import { getLearningEntries, toLearningCard } from "@/lib/content/learning";
-import { learningStreak, newestLearning } from "@/lib/content/learning-shared";
 import { getPapers, isTodo, paperOfTheWeek } from "@/lib/content/papers";
+import { cn } from "@/lib/utils";
+
+const scoreKeys = [
+  "novelty",
+  "rigor",
+  "reproducibility",
+  "practicalImpact",
+] as const;
 
 export async function LatestLab() {
   const t = await getTranslations("Lab");
-  const paper = paperOfTheWeek(getPapers());
+  const scores = await getTranslations("Papers");
+  const papers = getPapers();
+  const paper = paperOfTheWeek(papers);
   const learningEntries = getLearningEntries().map(toLearningCard);
   const learning = newestLearning(learningEntries);
   const streak = learningStreak(learningEntries);
-  const week = String(paper?.week ?? 0).padStart(2, "0");
-  const learnWeek = String(learning?.week ?? 0).padStart(2, "0");
+  const papersRead = papers.filter((item) => !isTodo(item.date)).length;
+  const weeksLogged = learningEntries.filter(
+    (item) => !isTodo(item.dateStart),
+  ).length;
+  const today = new Date().toISOString().slice(0, 10);
+  const cells = heatmapWeeks(learningEntries, today).slice(-12);
+  const scoreRows: LabScore[] = scoreKeys.map((key) => {
+    const value = paper?.scores[key];
+    return {
+      key,
+      label: scores(key),
+      value: typeof value === "number" ? value : null,
+    };
+  });
 
   return (
     <>
-      <SectionHeading
+      <SectionHeader
         id="lab-title"
         eyebrow={t("eyebrow")}
         title={t("title")}
-        action={
-          <Chip>
-            {t("streak", { week: streak.week, count: streak.current })}
-          </Chip>
-        }
+        serifLine={t("serif")}
       />
-      <div className="grid gap-4 md:grid-cols-2">
-        {paper ? (
-          <article className="flex flex-col border border-border p-5">
-            <p className="font-mono text-xs text-accent">
-              {t("paperLabel", { week })}
-            </p>
-            <h3 className="mt-3 font-serif text-xl leading-snug">
-              {paper.title}
-            </h3>
-            <p className="mt-2 font-mono text-xs text-muted">
-              {isTodo(paper.venue) ? t("paperMissing") : paper.venue}
-            </p>
-            <p className="mt-4 flex-1 text-sm leading-relaxed">
-              {isTodo(paper.tldr) ? t("paperMissing") : paper.tldr}
-            </p>
-            <Link
-              href={`/papers/${paper.slug}`}
-              className="mt-4 text-sm text-accent"
-            >
-              {t("readPaper")}
-            </Link>
-          </article>
-        ) : (
-          <article className="border border-border p-5 text-sm text-muted">
-            {t("paperMissing")}
-          </article>
-        )}
-        {learning ? (
-          <article className="flex flex-col border border-border p-5">
-            <p className="font-mono text-xs text-accent">
-              {t("weekLabel", { week: learnWeek })}
-            </p>
-            <h3 className="mt-3 text-xl leading-snug">{learning.title}</h3>
-            <p className="mt-2 font-mono text-xs text-muted">
-              {t("range", { start: learning.dateStart, end: learning.dateEnd })}
-            </p>
-            {learning.summary ? (
-              <p className="mt-4 flex-1 text-sm leading-relaxed">{learning.summary}</p>
-            ) : null}
-            <Link
-              href={`/learning/${learning.slug}`}
-              className="mt-4 text-sm text-accent"
-            >
-              {t("readWeek")}
-            </Link>
-          </article>
-        ) : (
-          <article className="border border-border p-5 text-sm text-muted">
-            {t("learningMissing")}
-          </article>
-        )}
+      <div className="mt-10 grid gap-3 sm:grid-cols-3">
+        <GlowCard>
+          <Readout value={streak.current} label={t("streak")} />
+        </GlowCard>
+        <GlowCard>
+          <Readout value={papersRead} label={t("papers")} />
+        </GlowCard>
+        <GlowCard>
+          <Readout value={weeksLogged} label={t("weeks")} />
+        </GlowCard>
+      </div>
+      <div className="mt-8 grid gap-4 lg:grid-cols-2">
+        <GlowCard className="flex h-full flex-col">
+          <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink">
+            {t("paperOfWeek")}
+          </p>
+          {paper ? (
+            <>
+              <h3 className="mt-4 font-serif text-[28px] leading-tight text-balance italic md:text-[32px]">
+                <Link
+                  href={`/papers/${paper.slug}`}
+                  className="hover:text-signal-ink"
+                >
+                  {paper.title}
+                </Link>
+              </h3>
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <Tag>
+                  {isTodo(paper.venue) ? t("paperMissing") : paper.venue}
+                </Tag>
+                <VerdictBadge
+                  verdict={
+                    isTodo(paper.verdict) ? t("paperMissing") : paper.verdict
+                  }
+                  known={!isTodo(paper.verdict)}
+                />
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-muted">
+                {isTodo(paper.tldr) ? t("paperMissing") : paper.tldr}
+              </p>
+              <div className="mt-6">
+                <LabScoreBars rows={scoreRows} missing={t("scoreMissing")} />
+              </div>
+            </>
+          ) : (
+            <p className="mt-4 text-sm text-muted">{t("paperMissing")}</p>
+          )}
+        </GlowCard>
+        <GlowCard className="flex h-full flex-col">
+          <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink">
+            {t("learned")}
+          </p>
+          {learning ? (
+            <>
+              <h3 className="mt-4 font-display text-xl font-bold leading-tight tracking-tight">
+                <Link
+                  href={`/learning/${learning.slug}`}
+                  className="hover:text-signal-ink"
+                >
+                  {learning.title}
+                </Link>
+              </h3>
+              {learning.summary ? (
+                <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">
+                  {learning.summary}
+                </p>
+              ) : null}
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {learning.tags.map((tag) => (
+                  <li key={tag}>
+                    <Tag>{tag}</Tag>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6">
+                <LearningHeatmap cells={cells} label={t("heatmap")} compact />
+              </div>
+            </>
+          ) : (
+            <p className="mt-4 text-sm text-muted">{t("learningMissing")}</p>
+          )}
+        </GlowCard>
+      </div>
+      <div className="mt-10">
+        <h3 className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink">
+          {t("tracks")}
+        </h3>
+        <ul className="mt-4 grid gap-4 md:grid-cols-3">
+          {tracks.map((track) => (
+            <li key={track.id}>
+              <GlowCard className="h-full">
+                <h4 className="font-display text-lg font-bold tracking-tight">
+                  {track.name}
+                </h4>
+                <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.18em] text-muted">
+                  {track.progress}
+                </p>
+                <div className="mt-2 h-px bg-border" aria-hidden />
+              </GlowCard>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Button asChild>
+          <Link href="/papers">{t("allPapers")}</Link>
+        </Button>
+        <Button asChild variant="outline">
+          <Link href="/learning">{t("allLearning")}</Link>
+        </Button>
       </div>
     </>
+  );
+}
+
+function VerdictBadge({ verdict, known }: { verdict: string; known: boolean }) {
+  const pass =
+    known && (verdict === "Must read" || verdict === "Worth reading");
+  const signal = known && verdict === "Skim";
+
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-2 font-mono text-[12px]",
+        pass ? "text-pass-ink" : signal ? "text-signal-ink" : "text-muted",
+      )}
+    >
+      <span
+        className={cn(
+          "inline-block h-1.5 w-1.5 rounded-full",
+          pass ? "bg-pass" : signal ? "bg-signal" : "bg-muted",
+        )}
+        aria-hidden
+      />
+      {verdict}
+    </span>
   );
 }

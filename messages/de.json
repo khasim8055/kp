@@ -144,18 +144,21 @@
     "linkedin": "LinkedIn"
   },
   "Lab": {
-    "eyebrow": "// zuletzt aus dem labor",
-    "title": "Zuletzt aus dem Labor",
-    "paper": "Letzte Paper-Analyse",
-    "learning": "Diese Woche gelernt",
-    "readPaper": "Analyse lesen",
-    "readWeek": "Woche lesen",
-    "streak": "Woche {week} · {count, plural, one {# Woche in Folge} other {# Wochen in Folge}}",
-    "paperLabel": "// paper #{week}",
-    "weekLabel": "// woche {week}",
+    "eyebrow": "DAS LABOR",
+    "title": "Öffentlich lernen, jede Woche",
+    "serif": "Ein Paper. Eine Lektion. Jede Woche.",
+    "streak": "aktuelle Serie",
+    "papers": "Paper gelesen",
+    "weeks": "Wochen geloggt",
+    "paperOfWeek": "Paper der Woche",
+    "learned": "Diese Woche gelernt",
+    "tracks": "Forschungswege",
+    "heatmap": "Letzte 12 Wochen",
+    "allPapers": "Alle Paper-Analysen",
+    "allLearning": "Vollständiges Lernlog",
     "paperMissing": "Noch keine Paper-Analyse.",
     "learningMissing": "Noch keine Lernwoche.",
-    "range": "{start} bis {end}"
+    "scoreMissing": "Noch keine Wertung"
   },
   "Learning": {
     "indexEyebrow": "// lernen",
