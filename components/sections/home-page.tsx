@@ -33,7 +33,7 @@ export function HomePage() {
           <SelectedProjects />
         </FadeIn>
       </Section>
-      <Section labelledBy="skills-title">
+      <Section id="skills" labelledBy="skills-title">
         <FadeIn>
           <Skills />
         </FadeIn>

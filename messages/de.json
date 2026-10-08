@@ -233,14 +233,36 @@
     "hideDetails": "Details schließen"
   },
   "Skills": {
-    "eyebrow": "// kenntnisse",
-    "title": "Kenntnisse",
-    "programming": "Programmierung",
-    "ml": "ML und Deep Learning",
-    "genai": "GenAI und LLM",
-    "evaluation": "Evaluation und Benchmarks",
-    "vision": "Computer Vision",
-    "tools": "Tools und Infrastruktur"
+    "eyebrow": "KENNTNISSE",
+    "title": "Technische Tiefe",
+    "subtitle": "Ehrliche Stufen: in Produktion, in einem Projekt, oder beim Lernen.",
+    "tabsLabel": "Kenntnisgruppen",
+    "usedPending": "Stufe offen",
+    "tabs": {
+      "aiml": "KI und ML",
+      "llms": "LLMs und Agenten",
+      "evaluation": "Evaluation",
+      "vision": "Computer Vision und Robotik",
+      "engineering": "Engineering"
+    },
+    "summaries": {
+      "aiml": "Modelle, die ich trainiere und vergleiche, wenn die Daten unruhig sind.",
+      "llms": "Systeme, die antworten, abrufen und beim Thema bleiben.",
+      "evaluation": "Wie ich entscheide, ob ein Modell gut genug ist.",
+      "vision": "Die Welt sehen, und lernen, sich darin zu bewegen.",
+      "engineering": "Die Werkzeuge, die aus einem Notebook ein System machen."
+    },
+    "usedIn": {
+      "coschool": "Coschool KI-Tutor",
+      "predictive": "Predictive Maintenance",
+      "studying": "Beim Lernen"
+    },
+    "levels": {
+      "production": "PRODUKTION",
+      "project": "PROJEKT",
+      "studying": "LERNE",
+      "todo": "TODO"
+    }
   },
   "Experience": {
     "eyebrow": "// werdegang",

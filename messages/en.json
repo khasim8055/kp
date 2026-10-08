@@ -233,14 +233,36 @@
     "hideDetails": "Hide details"
   },
   "Skills": {
-    "eyebrow": "// skills",
-    "title": "Skills",
-    "programming": "Programming",
-    "ml": "ML and Deep Learning",
-    "genai": "GenAI and LLM",
-    "evaluation": "Evaluation and Benchmarking",
-    "vision": "Computer Vision",
-    "tools": "Tools and Infrastructure"
+    "eyebrow": "SKILLS",
+    "title": "Technical depth",
+    "subtitle": "Honest levels: used in production, used in a project, or studying.",
+    "tabsLabel": "Skill groups",
+    "usedPending": "Level pending",
+    "tabs": {
+      "aiml": "AI and ML",
+      "llms": "LLMs and Agents",
+      "evaluation": "Evaluation",
+      "vision": "Computer Vision and Robotics",
+      "engineering": "Engineering"
+    },
+    "summaries": {
+      "aiml": "Models I train and compare when the data is messy.",
+      "llms": "Systems that answer, retrieve, and stay on topic.",
+      "evaluation": "How I decide whether a model is good enough.",
+      "vision": "Seeing the world, and learning to move in it.",
+      "engineering": "The tools that turn a notebook into a system."
+    },
+    "usedIn": {
+      "coschool": "Coschool AI tutor",
+      "predictive": "Predictive Maintenance",
+      "studying": "Studying"
+    },
+    "levels": {
+      "production": "PRODUCTION",
+      "project": "PROJECT",
+      "studying": "STUDYING",
+      "todo": "TODO"
+    }
   },
   "Experience": {
     "eyebrow": "// experience",

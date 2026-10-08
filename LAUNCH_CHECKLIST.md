@@ -37,6 +37,7 @@ Rewrite the case studies. Each file is marked `DRAFT: Khasim to review`.
 
 - [ ] Home About story copy (`About.p1` to `About.p3` in `messages/en.json` and `messages/de.json`): marked `DRAFT: Khasim to review`. Facts only from the CV path (LPU IoT, patent 2023, Coschool tutor, Berlin MSc, Klindok, synthetic health data thesis). Rewrite after review.
 - [ ] Home Research core question copy (`ResearchHome.coreP1` to `coreP3`): marked `DRAFT: Khasim to review`. Links thesis, Klindok offline data, and agent survey/pattern work only. Rewrite after review.
+- [ ] Home Skills levels in `data/skills.ts`: set `level` and `usedInKey` for every skill still marked `TODO`. Already proven and filled: RAG, GPT fine-tuning with guardrails, Milvus (production at Coschool); XGBoost, scikit-learn, pytest, Docker (project in Predictive Maintenance); ROS 2 and Robotics (studying). Pending: PyTorch, TensorFlow, Hugging Face Transformers, LangChain, OpenAI, OpenRouter, Gemini, Azure Document Intelligence, prompt engineering, real-time speech (Deepgram STT, TTS), evaluation harnesses, rubric-based LLM scoring, evidence-based model and prompt selection, statistical testing (Diebold Mariano, Friedman), time-series forecasting, ensemble methods, OpenCV, YOLO, ArUco marker tracking, real-time object detection, Python, SQL, CUDA, LaTeX, Git/GitHub, Linux (Ubuntu), Postgres, Prisma, FastAPI, Streamlit, React, Power BI.
 
 ## Already handled
 
