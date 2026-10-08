@@ -210,15 +210,27 @@
     "related": "Related breakdowns"
   },
   "Projects": {
-    "eyebrow": "// selected projects",
-    "title": "Selected projects",
+    "eyebrow": "PROJECTS",
+    "title": "Built, tested, measured",
+    "subtitle": "Not just ideas. Each project shows what I measured.",
     "viewAll": "All projects",
     "indexEyebrow": "// projects",
     "indexTitle": "Projects",
     "caseStudy": "Case study",
     "site": "Site",
+    "visitSite": "Visit site",
     "github": "GitHub",
-    "building": "Building"
+    "building": "Building",
+    "flagship": "FLAGSHIP",
+    "klindokSerif": "AI that never sends patient data anywhere.",
+    "arztbrief": "per Arztbrief",
+    "offline": "offline",
+    "audit": "GDPR audit log",
+    "flowNotes": "Doctor notes",
+    "flowModel": "Local model",
+    "flowLetter": "Arztbrief",
+    "details": "Details",
+    "hideDetails": "Hide details"
   },
   "Skills": {
     "eyebrow": "// skills",

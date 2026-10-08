@@ -210,15 +210,27 @@
     "related": "Verwandte Analysen"
   },
   "Projects": {
-    "eyebrow": "// ausgewählte projekte",
-    "title": "Ausgewählte Projekte",
+    "eyebrow": "PROJEKTE",
+    "title": "Gebaut, getestet, gemessen",
+    "subtitle": "Nicht nur Ideen. Jedes Projekt zeigt, was ich gemessen habe.",
     "viewAll": "Alle Projekte",
     "indexEyebrow": "// projekte",
     "indexTitle": "Projekte",
     "caseStudy": "Fallstudie",
     "site": "Seite",
+    "visitSite": "Seite öffnen",
     "github": "GitHub",
-    "building": "Im Aufbau"
+    "building": "Im Aufbau",
+    "flagship": "FLAGSCHIFF",
+    "klindokSerif": "KI, die Patientendaten nirgends hinsendet.",
+    "arztbrief": "pro Arztbrief",
+    "offline": "offline",
+    "audit": "DSGVO-Audit-Log",
+    "flowNotes": "Arztnotizen",
+    "flowModel": "Lokales Modell",
+    "flowLetter": "Arztbrief",
+    "details": "Details",
+    "hideDetails": "Details schließen"
   },
   "Skills": {
     "eyebrow": "// kenntnisse",

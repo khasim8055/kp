@@ -320,6 +320,12 @@ body {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .flow-dot {
+    display: none;
+  }
+}
+
 dialog:not([open]) {
   display: none;
 }
