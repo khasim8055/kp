@@ -14,7 +14,7 @@ export function FilterSelect({
       aria-label={label}
       value={value}
       onChange={(event) => onChange(event.target.value)}
-      className="border border-border bg-background px-2 py-1 text-sm"
+      className="border border-border bg-surface px-2 py-1 font-mono text-[12px] text-foreground"
     >
       {options.map((option) => (
         <option key={option.value} value={option.value}>
@@ -41,8 +41,8 @@ export function TopicButton({
       aria-pressed={active}
       className={
         active
-          ? "border border-accent px-2 py-0.5 font-mono text-[11px] text-accent"
-          : "border border-border px-2 py-0.5 font-mono text-[11px] text-muted"
+          ? "border border-signal bg-surface-2 px-2 py-0.5 font-mono text-[12px] text-signal-ink"
+          : "border border-border px-2 py-0.5 font-mono text-[12px] text-muted"
       }
     >
       {children}

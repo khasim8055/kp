@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { fitCanvas, parseCssColor, type Rgb } from "@/components/sections/canvas-color";
+import {
+  fitCanvas,
+  parseCssColor,
+  type Rgb,
+} from "@/components/sections/canvas-color";
 
 type Node = { x: number; y: number; ox: number; oy: number; phase: number };
 
@@ -13,7 +17,13 @@ function makeNodes(width: number, height: number, count: number): Node[] {
   });
 }
 
-export function NeuralField({ density = 1 }: { density?: number }) {
+export function NeuralField({
+  density = 1,
+  still = false,
+}: {
+  density?: number;
+  still?: boolean;
+}) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -22,7 +32,9 @@ export function NeuralField({ density = 1 }: { density?: number }) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     const fine = window.matchMedia("(pointer: fine)").matches;
     let nodes: Node[] = [];
     let builtWidth = 0;
@@ -35,7 +47,7 @@ export function NeuralField({ density = 1 }: { density?: number }) {
     let path: number[] = [];
     let progress = 0;
     const mouse = { x: -9999, y: -9999, on: false };
-    const alpha = Math.min(1, Math.max(0.25, density));
+    const alpha = Math.min(1, Math.max(0.25, density)) * (still ? 0.4 : 1);
 
     const colors = () => {
       const style = getComputedStyle(canvas);
@@ -60,9 +72,15 @@ export function NeuralField({ density = 1 }: { density?: number }) {
       }
     };
 
-    const reachFor = (width: number) => Math.min(168, Math.max(96, width * 0.12));
+    const reachFor = (width: number) =>
+      Math.min(168, Math.max(96, width * 0.12));
 
-    const draw = (width: number, height: number, moving: boolean, dt: number) => {
+    const draw = (
+      width: number,
+      height: number,
+      moving: boolean,
+      dt: number,
+    ) => {
       ensure(width, height);
       const reach = reachFor(width);
       const { pulse, signal } = colors();
@@ -152,7 +170,7 @@ export function NeuralField({ density = 1 }: { density?: number }) {
     const ro = new ResizeObserver(() => paint(false));
     ro.observe(canvas);
     paint(false);
-    if (reduce) return () => ro.disconnect();
+    if (reduce || still) return () => ro.disconnect();
 
     const onMove = (event: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
@@ -186,10 +204,14 @@ export function NeuralField({ density = 1 }: { density?: number }) {
       if (fine) window.removeEventListener("mousemove", onMove);
       ro.disconnect();
     };
-  }, [density]);
+  }, [density, still]);
 
   return (
-    <canvas ref={ref} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" />
+    <canvas
+      ref={ref}
+      className="pointer-events-none absolute inset-0 h-full w-full"
+      aria-hidden="true"
+    />
   );
 }
 
@@ -204,10 +226,13 @@ function walk(nodes: Node[], reach: number) {
       if (hops.includes(i)) continue;
       const node = nodes[i];
       if (!node) continue;
-      if (Math.hypot(node.x - current.x, node.y - current.y) < reach) neighbors.push(i);
+      if (Math.hypot(node.x - current.x, node.y - current.y) < reach)
+        neighbors.push(i);
     }
     if (!neighbors.length) break;
-    hops.push(neighbors[Math.floor(Math.random() * neighbors.length)] ?? hops[0] ?? 0);
+    hops.push(
+      neighbors[Math.floor(Math.random() * neighbors.length)] ?? hops[0] ?? 0,
+    );
   }
   return hops.length > 1 ? hops : [];
 }

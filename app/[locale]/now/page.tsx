@@ -2,7 +2,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { projectMdxComponents } from "@/components/mdx/project-body";
-import { PageHeader } from "@/components/ui/page-header";
+import { PageHero } from "@/components/ui/page-hero";
 import { getNow } from "@/lib/content/now";
 import { resolveLocale } from "@/lib/locale";
 import { daysSince } from "@/lib/site";
@@ -33,12 +33,21 @@ export default async function NowPage({ params }: Props) {
           : t("updatedMany", { count: days });
 
   return (
-    <article className="mx-auto max-w-[760px] px-4 py-16 md:py-20">
-      <PageHeader eyebrow={t("eyebrow")} title={page.title} />
-      <p className="font-mono text-xs text-muted">{updated}</p>
-      <div className="mt-2 text-[15px] leading-relaxed">
-        <MDXRemote source={page.body} components={projectMdxComponents} />
-      </div>
-    </article>
+    <>
+      <PageHero
+        width="760"
+        eyebrow={t("eyebrow")}
+        title={page.title}
+        serif={t("serif")}
+      />
+      <article className="mx-auto max-w-[760px] px-4 py-14 md:py-16">
+        <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
+          {updated}
+        </p>
+        <div className="mt-2 text-[15px] leading-relaxed">
+          <MDXRemote source={page.body} components={projectMdxComponents} />
+        </div>
+      </article>
+    </>
   );
 }

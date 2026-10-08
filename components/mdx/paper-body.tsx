@@ -1,37 +1,82 @@
-import type { ComponentProps } from "react";
-import {
-  CircleAlert,
-  FlaskConical,
-  Library,
-  MessageCircleQuestion,
-  Quote,
-  Table,
-  Workflow,
-  Wrench,
-} from "lucide-react";
+import type { ComponentProps, ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 
-const icons: Record<string, typeof Quote> = {
-  "TL;DR": Quote,
-  Problem: CircleAlert,
-  Method: Workflow,
-  "Key results": Table,
-  "What I'd question": MessageCircleQuestion,
-  "How I'd use it": Wrench,
-  "Reproduce it": FlaskConical,
-  "Related papers": Library,
+const sectionIndex: Record<string, string> = {
+  Problem: "01",
+  Method: "02",
+  "Key results": "03",
+  "What I'd question": "04",
+  "How I'd use it": "05",
+  "Reproduce it": "06",
+  "Related papers": "07",
 };
 
+type Hast = {
+  type: string;
+  tagName?: string;
+  value?: string;
+  children?: Hast[];
+  properties?: { className?: string[] };
+};
+
+function nodeText(node: Hast): string {
+  if (node.type === "text") return node.value ?? "";
+  return (node.children ?? []).map(nodeText).join("");
+}
+
+function isH2(node: Hast | undefined) {
+  return node?.type === "element" && node.tagName === "h2";
+}
+
+export function questionBlock() {
+  return (tree: Hast) => {
+    const children = tree.children;
+    if (!children) return;
+    const next: Hast[] = [];
+    for (let i = 0; i < children.length; i += 1) {
+      const node = children[i];
+      if (!node) continue;
+      const label = nodeText(node).replace(/[’‘]/g, "'").trim();
+      if (isH2(node) && label === "What I'd question") {
+        const block: Hast[] = [node];
+        i += 1;
+        while (i < children.length && !isH2(children[i])) {
+          const child = children[i];
+          if (child) block.push(child);
+          i += 1;
+        }
+        i -= 1;
+        next.push({
+          type: "element",
+          tagName: "div",
+          properties: { className: ["question-block"] },
+          children: block,
+        });
+      } else {
+        next.push(node);
+      }
+    }
+    tree.children = next;
+  };
+}
+
+function headingLabel(children: ReactNode): string {
+  if (typeof children === "string" || typeof children === "number")
+    return String(children);
+  if (Array.isArray(children)) return children.map(headingLabel).join("");
+  return "";
+}
+
 function Heading({ children, ...props }: ComponentProps<"h2">) {
-  const label = typeof children === "string" ? children : "";
-  const Icon = icons[label];
+  const label = headingLabel(children).replace(/[’‘]/g, "'").trim();
+  const number = sectionIndex[label];
   return (
     <h2
-      className="mt-10 flex items-center gap-2 text-xl font-medium tracking-tight"
+      className="mt-10 flex items-baseline gap-3 font-mono text-[12px] font-medium uppercase tracking-[0.2em] text-signal-ink"
       {...props}
     >
-      {Icon ? <Icon className="h-4 w-4 shrink-0 text-accent" aria-hidden /> : null}
-      {children}
+      {number ? <span className="text-muted">{number}</span> : null}
+      <span>{children}</span>
     </h2>
   );
 }
@@ -49,13 +94,18 @@ function List(props: ComponentProps<"ul">) {
 function Anchor({ href = "", children }: ComponentProps<"a">) {
   if (href.startsWith("/")) {
     return (
-      <Link href={href} className="text-accent">
+      <Link href={href} className="text-signal-ink">
         {children}
       </Link>
     );
   }
   return (
-    <a href={href} className="text-accent" target="_blank" rel="noopener noreferrer">
+    <a
+      href={href}
+      className="text-signal-ink"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       {children}
     </a>
   );

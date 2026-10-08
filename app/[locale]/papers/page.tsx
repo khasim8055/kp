@@ -1,12 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { PaperBrowser } from "@/components/papers/paper-browser";
 import { PaperCard } from "@/components/papers/paper-card";
-import { PageHeader } from "@/components/ui/page-header";
-import {
-  getPapers,
-  paperOfTheWeek,
-  toCardData,
-} from "@/lib/content/papers";
+import { Eyebrow } from "@/components/ui/eyebrow";
+import { PageHero } from "@/components/ui/page-hero";
+import { getPapers, paperOfTheWeek, toCardData } from "@/lib/content/papers";
 import { resolveLocale } from "@/lib/locale";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -24,15 +21,23 @@ export default async function PapersPage({ params }: Props) {
   const featured = paperOfTheWeek(papers);
 
   return (
-    <div className="mx-auto max-w-[1100px] px-4 py-16 md:py-20">
-      <PageHeader eyebrow={t("indexEyebrow")} title={t("indexTitle")} />
-      {featured ? (
-        <section className="mb-8">
-          <p className="mb-3 font-mono text-xs text-accent">{t("paperOfTheWeek")}</p>
-          <PaperCard paper={featured} />
-        </section>
-      ) : null}
-      <PaperBrowser papers={papers} featuredSlug={featured?.slug ?? null} />
-    </div>
+    <>
+      <PageHero
+        eyebrow={t("indexEyebrow")}
+        title={t("indexTitle")}
+        serif={t("serif")}
+      />
+      <div className="mx-auto max-w-[1100px] px-4 py-14 md:py-16">
+        {featured ? (
+          <section className="mb-10">
+            <Eyebrow>{t("paperOfTheWeek")}</Eyebrow>
+            <div className="mt-4">
+              <PaperCard paper={featured} />
+            </div>
+          </section>
+        ) : null}
+        <PaperBrowser papers={papers} featuredSlug={featured?.slug ?? null} />
+      </div>
+    </>
   );
 }

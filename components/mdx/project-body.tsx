@@ -3,7 +3,7 @@ import type { ComponentProps } from "react";
 function Heading(props: ComponentProps<"h2">) {
   return (
     <h2
-      className="mt-10 text-xl font-medium tracking-tight"
+      className="mt-10 font-display text-2xl font-bold tracking-tight"
       {...props}
     />
   );
@@ -22,7 +22,7 @@ function List(props: ComponentProps<"ul">) {
 function Anchor(props: ComponentProps<"a">) {
   return (
     <a
-      className="text-accent"
+      className="text-signal-ink"
       target="_blank"
       rel="noopener noreferrer"
       {...props}

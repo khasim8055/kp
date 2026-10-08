@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { ProjectCard } from "@/components/sections/project-card";
-import { PageHeader } from "@/components/ui/page-header";
+import { PageHero } from "@/components/ui/page-hero";
 import { resolveLocale } from "@/lib/locale";
 import { getProjects } from "@/lib/content/projects";
 
@@ -18,13 +18,19 @@ export default async function ProjectsPage({ params }: Props) {
   const projects = getProjects();
 
   return (
-    <div className="mx-auto max-w-[1100px] px-4 py-16 md:py-20">
-      <PageHeader eyebrow={t("indexEyebrow")} title={t("indexTitle")} />
-      <ul className="grid gap-4 lg:grid-cols-3">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
-      </ul>
-    </div>
+    <>
+      <PageHero
+        eyebrow={t("indexEyebrow")}
+        title={t("indexTitle")}
+        serif={t("subtitle")}
+      />
+      <div className="mx-auto max-w-[1100px] px-4 py-14 md:py-16">
+        <ul className="grid gap-4 lg:grid-cols-3">
+          {projects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }

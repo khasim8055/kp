@@ -1,7 +1,10 @@
 import { getTranslations } from "next-intl/server";
+import { GlowSpine } from "@/components/sections/glow-spine";
 import { Timeline } from "@/components/sections/timeline";
-import { PageHeader } from "@/components/ui/page-header";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { Eyebrow } from "@/components/ui/eyebrow";
+import { GlowCard } from "@/components/ui/glow-card";
+import { PageHero } from "@/components/ui/page-hero";
+import { plainEyebrow } from "@/lib/plain-eyebrow";
 import { education, experience } from "@/data/experience";
 import { resolveLocale } from "@/lib/locale";
 
@@ -16,35 +19,56 @@ export async function generateMetadata({ params }: Props) {
 export default async function ExperiencePage({ params }: Props) {
   await resolveLocale(params);
   const t = await getTranslations("Experience");
+  const journey = await getTranslations("Journey");
 
   return (
-    <div className="mx-auto max-w-[760px] px-4 py-16 md:py-20">
-      <PageHeader eyebrow={t("eyebrow")} title={t("title")} />
-      <Timeline items={experience} />
-      <section className="mt-16">
-        <SectionHeading
-          id="education-title"
-          eyebrow={t("educationEyebrow")}
-          title={t("educationTitle")}
-        />
-        <ol className="space-y-8 border-l border-border pl-5">
-          {education.map((item) => (
-            <li key={`${item.school}-${item.start}`} className="relative">
-              <span
-                className="absolute -left-[23px] top-1.5 h-2 w-2 border border-accent bg-background"
-                aria-hidden
-              />
-              <p className="font-mono text-[11px] text-muted">
-                {t("range", { start: item.start, end: item.end })} ·{" "}
-                {item.location}
-              </p>
-              <h3 className="mt-1 font-medium">{item.program}</h3>
-              <p className="text-sm text-muted">{item.school}</p>
-              <p className="mt-3 text-sm leading-relaxed">{item.detail}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-    </div>
+    <>
+      <PageHero
+        width="760"
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        serif={journey("serif")}
+      />
+      <div className="mx-auto max-w-[760px] px-4 py-14 md:py-16">
+        <Timeline items={experience} />
+        <section className="mt-16">
+          <Eyebrow>{plainEyebrow(t("educationEyebrow"))}</Eyebrow>
+          <h2
+            id="education-title"
+            className="mt-3 font-display text-3xl font-bold tracking-tight"
+          >
+            {t("educationTitle")}
+          </h2>
+          <div className="mt-8">
+            <GlowSpine>
+              {education.map((item) => (
+                <li
+                  key={`${item.school}-${item.start}`}
+                  className="relative pl-8"
+                >
+                  <span
+                    className="absolute left-[3px] top-6 h-2 w-2 -translate-x-1/2 rounded-full bg-signal shadow-[0_0_8px_var(--signal)]"
+                    aria-hidden
+                  />
+                  <GlowCard>
+                    <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-signal-ink">
+                      {t("range", { start: item.start, end: item.end })} ·{" "}
+                      {item.location}
+                    </p>
+                    <h3 className="mt-2 font-display text-2xl font-bold tracking-tight">
+                      {item.program}
+                    </h3>
+                    <p className="mt-1 text-sm text-muted">{item.school}</p>
+                    <p className="mt-4 text-sm leading-relaxed">
+                      {item.detail}
+                    </p>
+                  </GlowCard>
+                </li>
+              ))}
+            </GlowSpine>
+          </div>
+        </section>
+      </div>
+    </>
   );
 }

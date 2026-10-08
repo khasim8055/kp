@@ -163,6 +163,7 @@
   "Learning": {
     "indexEyebrow": "// lernen",
     "indexTitle": "Lernen",
+    "serif": "Eine Lektion. Jede Woche.",
     "viewAll": "Alle Wochen",
     "heatmap": "Letzte 52 Wochen",
     "heatmapLabel": "{count, plural, one {# Woche in den letzten 52 Wochen} other {# Wochen in den letzten 52 Wochen}}",
@@ -184,6 +185,7 @@
   "Papers": {
     "indexEyebrow": "// papers",
     "indexTitle": "Papers",
+    "serif": "Ein Paper, genau gelesen.",
     "viewAll": "Alle Papers",
     "paperOfTheWeek": "Paper der Woche",
     "search": "Papers durchsuchen",
@@ -210,7 +212,8 @@
     "practicalImpact": "Praktischer Nutzen",
     "prev": "Vorheriges",
     "next": "Nächstes",
-    "related": "Verwandte Analysen"
+    "related": "Verwandte Analysen",
+    "readingProgress": "Lesefortschritt"
   },
   "Projects": {
     "eyebrow": "PROJEKTE",
@@ -311,6 +314,7 @@
   "Now": {
     "title": "Jetzt",
     "eyebrow": "// jetzt",
+    "serif": "Was ich gerade tue.",
     "updatedToday": "Heute aktualisiert",
     "updatedOne": "Vor 1 Tag aktualisiert",
     "updatedMany": "Vor {count} Tagen aktualisiert",

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
+import { GlowCard } from "@/components/ui/glow-card";
 import { Link } from "@/i18n/navigation";
 import { isTodo } from "@/lib/utils";
 import type { LearningCard } from "@/lib/content/learning-shared";
@@ -18,7 +19,9 @@ export function LearningLog({ entries }: { entries: LearningCard[] }) {
         counts.set(tag, (counts.get(tag) ?? 0) + 1);
       }
     }
-    return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    return [...counts.entries()].sort(
+      (a, b) => b[1] - a[1] || a[0].localeCompare(b[0]),
+    );
   }, [entries]);
 
   const visible = [...entries]
@@ -32,7 +35,11 @@ export function LearningLog({ entries }: { entries: LearningCard[] }) {
           {t("allTopics")}
         </TopicButton>
         {topics.map(([tag, count]) => (
-          <TopicButton key={tag} active={topic === tag} onClick={() => setTopic(tag)}>
+          <TopicButton
+            key={tag}
+            active={topic === tag}
+            onClick={() => setTopic(tag)}
+          >
             {tag} {count}
           </TopicButton>
         ))}
@@ -40,35 +47,41 @@ export function LearningLog({ entries }: { entries: LearningCard[] }) {
       {visible.length === 0 ? (
         <p className="mt-6 text-sm text-muted">{t("empty")}</p>
       ) : (
-        <ol className="mt-8 space-y-8 border-l border-border pl-5">
+        <ol className="mt-8 space-y-4">
           {visible.map((entry) => (
-            <li key={entry.slug} className="relative">
-              <span
-                className="absolute -left-[23px] top-1.5 h-2 w-2 border border-accent bg-background"
-                aria-hidden
-              />
-              <p className="font-mono text-[11px] text-muted">
-                {t("week", { week: String(entry.week).padStart(2, "0") })}
-                {" · "}
-                {t("range", { start: entry.dateStart, end: entry.dateEnd })}
-              </p>
-              <h2 className="mt-1 text-xl font-medium">
-                <Link href={`/learning/${entry.slug}`} className="hover:text-accent">
-                  {entry.title}
+            <li key={entry.slug}>
+              <GlowCard>
+                <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
+                  {t("week", { week: String(entry.week).padStart(2, "0") })}
+                  {" · "}
+                  {t("range", { start: entry.dateStart, end: entry.dateEnd })}
+                </p>
+                <h2 className="mt-2 font-display text-2xl font-bold tracking-tight">
+                  <Link
+                    href={`/learning/${entry.slug}`}
+                    className="hover:text-signal-ink"
+                  >
+                    {entry.title}
+                  </Link>
+                </h2>
+                <p className="mt-2 text-sm text-muted">
+                  {typeof entry.hoursSpent === "number"
+                    ? t("hours", { count: entry.hoursSpent })
+                    : t("hoursMissing")}
+                  {entry.mood ? ` · ${entry.mood}` : ""}
+                </p>
+                {entry.summary ? (
+                  <p className="mt-3 text-sm leading-relaxed">
+                    {entry.summary}
+                  </p>
+                ) : null}
+                <Link
+                  href={`/learning/${entry.slug}`}
+                  className="mt-3 inline-block text-sm text-signal-ink"
+                >
+                  {t("readWeek")}
                 </Link>
-              </h2>
-              <p className="mt-2 text-sm text-muted">
-                {typeof entry.hoursSpent === "number"
-                  ? t("hours", { count: entry.hoursSpent })
-                  : t("hoursMissing")}
-                {entry.mood ? ` · ${entry.mood}` : ""}
-              </p>
-              {entry.summary ? (
-                <p className="mt-3 text-sm leading-relaxed">{entry.summary}</p>
-              ) : null}
-              <Link href={`/learning/${entry.slug}`} className="mt-3 inline-block text-sm text-accent">
-                {t("readWeek")}
-              </Link>
+              </GlowCard>
             </li>
           ))}
         </ol>
@@ -93,8 +106,8 @@ function TopicButton({
       aria-pressed={active}
       className={
         active
-          ? "border border-accent px-2 py-0.5 font-mono text-[11px] text-accent"
-          : "border border-border px-2 py-0.5 font-mono text-[11px] text-muted"
+          ? "border border-signal bg-surface-2 px-2 py-0.5 font-mono text-[12px] text-signal-ink"
+          : "border border-border px-2 py-0.5 font-mono text-[12px] text-muted"
       }
     >
       {children}

@@ -17,25 +17,30 @@ export async function PaperNav({
     <div className="mt-12 space-y-8 border-t border-border pt-8">
       <div className="flex flex-wrap justify-between gap-4 text-sm">
         {prev ? (
-          <Link href={`/papers/${prev.slug}`} className="text-accent">
+          <Link href={`/papers/${prev.slug}`} className="text-signal-ink">
             {t("prev")}: {prev.title}
           </Link>
         ) : (
           <span />
         )}
         {next ? (
-          <Link href={`/papers/${next.slug}`} className="text-accent">
+          <Link href={`/papers/${next.slug}`} className="text-signal-ink">
             {t("next")}: {next.title}
           </Link>
         ) : null}
       </div>
       {related.length > 0 ? (
         <section>
-          <h2 className="text-sm font-medium">{t("related")}</h2>
+          <h2 className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink">
+            {t("related")}
+          </h2>
           <ul className="mt-3 space-y-2 text-sm">
             {related.map((paper) => (
               <li key={paper.slug}>
-                <Link href={`/papers/${paper.slug}`} className="text-accent">
+                <Link
+                  href={`/papers/${paper.slug}`}
+                  className="text-signal-ink"
+                >
                   {paper.title}
                 </Link>
               </li>

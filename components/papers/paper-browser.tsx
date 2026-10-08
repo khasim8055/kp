@@ -5,7 +5,11 @@ import { useTranslations } from "next-intl";
 import { FilterSelect, TopicButton } from "@/components/papers/paper-filters";
 import { PaperCard } from "@/components/papers/paper-card";
 import { paperVerdicts } from "@/lib/content/schemas";
-import { filterPapers, isTodo, type PaperCardData } from "@/lib/content/paper-shared";
+import {
+  filterPapers,
+  isTodo,
+  type PaperCardData,
+} from "@/lib/content/paper-shared";
 
 export function PaperBrowser({
   papers,
@@ -37,13 +41,14 @@ export function PaperBrowser({
   );
 
   const visible = useMemo(
-    () => filterPapers(papers, { query, topic, verdict, year, sort, featuredSlug }),
+    () =>
+      filterPapers(papers, { query, topic, verdict, year, sort, featuredSlug }),
     [papers, query, topic, verdict, year, sort, featuredSlug],
   );
 
   return (
     <div>
-      <div className="flex flex-col gap-3 border border-border p-4">
+      <div className="flex flex-col gap-3 border border-border bg-surface p-4">
         <label className="sr-only" htmlFor="paper-search">
           {t("search")}
         </label>
@@ -52,7 +57,7 @@ export function PaperBrowser({
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={t("search")}
-          className="border border-border bg-background px-3 py-2 text-sm outline-none focus-visible:border-accent"
+          className="border border-border bg-background px-3 py-2 text-sm outline-none focus-visible:border-signal"
         />
         <div className="flex flex-wrap gap-2">
           <FilterSelect
@@ -70,13 +75,18 @@ export function PaperBrowser({
             onChange={setYear}
             options={[
               { value: "all", label: t("allYears") },
-              ...years.map((item) => ({ value: String(item), label: String(item) })),
+              ...years.map((item) => ({
+                value: String(item),
+                label: String(item),
+              })),
             ]}
           />
           <FilterSelect
             label={t("sort")}
             value={sort}
-            onChange={(value) => setSort(value === "score" ? "score" : "newest")}
+            onChange={(value) =>
+              setSort(value === "score" ? "score" : "newest")
+            }
             options={[
               { value: "newest", label: t("sortNewest") },
               { value: "score", label: t("sortScore") },
@@ -84,10 +94,7 @@ export function PaperBrowser({
           />
         </div>
         <div className="flex flex-wrap gap-2">
-          <TopicButton
-            active={topic === "all"}
-            onClick={() => setTopic("all")}
-          >
+          <TopicButton active={topic === "all"} onClick={() => setTopic("all")}>
             {t("allTopics")}
           </TopicButton>
           {topics.map((item) => (
