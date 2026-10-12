@@ -3,21 +3,24 @@
 import { useTranslations } from "next-intl";
 import { useId, useState } from "react";
 import { SkillLevelBar } from "@/components/sections/skill-level-bar";
-import { skillTabs, type SkillLevel } from "@/data/skills";
+import {
+  hasValidSkillLevel,
+  skillTabs,
+  type ValidSkillLevel,
+} from "@/data/skills";
 import { cn } from "@/lib/utils";
 
-const levelKey: Record<SkillLevel, "production" | "project" | "studying" | "todo"> = {
-  production: "production",
-  project: "project",
-  studying: "studying",
-  TODO: "todo",
-};
+const levelKey: Record<ValidSkillLevel, "production" | "project" | "studying"> =
+  {
+    production: "production",
+    project: "project",
+    studying: "studying",
+  };
 
-const levelText: Record<SkillLevel, string> = {
+const levelText: Record<ValidSkillLevel, string> = {
   production: "text-pass-ink",
   project: "text-signal-ink",
   studying: "text-pulse",
-  TODO: "text-muted",
 };
 
 export function SkillsPanel() {
@@ -98,30 +101,37 @@ export function SkillsPanel() {
           {t(`summaries.${tab.id}`)}
         </p>
         <ul className="mt-6 divide-y divide-border border-y border-border">
-          {tab.skills.map((skill) => (
-            <li
-              key={skill.id}
-              className="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between"
-            >
-              <div className="min-w-0">
-                <p className="break-words font-medium">{skill.name}</p>
-                <p className="mt-1 text-sm text-muted">
-                  {skill.usedInKey ? t(`usedIn.${skill.usedInKey}`) : t("usedPending")}
-                </p>
-              </div>
-              <div className="flex items-center gap-4">
-                <SkillLevelBar level={skill.level} />
-                <span
-                  className={cn(
-                    "w-28 font-mono text-[11px] uppercase tracking-[0.16em]",
-                    levelText[skill.level],
-                  )}
-                >
-                  {t(`levels.${levelKey[skill.level]}`)}
-                </span>
-              </div>
-            </li>
-          ))}
+          {tab.skills.map((skill) => {
+            const level = hasValidSkillLevel(skill.level) ? skill.level : null;
+            return (
+              <li
+                key={skill.id}
+                className="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div className="min-w-0">
+                  <p className="break-words font-medium">{skill.name}</p>
+                  {skill.usedInKey ? (
+                    <p className="mt-1 text-sm text-muted">
+                      {t(`usedIn.${skill.usedInKey}`)}
+                    </p>
+                  ) : null}
+                </div>
+                {level ? (
+                  <div className="flex items-center gap-4">
+                    <SkillLevelBar level={level} />
+                    <span
+                      className={cn(
+                        "w-28 font-mono text-[11px] uppercase tracking-[0.16em]",
+                        levelText[level],
+                      )}
+                    >
+                      {t(`levels.${levelKey[level]}`)}
+                    </span>
+                  </div>
+                ) : null}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

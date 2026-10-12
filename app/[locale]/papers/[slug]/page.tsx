@@ -2,6 +2,10 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { paperMdxComponents, questionBlock } from "@/components/mdx/paper-body";
+import {
+  stripUnfinishedMdx,
+  stripUnfinishedSource,
+} from "@/lib/unfinished-mdx";
 import { DifficultyDots } from "@/components/papers/difficulty-dots";
 import { PaperNav } from "@/components/papers/paper-nav";
 import { ReadingProgress } from "@/components/papers/reading-progress";
@@ -139,9 +143,13 @@ export default async function PaperPage({ params }: Props) {
           </section>
           <div className="mt-2 text-[15px] leading-relaxed">
             <MDXRemote
-              source={paper.body}
+              source={stripUnfinishedSource(paper.body)}
               components={paperMdxComponents}
-              options={{ mdxOptions: { rehypePlugins: [questionBlock] } }}
+              options={{
+                mdxOptions: {
+                  rehypePlugins: [stripUnfinishedMdx, questionBlock],
+                },
+              }}
             />
           </div>
           <PaperNav prev={prev} next={next} related={related} />

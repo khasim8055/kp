@@ -1,7 +1,9 @@
 import dynamic from "next/dynamic";
 import { getTranslations } from "next-intl/server";
 import type { JourneyStop } from "@/components/sections/journey-track";
+import type { Status } from "@/components/ui/status-badge";
 import { journeyStops } from "@/data/journey";
+import { isUnfinishedValue } from "@/lib/unfinished";
 
 const JourneyTrack = dynamic(
   () =>
@@ -24,14 +26,26 @@ const JourneyTrack = dynamic(
 
 export async function Journey() {
   const t = await getTranslations("Journey");
-  const stops: JourneyStop[] = journeyStops.map((stop) => ({
-    id: stop.id,
-    year: t(`stops.${stop.id}.year`),
-    title: t(`stops.${stop.id}.title`),
-    body: t(`stops.${stop.id}.body`),
-    tag: "status" in stop ? undefined : t(`stops.${stop.id}.tag`),
-    status: "status" in stop ? stop.status : undefined,
-  }));
+  const stops: JourneyStop[] = journeyStops
+    .map((stop) => {
+      const status =
+        "status" in stop ? (stop.status as Status) : undefined;
+      return {
+        id: stop.id,
+        year: t(`stops.${stop.id}.year`),
+        title: t(`stops.${stop.id}.title`),
+        body: t(`stops.${stop.id}.body`),
+        tag: status ? undefined : t(`stops.${stop.id}.tag`),
+        status,
+      };
+    })
+    .filter(
+      (stop) =>
+        !isUnfinishedValue(stop.year) &&
+        !isUnfinishedValue(stop.title) &&
+        !isUnfinishedValue(stop.body) &&
+        stop.year !== "Next",
+    );
 
   return (
     <JourneyTrack

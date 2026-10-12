@@ -3,21 +3,12 @@ import { Button } from "@/components/ui/button";
 import { GlowCard } from "@/components/ui/glow-card";
 import { SectionHeader } from "@/components/ui/section-header";
 import { StatusBadge, type Status } from "@/components/ui/status-badge";
-import { Tag } from "@/components/ui/tag";
 import { profile } from "@/data/profile";
 
 const cards = [
   { key: "thesis", status: "in-progress" as Status },
   { key: "agents", status: "done" as Status },
   { key: "patterns", status: "done" as Status },
-] as const;
-
-const interests = [
-  "interestAgent",
-  "interestEval",
-  "interestPrivacy",
-  "interestVoice",
-  "interestRobotics",
 ] as const;
 
 export async function Research() {
@@ -33,9 +24,6 @@ export async function Research() {
             aria-hidden="true"
           />
           {t("coreEyebrow")}
-        </p>
-        <p className="mt-4 font-serif text-[44px] italic leading-tight text-balance text-foreground">
-          {t("question")}
         </p>
         {/* DRAFT: Khasim to review */}
         <div className="mt-5 max-w-[720px] space-y-3 leading-relaxed text-muted">
@@ -58,13 +46,6 @@ export async function Research() {
                 {t(`${card.key}Body`)}
               </p>
             </GlowCard>
-          </li>
-        ))}
-      </ul>
-      <ul className="mt-8 flex flex-wrap gap-2">
-        {interests.map((key) => (
-          <li key={key}>
-            <Tag>{t(key)}</Tag>
           </li>
         ))}
       </ul>

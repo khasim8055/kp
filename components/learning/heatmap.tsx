@@ -39,7 +39,9 @@ export function LearningHeatmap({
               aria-label={cell.label}
               title={cell.label}
               className={className}
-            />
+            >
+              <span className="sr-only">{cell.label}</span>
+            </Link>
           );
         })}
       </div>

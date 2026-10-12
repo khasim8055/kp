@@ -1,7 +1,7 @@
 {
   "Meta": {
     "title": "Khasim Bin Saleh",
-    "description": "AI/ML Engineer in Berlin. Ich baue LLM- und ML-Systeme von Anfang bis Ende, und ich messe sie, bevor ich ihnen vertraue."
+    "description": "AI/ML Engineer in Deutschland. Ich baue LLM- und ML-Systeme von Anfang bis Ende, und ich messe sie, bevor ich ihnen vertraue."
   },
   "Nav": {
     "primary": "Hauptnavigation",
@@ -32,14 +32,14 @@
   },
   "Hero": {
     "title": "AI/ML Engineer",
-    "location": "Berlin, Deutschland",
+    "location": "Deutschland",
     "oneLiner": "Ich baue LLM- und ML-Systeme von Anfang bis Ende, und ich messe sie, bevor ich ihnen vertraue.",
     "focus": "// fokus",
     "requestCv": "Lebenslauf anfragen",
     "latestPaper": "Neueste Paper-Analyse lesen",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "eyebrow": "BERLIN · MSC AI · AI/ML ENGINEER",
+    "eyebrow": "GERMANY · AI/ML ENGINEER",
     "role1": "KI/ML-Ingenieur",
     "role2": "Evaluation zuerst",
     "role3": "Klindok bauen",
@@ -55,7 +55,7 @@
     "title": "Vom IoT-Basteln zu vertrauenswürdiger KI",
     "p1": "Ich habe mit einem B.Tech in Informatik an der Lovely Professional University begonnen, mit Schwerpunkt IoT. 2023 wurde ich Mit-Erfinder eines Patents für einen internetgesteuerten Futterspender für Haustiere.",
     "p2": "Bei Coschool habe ich einen KI-Tutor gebaut, der 1.000+ Beta-Nutzer erreicht hat. Dabei habe ich gelernt: ein Modell ist nur so gut wie die Art, wie man es testet.",
-    "p3": "Für den MSc in KI bin ich nach Berlin gezogen. Jetzt baue ich Klindok und schreibe eine Thesis darüber, ob synthetische Gesundheitsdaten nützlich und privat sind.",
+    "p3": "Für den MSc in KI bin ich nach Deutschland gezogen. Jetzt baue ich Klindok und schreibe eine Thesis darüber, ob synthetische Gesundheitsdaten nützlich und privat sind.",
     "years": "Jahre mit ML- und LLM-Systemen",
     "users": "erreichte Beta-Nutzer",
     "patent": "Patent",
@@ -88,8 +88,8 @@
       },
       "berlin": {
         "year": "2025",
-        "title": "Nach Berlin gezogen",
-        "body": "MSc KI an der SRH Berlin.",
+        "title": "Nach Deutschland gezogen",
+        "body": "MSc KI an der SRH Deutschland.",
         "tag": "MSc"
       },
       "research": {
@@ -103,11 +103,6 @@
         "title": "Klindok gestartet",
         "body": "Offline-Dokumentation für Praxen.",
         "tag": "Klindok"
-      },
-      "thesis": {
-        "year": "Als Nächstes",
-        "title": "MSc-Thesis",
-        "body": "Synthetische Gesundheitsdaten und die DSGVO."
       }
     }
   },
@@ -123,7 +118,6 @@
     "eyebrow": "FORSCHUNG",
     "title": "Forschung und akademische Arbeit",
     "coreEyebrow": "ZENTRALE FORSCHUNGSFRAGE",
-    "question": "Können wir dem vertrauen, was KI uns sagt?",
     "coreP1": "Meine Thesis fragt, ob synthetische Gesundheitsdaten unter der DSGVO nützlich und privat sein können.",
     "coreP2": "Klindok hält klinische Daten offline, damit das Modell die Praxis nicht verlassen muss.",
     "coreP3": "Meine Agentenarbeit schaut, warum gemeldete Adoption so stark schwankt, und welche Designmuster in echten Einsätzen halten.",
@@ -133,11 +127,6 @@
     "agentsBody": "Vier Umfragen aus 2026 verglichen, in denen die gemeldete Adoption zwischen 17% und 65% lag, und den Gründen nachgegangen.",
     "patternsTitle": "Agenten-Designmuster",
     "patternsBody": "ReAct, Reflection, Planning, Tool use und Multi-agent, abgeglichen mit echten Einsätzen und mit MCP und A2A.",
-    "interestAgent": "Agent Reliability",
-    "interestEval": "LLM Evaluation",
-    "interestPrivacy": "Privacy in Healthcare AI",
-    "interestVoice": "Real-Time Voice AI",
-    "interestRobotics": "Robotics (lerne)",
     "collab": "Offen für Forschungskooperationen",
     "linkedin": "LinkedIn"
   },
@@ -145,9 +134,9 @@
     "eyebrow": "DAS LABOR",
     "title": "Öffentlich lernen, jede Woche",
     "serif": "Ein Paper. Eine Lektion. Jede Woche.",
-    "streak": "aktuelle Serie",
-    "papers": "Paper gelesen",
-    "weeks": "Wochen geloggt",
+    "streak": "{count, plural, one {Woche Serie} other {Wochen Serie}}",
+    "papers": "{count, plural, one {Paper gelesen} other {Paper gelesen}}",
+    "weeks": "{count, plural, one {Woche geloggt} other {Wochen geloggt}}",
     "paperOfWeek": "Paper der Woche",
     "learned": "Diese Woche gelernt",
     "tracks": "Forschungswege",
@@ -241,20 +230,19 @@
     "title": "Technische Tiefe",
     "subtitle": "Ehrliche Stufen: in Produktion, in einem Projekt, oder beim Lernen.",
     "tabsLabel": "Kenntnisgruppen",
-    "usedPending": "Stufe offen",
     "tabs": {
       "aiml": "KI und ML",
       "llms": "LLMs und Agenten",
-      "evaluation": "Evaluation",
       "vision": "Computer Vision und Robotik",
-      "engineering": "Engineering"
+      "engineering": "Engineering",
+      "evaluation": "Evaluation"
     },
     "summaries": {
       "aiml": "Modelle, die ich trainiere und vergleiche, wenn die Daten unruhig sind.",
       "llms": "Systeme, die antworten, abrufen und beim Thema bleiben.",
-      "evaluation": "Wie ich entscheide, ob ein Modell gut genug ist.",
       "vision": "Die Welt sehen, und lernen, sich darin zu bewegen.",
-      "engineering": "Die Werkzeuge, die aus einem Notebook ein System machen."
+      "engineering": "Die Werkzeuge, die aus einem Notebook ein System machen.",
+      "evaluation": "Wie ich entscheide, ob ein Modell gut genug ist."
     },
     "usedIn": {
       "coschool": "Coschool KI-Tutor",
@@ -264,8 +252,7 @@
     "levels": {
       "production": "PRODUKTION",
       "project": "PROJEKT",
-      "studying": "LERNE",
-      "todo": "TODO"
+      "studying": "LERNE"
     }
   },
   "Experience": {
@@ -290,7 +277,7 @@
     "line": "Du stellst ein, forschst oder baust im Bereich Healthcare AI? Ich würde gern von dir hören.",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "based": "Mit Sitz in Berlin",
+    "based": "Mit Sitz in Deutschland",
     "interests": {
       "llmEval": "LLM Evaluation",
       "healthcare": "Healthcare AI",
@@ -325,7 +312,7 @@
     "role": "Rolle",
     "roleValue": "AI/ML Engineer",
     "location": "Ort",
-    "locationValue": "Berlin, Deutschland",
+    "locationValue": "Deutschland",
     "skills": "Fokus",
     "proof": "Belege",
     "proof1": "Einen KI-Tutor an 1.000+ Beta-Nutzer ausgeliefert.",

@@ -1,6 +1,6 @@
 # Khasim Bin Saleh
 
-Personal site for an AI/ML engineer in Berlin. English is at `/`. German UI is at `/de`.
+Personal site for an AI/ML engineer in Germany. English is at `/`. German UI is at `/de`.
 
 ## Run locally
 

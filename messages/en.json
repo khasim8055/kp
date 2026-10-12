@@ -1,7 +1,7 @@
 {
   "Meta": {
     "title": "Khasim Bin Saleh",
-    "description": "AI/ML engineer in Berlin. I build LLM and ML systems end to end, and I measure them before I trust them."
+    "description": "AI/ML engineer in Germany. I build LLM and ML systems end to end, and I measure them before I trust them."
   },
   "Nav": {
     "primary": "Primary",
@@ -32,14 +32,14 @@
   },
   "Hero": {
     "title": "AI/ML Engineer",
-    "location": "Berlin, Germany",
+    "location": "Germany",
     "oneLiner": "I build LLM and ML systems end to end, and I measure them before I trust them.",
     "focus": "// focus",
     "requestCv": "Request CV",
     "latestPaper": "Read my latest paper breakdown",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "eyebrow": "BERLIN · MSC AI · AI/ML ENGINEER",
+    "eyebrow": "GERMANY · AI/ML ENGINEER",
     "role1": "AI/ML Engineer",
     "role2": "Evaluation first",
     "role3": "Building Klindok",
@@ -55,7 +55,7 @@
     "title": "From IoT tinkering to trustworthy AI",
     "p1": "I started with a B.Tech in Computer Science at Lovely Professional University, with a specialisation in IoT. In 2023 I became a co-inventor on a patent for an internet controlled pet food dispenser.",
     "p2": "At Coschool I built an AI tutor that reached 1,000+ beta users. That work taught me a model is only as good as how you test it.",
-    "p3": "I moved to Berlin for an MSc in AI. Now I am building Klindok, and writing a thesis on whether synthetic health data is useful and private.",
+    "p3": "I moved to Germany for an MSc in AI. Now I am building Klindok, and writing a thesis on whether synthetic health data is useful and private.",
     "years": "years building ML and LLM systems",
     "users": "beta users reached",
     "patent": "patent",
@@ -88,8 +88,8 @@
       },
       "berlin": {
         "year": "2025",
-        "title": "Moved to Berlin",
-        "body": "MSc AI at SRH Berlin.",
+        "title": "Moved to Germany",
+        "body": "MSc AI at SRH Germany.",
         "tag": "MSc"
       },
       "research": {
@@ -103,11 +103,6 @@
         "title": "Started building Klindok",
         "body": "Offline clinical documentation for private practices.",
         "tag": "Klindok"
-      },
-      "thesis": {
-        "year": "Next",
-        "title": "MSc thesis",
-        "body": "Synthetic health data and GDPR."
       }
     }
   },
@@ -123,7 +118,6 @@
     "eyebrow": "RESEARCH",
     "title": "Research and academic work",
     "coreEyebrow": "CORE RESEARCH QUESTION",
-    "question": "Can we trust what AI tells us?",
     "coreP1": "My thesis asks whether synthetic health data can be useful and private under GDPR.",
     "coreP2": "Klindok keeps clinical data offline, so the model does not need to leave the practice.",
     "coreP3": "My agent work looks at why reported adoption swings so widely, and which design patterns hold up in real deployments.",
@@ -133,11 +127,6 @@
     "agentsBody": "Compared four 2026 surveys where reported adoption ranged from 17% to 65%, and traced why.",
     "patternsTitle": "Agent design patterns",
     "patternsBody": "ReAct, Reflection, Planning, Tool use and Multi-agent, matched to real deployments and to MCP and A2A.",
-    "interestAgent": "Agent Reliability",
-    "interestEval": "LLM Evaluation",
-    "interestPrivacy": "Privacy in Healthcare AI",
-    "interestVoice": "Real-Time Voice AI",
-    "interestRobotics": "Robotics (learning)",
     "collab": "Open to research collaborations",
     "linkedin": "LinkedIn"
   },
@@ -145,9 +134,9 @@
     "eyebrow": "THE LAB",
     "title": "Learning in public, every week",
     "serif": "One paper. One lesson. Every week.",
-    "streak": "current streak",
-    "papers": "papers read",
-    "weeks": "weeks logged",
+    "streak": "{count, plural, one {week streak} other {week streak}}",
+    "papers": "{count, plural, one {paper read} other {papers read}}",
+    "weeks": "{count, plural, one {week logged} other {weeks logged}}",
     "paperOfWeek": "Paper of the week",
     "learned": "This week I learned",
     "tracks": "Research tracks",
@@ -241,20 +230,19 @@
     "title": "Technical depth",
     "subtitle": "Honest levels: used in production, used in a project, or studying.",
     "tabsLabel": "Skill groups",
-    "usedPending": "Level pending",
     "tabs": {
       "aiml": "AI and ML",
       "llms": "LLMs and Agents",
-      "evaluation": "Evaluation",
       "vision": "Computer Vision and Robotics",
-      "engineering": "Engineering"
+      "engineering": "Engineering",
+      "evaluation": "Evaluation"
     },
     "summaries": {
       "aiml": "Models I train and compare when the data is messy.",
       "llms": "Systems that answer, retrieve, and stay on topic.",
-      "evaluation": "How I decide whether a model is good enough.",
       "vision": "Seeing the world, and learning to move in it.",
-      "engineering": "The tools that turn a notebook into a system."
+      "engineering": "The tools that turn a notebook into a system.",
+      "evaluation": "How I decide whether a model is good enough."
     },
     "usedIn": {
       "coschool": "Coschool AI tutor",
@@ -264,8 +252,7 @@
     "levels": {
       "production": "PRODUCTION",
       "project": "PROJECT",
-      "studying": "STUDYING",
-      "todo": "TODO"
+      "studying": "STUDYING"
     }
   },
   "Experience": {
@@ -290,7 +277,7 @@
     "line": "Hiring, researching or building in Healthcare AI? I would like to hear from you.",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "based": "Based in Berlin",
+    "based": "Based in Germany",
     "interests": {
       "llmEval": "LLM Evaluation",
       "healthcare": "Healthcare AI",
@@ -325,7 +312,7 @@
     "role": "Role",
     "roleValue": "AI/ML Engineer",
     "location": "Location",
-    "locationValue": "Berlin, Germany",
+    "locationValue": "Germany",
     "skills": "Focus",
     "proof": "Proof",
     "proof1": "Shipped an AI tutor to 1,000+ beta users.",

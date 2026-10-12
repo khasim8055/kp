@@ -1,24 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { SkillLevel } from "@/data/skills";
+import type { ValidSkillLevel } from "@/data/skills";
 import { cn } from "@/lib/utils";
 
-const fillCount: Record<SkillLevel, number> = {
+const fillCount: Record<ValidSkillLevel, number> = {
   production: 3,
   project: 2,
   studying: 1,
-  TODO: 0,
 };
 
-const fillClass: Record<SkillLevel, string> = {
+const fillClass: Record<ValidSkillLevel, string> = {
   production: "bg-pass",
   project: "bg-signal",
   studying: "bg-pulse",
-  TODO: "bg-border",
 };
 
-export function SkillLevelBar({ level }: { level: SkillLevel }) {
+export function SkillLevelBar({ level }: { level: ValidSkillLevel }) {
   const ref = useRef<HTMLDivElement>(null);
   const [filled, setFilled] = useState(false);
   const count = fillCount[level];

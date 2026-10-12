@@ -40,12 +40,15 @@ export function RoleLine({ roles }: { roles: string[] }) {
   }, [roles]);
 
   return (
-    <p className="mt-4 min-h-[1.6em] font-display text-xl tracking-tight md:text-2xl">
-      <span className="sr-only">{first}</span>
-      <span aria-hidden="true">
-        {text}
-        <span className="caret-blink ml-1 inline-block h-[0.9em] w-px translate-y-[1px] bg-signal" />
-      </span>
+    <p
+      className="mt-4 min-h-[1.6em] font-display text-xl tracking-tight md:text-2xl"
+      aria-live="polite"
+    >
+      {text}
+      <span
+        className="caret-blink ml-1 inline-block h-[0.9em] w-px translate-y-[1px] bg-signal"
+        aria-hidden="true"
+      />
     </p>
   );
 }

@@ -2,6 +2,10 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { learningMdxComponents } from "@/components/mdx/learning-body";
+import {
+  stripUnfinishedMdx,
+  stripUnfinishedSource,
+} from "@/lib/unfinished-mdx";
 import { Chip } from "@/components/ui/chip";
 import { PageHeader } from "@/components/ui/page-header";
 import { Link } from "@/i18n/navigation";
@@ -71,7 +75,11 @@ export default async function LearningEntryPage({ params }: Props) {
         </ul>
       ) : null}
       <div className="mt-2 text-[15px] leading-relaxed">
-        <MDXRemote source={entry.body} components={learningMdxComponents} />
+        <MDXRemote
+          source={stripUnfinishedSource(entry.body)}
+          components={learningMdxComponents}
+          options={{ mdxOptions: { rehypePlugins: [stripUnfinishedMdx] } }}
+        />
       </div>
     </article>
   );

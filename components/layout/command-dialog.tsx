@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Command } from "cmdk";
+import { Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useRouter } from "@/i18n/navigation";
@@ -53,13 +54,13 @@ export function CommandDialog({
     <>
       <button
         type="button"
-        className="inline-flex h-8 items-center rounded-full px-2 font-mono text-[11px] text-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)]"
+        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)]"
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-label={`${t("command")} ⌘K`}
         onClick={() => setOpen(true)}
       >
-        <span aria-hidden>⌘K</span>
+        <Search className="h-4 w-4" aria-hidden />
       </button>
       <Command.Dialog
         open={open}

@@ -5,5 +5,4 @@ export const journeyStops = [
   { id: "berlin" },
   { id: "research" },
   { id: "klindok" },
-  { id: "thesis", status: "in-progress" as const },
 ] as const;

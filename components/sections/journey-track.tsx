@@ -1,7 +1,13 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { useLayoutEffect, useRef, useState, useEffect } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import {
   motion,
   useMotionValue,
@@ -39,6 +45,11 @@ export function JourneyTrack({
   stops: JourneyStop[];
 }) {
   const sectionRef = useRef<HTMLElement>(null);
+  const desktop = useSyncExternalStore(
+    subscribeDesktop,
+    () => window.matchMedia("(min-width: 768px)").matches,
+    () => false,
+  );
   const { scrollYProgress: pinProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
@@ -64,16 +75,19 @@ export function JourneyTrack({
             serifLine={serif}
           />
         </div>
-        <div className="journey-vertical mx-auto mt-10 w-full max-w-[1100px] px-4 md:hidden">
-          <VerticalTimeline stops={stops} progress={lineProgress} />
-          <FullExperience label={fullLabel} className="mt-8" />
-        </div>
-        <div className="journey-horizontal mt-12 hidden w-full min-w-0 md:block">
-          <HorizontalTrack stops={stops} progress={pinProgress} />
-          <div className="mx-auto mt-8 w-full max-w-[1100px] px-4">
-            <FullExperience label={fullLabel} />
+        {desktop ? (
+          <div className="journey-horizontal mt-12 w-full min-w-0">
+            <HorizontalTrack stops={stops} progress={pinProgress} />
+            <div className="mx-auto mt-8 w-full max-w-[1100px] px-4">
+              <FullExperience label={fullLabel} />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="journey-vertical mx-auto mt-10 w-full max-w-[1100px] px-4">
+            <VerticalTimeline stops={stops} progress={lineProgress} />
+            <FullExperience label={fullLabel} className="mt-8" />
+          </div>
+        )}
       </div>
     </section>
   );
@@ -265,4 +279,10 @@ function JourneyRail({ progress }: { progress: MotionValue<number> }) {
       />
     </div>
   );
+}
+
+function subscribeDesktop(onChange: () => void) {
+  const media = window.matchMedia("(min-width: 768px)");
+  media.addEventListener("change", onChange);
+  return () => media.removeEventListener("change", onChange);
 }

@@ -17,6 +17,7 @@ const inter = Inter({
   weight: ["400", "500"],
   variable: "--font-inter",
   display: "swap",
+  adjustFontFallback: false,
 });
 
 const space = Space_Grotesk({
@@ -25,6 +26,7 @@ const space = Space_Grotesk({
   variable: "--font-space",
   display: "swap",
   preload: false,
+  adjustFontFallback: false,
 });
 
 const jetbrains = JetBrains_Mono({
@@ -33,6 +35,7 @@ const jetbrains = JetBrains_Mono({
   variable: "--font-jetbrains",
   display: "swap",
   preload: false,
+  adjustFontFallback: false,
 });
 
 const instrument = Instrument_Serif({
@@ -42,6 +45,7 @@ const instrument = Instrument_Serif({
   variable: "--font-instrument",
   display: "swap",
   preload: false,
+  adjustFontFallback: false,
 });
 
 type Props = {

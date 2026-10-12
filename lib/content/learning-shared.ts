@@ -107,7 +107,7 @@ export function heatmapWeeks(
       start: startIso,
       level,
       slug: entry.slug,
-      label: `${entry.title}, ${entry.dateStart}`,
+      label: entry.title,
     };
   });
 }

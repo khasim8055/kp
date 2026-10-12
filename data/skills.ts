@@ -1,4 +1,7 @@
-export type SkillLevel = "production" | "project" | "studying" | "TODO";
+import { isUnfinishedValue } from "@/lib/unfinished";
+
+export type ValidSkillLevel = "production" | "project" | "studying";
+export type SkillLevel = ValidSkillLevel | "TODO";
 
 export type Skill = {
   id: string;
@@ -13,7 +16,15 @@ export type SkillTab = {
   skills: Skill[];
 };
 
-export const skillTabs: SkillTab[] = [
+const VALID_LEVELS = new Set<string>(["production", "project", "studying"]);
+
+export function hasValidSkillLevel(
+  level: Skill["level"] | null | undefined,
+): level is ValidSkillLevel {
+  return typeof level === "string" && VALID_LEVELS.has(level);
+}
+
+const allSkillTabs: SkillTab[] = [
   {
     id: "aiml",
     skills: [
@@ -172,6 +183,18 @@ export const skillTabs: SkillTab[] = [
   },
 ];
 
-export const todoSkills = skillTabs.flatMap((tab) =>
-  tab.skills.filter((skill) => skill.level === "TODO"),
-);
+/** Skills without a name are skipped. Level TODO/empty does not drop the skill. */
+export const skillTabs: SkillTab[] = allSkillTabs
+  .map((tab) => ({
+    ...tab,
+    skills: tab.skills.filter((skill) => !isUnfinishedValue(skill.name)),
+  }))
+  .filter((tab) => tab.skills.length > 0);
+
+/** Skills that render without a level badge (for manual level assignment). */
+export const skillsMissingLevel = skillTabs
+  .map((tab) => ({
+    id: tab.id,
+    skills: tab.skills.filter((skill) => !hasValidSkillLevel(skill.level)),
+  }))
+  .filter((tab) => tab.skills.length > 0);

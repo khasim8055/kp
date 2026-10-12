@@ -1,7 +1,7 @@
 export const profile = {
   name: "Khasim Bin Saleh",
   title: "AI/ML Engineer",
-  location: "Berlin, Germany",
+  location: "Germany",
   linkedin: "https://linkedin.com/in/khasim-bin-saleh",
   github: "https://github.com/khasim8055",
   photo: "/profile.jpg",

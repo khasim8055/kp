@@ -57,13 +57,13 @@ export async function LatestLab() {
       />
       <div className="mt-10 grid gap-3 sm:grid-cols-3">
         <GlowCard>
-          <Readout value={streak.current} label={t("streak")} />
+          <Readout value={streak.current} label={t("streak", { count: streak.current })} />
         </GlowCard>
         <GlowCard>
-          <Readout value={papersRead} label={t("papers")} />
+          <Readout value={papersRead} label={t("papers", { count: papersRead })} />
         </GlowCard>
         <GlowCard>
-          <Readout value={weeksLogged} label={t("weeks")} />
+          <Readout value={weeksLogged} label={t("weeks", { count: weeksLogged })} />
         </GlowCard>
       </div>
       <div className="mt-8 grid gap-4 lg:grid-cols-2">
@@ -138,26 +138,28 @@ export async function LatestLab() {
           )}
         </GlowCard>
       </div>
-      <div className="mt-10">
-        <h3 className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink">
-          {t("tracks")}
-        </h3>
-        <ul className="mt-4 grid gap-4 md:grid-cols-3">
-          {tracks.map((track) => (
-            <li key={track.id}>
-              <GlowCard className="h-full">
-                <h4 className="font-display text-lg font-bold tracking-tight">
-                  {track.name}
-                </h4>
-                <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.18em] text-muted">
-                  {track.progress}
-                </p>
-                <div className="mt-2 h-px bg-border" aria-hidden />
-              </GlowCard>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {tracks.length > 0 ? (
+        <div className="mt-10">
+          <h3 className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink">
+            {t("tracks")}
+          </h3>
+          <ul className="mt-4 grid gap-4 md:grid-cols-3">
+            {tracks.map((track) => (
+              <li key={track.id}>
+                <GlowCard className="h-full">
+                  <h4 className="font-display text-lg font-bold tracking-tight">
+                    {track.name}
+                  </h4>
+                  <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.18em] text-muted">
+                    {track.progress}
+                  </p>
+                  <div className="mt-2 h-px bg-border" aria-hidden />
+                </GlowCard>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
       <div className="mt-8 flex flex-wrap gap-3">
         <Button asChild>
           <Link href="/papers">{t("allPapers")}</Link>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { LocaleToggle } from "@/components/layout/locale-toggle";
@@ -148,14 +148,14 @@ export function FloatingNav({ command }: { command: React.ReactNode }) {
             <ThemeToggle />
             <button
               type="button"
-              className="inline-flex h-9 items-center px-2 font-mono text-[11px]"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)]"
               aria-label={`${t("command")} ⌘K`}
               onClick={() => {
                 setOpen(false);
                 window.dispatchEvent(new Event("command-menu:open"));
               }}
             >
-              <span aria-hidden>⌘K</span>
+              <Search className="h-4 w-4" aria-hidden />
             </button>
           </div>
         </div>
