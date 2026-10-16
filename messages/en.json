@@ -28,7 +28,8 @@
     "themeToggle": "Toggle color theme",
     "language": "Language",
     "backToTop": "Back to top",
-    "scrollProgress": "Page scroll"
+    "scrollProgress": "Page scroll",
+    "evidence": "Evidence"
   },
   "Hero": {
     "title": "AI/ML Engineer",
@@ -352,5 +353,13 @@
     "reveal": "This block fades up once.",
     "darkSample": "Dark",
     "lightSample": "Light"
+  },
+  "Evidence": {
+    "eyebrow": "EVIDENCE",
+    "title": "Work you can see",
+    "subtitle": "Recordings and images from the work. More coming.",
+    "items": {
+      "recording01": "Work recording"
+    }
   }
 }

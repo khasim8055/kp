@@ -1,5 +1,6 @@
 import { About } from "@/components/sections/about";
 import { ContactCta } from "@/components/sections/contact-cta";
+import { Evidence } from "@/components/sections/evidence";
 import { Hero } from "@/components/sections/hero";
 import { Journey } from "@/components/sections/journey";
 import { LatestLab } from "@/components/sections/latest-lab";
@@ -31,6 +32,11 @@ export function HomePage() {
       <Section id="projects" labelledBy="projects-title">
         <FadeIn>
           <SelectedProjects />
+        </FadeIn>
+      </Section>
+      <Section id="evidence" labelledBy="evidence-title">
+        <FadeIn>
+          <Evidence />
         </FadeIn>
       </Section>
       <Section id="skills" labelledBy="skills-title">

@@ -28,7 +28,8 @@
     "themeToggle": "Farbschema wechseln",
     "language": "Sprache",
     "backToTop": "Nach oben",
-    "scrollProgress": "Seitenfortschritt"
+    "scrollProgress": "Seitenfortschritt",
+    "evidence": "Beweis"
   },
   "Hero": {
     "title": "AI/ML Engineer",
@@ -352,5 +353,13 @@
     "reveal": "Dieser Block blendet einmal nach oben ein.",
     "darkSample": "Dunkel",
     "lightSample": "Hell"
+  },
+  "Evidence": {
+    "eyebrow": "BEWEIS",
+    "title": "Arbeit, die man sehen kann",
+    "subtitle": "Aufnahmen und Bilder aus der Arbeit. Mehr folgt.",
+    "items": {
+      "recording01": "Arbeitsaufnahme"
+    }
   }
 }

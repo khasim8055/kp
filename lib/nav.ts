@@ -14,6 +14,7 @@ export const homeNav = [
   { id: "about", key: "about" },
   { id: "research", key: "research" },
   { id: "projects", key: "projects" },
+  { id: "evidence", key: "evidence" },
   { id: "lab", key: "lab" },
   { id: "contact", key: "contact" },
 ] as const;
