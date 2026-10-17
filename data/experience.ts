@@ -51,7 +51,7 @@ export const education: EducationItem[] = [
     start: "04/2025",
     end: "03/2027",
     detail:
-      "Thesis (in progress): An LLM agent for assessing the utility and privacy of synthetic health data under GDPR.",
+      "Thesis (in progress): Agentic Privacy Auditing of Synthetic Health Data: Evaluating LLM Audit Agents against Attack-Based Re-identification Metrics",
   },
   {
     school: "Lovely Professional University",

@@ -3,7 +3,7 @@ export const currentWork = [
     title: "MSc thesis",
     status: "inProgress",
     detail:
-      "An LLM agent for assessing the utility and privacy of synthetic health data under GDPR.",
+      "Agentic Privacy Auditing of Synthetic Health Data: Evaluating LLM Audit Agents against Attack-Based Re-identification Metrics",
   },
   {
     title: "Klindok",

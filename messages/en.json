@@ -29,7 +29,7 @@
     "language": "Language",
     "backToTop": "Back to top",
     "scrollProgress": "Page scroll",
-    "evidence": "Evidence"
+    "evidence": "Album"
   },
   "Hero": {
     "title": "AI/ML Engineer",
@@ -56,7 +56,7 @@
     "title": "From IoT tinkering to trustworthy AI",
     "p1": "I started with a B.Tech in Computer Science at Lovely Professional University, with a specialisation in IoT. In 2023 I became a co-inventor on a patent for an internet controlled pet food dispenser.",
     "p2": "At Coschool I built an AI tutor that reached 1,000+ beta users. That work taught me a model is only as good as how you test it.",
-    "p3": "I moved to Germany for an MSc in AI. Now I am building Klindok, and writing a thesis on whether synthetic health data is useful and private.",
+    "p3": "I moved to Germany for an MSc in AI. Now I am building Klindok, and writing my thesis: Agentic Privacy Auditing of Synthetic Health Data: Evaluating LLM Audit Agents against Attack-Based Re-identification Metrics.",
     "years": "years building ML and LLM systems",
     "users": "beta users reached",
     "patent": "patent",
@@ -119,11 +119,11 @@
     "eyebrow": "RESEARCH",
     "title": "Research and academic work",
     "coreEyebrow": "CORE RESEARCH QUESTION",
-    "coreP1": "My thesis asks whether synthetic health data can be useful and private under GDPR.",
+    "coreP1": "My thesis is Agentic Privacy Auditing of Synthetic Health Data: Evaluating LLM Audit Agents against Attack-Based Re-identification Metrics.",
     "coreP2": "Klindok keeps clinical data offline, so the model does not need to leave the practice.",
     "coreP3": "My agent work looks at why reported adoption swings so widely, and which design patterns hold up in real deployments.",
     "thesisTitle": "MSc thesis",
-    "thesisBody": "An LLM agent that checks if synthetic health data is useful and private under GDPR.",
+    "thesisBody": "Agentic Privacy Auditing of Synthetic Health Data: Evaluating LLM Audit Agents against Attack-Based Re-identification Metrics",
     "agentsTitle": "Enterprise AI agents",
     "agentsBody": "Compared four 2026 surveys where reported adoption ranged from 17% to 65%, and traced why.",
     "patternsTitle": "Agent design patterns",
@@ -355,8 +355,8 @@
     "lightSample": "Light"
   },
   "Evidence": {
-    "eyebrow": "EVIDENCE",
-    "title": "Work you can see",
+    "eyebrow": "ALBUM",
+    "title": "Album",
     "subtitle": "Recordings and images from the work. More coming.",
     "items": {
       "recording01": "Work recording"
