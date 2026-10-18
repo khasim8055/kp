@@ -40,11 +40,21 @@ export function PaperBrowser({
     [papers],
   );
 
+  const listPapers = useMemo(
+    () =>
+      featuredSlug
+        ? papers.filter((paper) => paper.slug !== featuredSlug)
+        : papers,
+    [papers, featuredSlug],
+  );
+
   const visible = useMemo(
     () =>
       filterPapers(papers, { query, topic, verdict, year, sort, featuredSlug }),
     [papers, query, topic, verdict, year, sort, featuredSlug],
   );
+
+  if (listPapers.length === 0) return null;
 
   return (
     <div>

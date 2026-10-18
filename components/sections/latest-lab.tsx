@@ -66,7 +66,13 @@ export async function LatestLab() {
           <Readout value={weeksLogged} label={t("weeks", { count: weeksLogged })} />
         </GlowCard>
       </div>
-      <div className="mt-8 grid gap-4 lg:grid-cols-2">
+      <div
+        className={
+          learning
+            ? "mt-8 grid gap-4 lg:grid-cols-2"
+            : "mt-8 grid gap-4"
+        }
+      >
         <GlowCard className="flex h-full flex-col">
           <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink">
             {t("paperOfWeek")}
@@ -103,40 +109,36 @@ export async function LatestLab() {
             <p className="mt-4 text-sm text-muted">{t("paperMissing")}</p>
           )}
         </GlowCard>
-        <GlowCard className="flex h-full flex-col">
-          <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink">
-            {t("learned")}
-          </p>
-          {learning ? (
-            <>
-              <h3 className="mt-4 font-display text-xl font-bold leading-tight tracking-tight">
-                <Link
-                  href={`/learning/${learning.slug}`}
-                  className="hover:text-signal-ink"
-                >
-                  {learning.title}
-                </Link>
-              </h3>
-              {learning.summary ? (
-                <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">
-                  {learning.summary}
-                </p>
-              ) : null}
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {learning.tags.map((tag) => (
-                  <li key={tag}>
-                    <Tag>{tag}</Tag>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6">
-                <LearningHeatmap cells={cells} label={t("heatmap")} compact />
-              </div>
-            </>
-          ) : (
-            <p className="mt-4 text-sm text-muted">{t("learningMissing")}</p>
-          )}
-        </GlowCard>
+        {learning ? (
+          <GlowCard className="flex h-full flex-col">
+            <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink">
+              {t("learned")}
+            </p>
+            <h3 className="mt-4 font-display text-xl font-bold leading-tight tracking-tight">
+              <Link
+                href={`/learning/${learning.slug}`}
+                className="hover:text-signal-ink"
+              >
+                {learning.title}
+              </Link>
+            </h3>
+            {learning.summary ? (
+              <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">
+                {learning.summary}
+              </p>
+            ) : null}
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {learning.tags.map((tag) => (
+                <li key={tag}>
+                  <Tag>{tag}</Tag>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6">
+              <LearningHeatmap cells={cells} label={t("heatmap")} compact />
+            </div>
+          </GlowCard>
+        ) : null}
       </div>
       {tracks.length > 0 ? (
         <div className="mt-10">

@@ -91,11 +91,7 @@ export function filterPapers(
   });
 
   if (!filtering && filters.featuredSlug) {
-    const withoutFeatured = sorted.filter(
-      (paper) => paper.slug !== filters.featuredSlug,
-    );
-    // Keep the only paper visible in the grid when it is also featured.
-    return withoutFeatured.length > 0 ? withoutFeatured : sorted;
+    return sorted.filter((paper) => paper.slug !== filters.featuredSlug);
   }
   return sorted;
 }
