@@ -1,0 +1,195 @@
+---
+title: "The DCR Delusion: Measuring the Privacy Risk of Synthetic Data"
+slug: dcr-delusion-2025
+week: 1
+date: 2026-10-18
+authors: ["Zexi Yao", "Nataša Krčo", "Georgi Ganev", "Yves-Alexandre de Montjoye"]
+venue: "arXiv preprint"
+year: 2025
+paperUrl: "https://arxiv.org/abs/2505.01524"
+codeUrl: ""
+topics: ["privacy", "synthetic data"]
+difficulty: 3
+readingTime: 30
+verdict: "Must read"
+scores:
+  novelty: 3
+  rigor: 4
+  reproducibility: 3
+  practicalImpact: 5
+tldr: "The most popular privacy test for synthetic data passes datasets that membership inference attacks show are leaking."
+---
+
+## Problem
+
+Many teams share synthetic data instead of real data. To check it is safe, they often run one quick test called Distance to Closest Record (DCR). If the fake rows are no closer to the real training rows than some other real rows are, the data counts as private. This paper asks whether that test actually measures privacy, by putting it next to a real attack.
+
+## Method
+
+The authors ran the same synthetic data through two checks and compared what each one said.
+
+<FlowDiagram title="One dataset, two verdicts">
+  <FlowBox>
+    <strong>Real training data</strong>
+    <br />
+    Adult, Census, Bank, Berka
+  </FlowBox>
+  <FlowArrow />
+  <FlowBox>
+    <strong>Generator</strong>
+    <br />
+    IndHist, Baynet, CTGAN, TabDDPM, ClavaDDPM
+  </FlowBox>
+  <FlowArrow />
+  <FlowBox>
+    <strong>Synthetic dataset</strong>
+    <br />
+    same size as the training data
+  </FlowBox>
+  <FlowArrow label="splits into two lanes" />
+  <FlowSplit>
+    <FlowLane label="Proxy test">
+      <FlowBox>Holdout real rows</FlowBox>
+      <FlowArrow />
+      <FlowBox>DCR, NNDR, IMS</FlowBox>
+      <FlowArrow />
+      <FlowBox variant="amber">Verdict: private</FlowBox>
+    </FlowLane>
+    <FlowLane label="Attack">
+      <FlowBox>Membership inference</FlowBox>
+      <FlowArrow />
+      <FlowBox variant="red">Verdict: leaking</FlowBox>
+    </FlowLane>
+  </FlowSplit>
+  <FlowArrow />
+  <FlowBox>
+    <strong>Result</strong>
+    <br />
+    The proxy test called the data safe. The attack found people it could identify.
+  </FlowBox>
+</FlowDiagram>
+
+<FlowDiagram
+  title="How the distance test decides"
+  note="NNDR is the nearest distance divided by the second nearest distance. IMS is the number of synthetic rows that are exact copies of real rows. The strict test requires passing all three."
+  caption="Every column counts equally, so one rare value hardly changes the distance."
+>
+  <FlowStep n={1}>For each synthetic row, find the closest real training row</FlowStep>
+  <FlowStep n={2}>Measure the distance: numeric columns by Euclidean distance, categorical columns by counting mismatches</FlowStep>
+  <FlowStep n={3}>Do the same for holdout rows, which are real rows the generator never saw</FlowStep>
+  <FlowStep n={4}>Take the 5th percentile of both sets of distances</FlowStep>
+  <FlowStep n={5}>If the synthetic rows are at least as far away as the holdout rows, the data passes as private</FlowStep>
+</FlowDiagram>
+
+<FlowDiagram
+  title="How the attack finds a person"
+  note="Scale: 0.5 = guessing | 0.6 = leaking | 0.8 = serious leak"
+  caption="For diffusion models the authors used a different attack (MIDST) that looks at the model's loss and reports true positives at zero false positives."
+>
+  <FlowStep n={1}>Pick a target record (the 100 most vulnerable, ranked by the Achilles score)</FlowStep>
+  <FlowStep n={2}>Train 1,000 shadow generators on similar data, with the target included in half of them</FlowStep>
+  <FlowStep n={3}>Generate synthetic data from each shadow model</FlowStep>
+  <FlowStep n={4}>Count how many synthetic rows match the target on random groups of columns</FlowStep>
+  <FlowStep n={5}>Train a classifier to tell "trained with the target" from "trained without it"</FlowStep>
+  <FlowStep n={6}>Test it on 1,000 fresh models and get an AUC score for that one person</FlowStep>
+</FlowDiagram>
+
+## Key results
+
+<table>
+  <thead>
+    <tr>
+      <th>Claim</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Classical generators, 9 setups</td>
+      <td>In 7, every synthetic dataset passed. Attacks still hit AUC 0.8 or more on some records</td>
+    </tr>
+    <tr>
+      <td>Pass vs fail</td>
+      <td>Attacks worked just as well on datasets that passed as on those that failed</td>
+    </tr>
+    <tr>
+      <td>Average distance score</td>
+      <td>No link to how vulnerable a record was</td>
+    </tr>
+    <tr>
+      <td>Diffusion models</td>
+      <td>Every dataset passed the distance test. Attacks still identified members</td>
+    </tr>
+    <tr>
+      <td>Changing the threshold</td>
+      <td>Anywhere from 0 to 10%, every dataset still passed</td>
+    </tr>
+    <tr>
+      <td>All 1,000 records, not just outliers</td>
+      <td>54 seriously exposed, 200 leaking</td>
+    </tr>
+  </tbody>
+</table>
+
+<FlowDiagram
+  title="One person from Holland-Netherlands"
+  caption="Anyone looking at the data would spot this in seconds. The distance test could not."
+>
+  <FlowBox>
+    <strong>Target record</strong>
+    <br />
+    the only person in the Adult dataset from Holland-Netherlands
+  </FlowBox>
+  <FlowArrow />
+  <FlowSplit>
+    <FlowLane label={"\u200b"}>
+      <FlowBox>
+        <strong>CTGAN trained with them</strong>
+        <br />
+        92% of synthetic datasets contain that country
+      </FlowBox>
+    </FlowLane>
+    <FlowLane label={"\u200b"}>
+      <FlowBox>
+        <strong>CTGAN trained without them</strong>
+        <br />
+        0% contain it
+      </FlowBox>
+    </FlowLane>
+  </FlowSplit>
+  <FlowArrow />
+  <FlowSplit>
+    <FlowLane label={"\u200b"}>
+      <FlowBox>
+        <strong>Attack</strong>
+        <br />
+        AUC 0.94, the highest of any record
+      </FlowBox>
+    </FlowLane>
+    <FlowLane label={"\u200b"}>
+      <FlowBox>
+        <strong>Distance test</strong>
+        <br />
+        rows with that value are not even the closest to the target
+      </FlowBox>
+    </FlowLane>
+  </FlowSplit>
+  <FlowArrow />
+  <FlowBox variant="amber">
+    <strong>Verdict</strong>
+    <br />
+    Passed as private
+  </FlowBox>
+</FlowDiagram>
+
+## What I'd question
+
+It is still a preprint, so the results have not been through peer review yet. All datasets are public census and banking data, not health records, so I want to see the same test on clinical data. The main experiment attacks only the 100 most vulnerable looking records per setup, and the diffusion results rest on 10 models each. None of this changes the main point, but it shapes how far I would push the numbers.
+
+## How I'd use it
+
+I used to think that if synthetic data looks different from the real data, it is safe. This paper showed me that looking different and being private are not the same thing. The distance test only catches near copies, while a real leak can hide in one rare detail, like a country only one person comes from. Adding a rule for rare values would not fix it either, because leaks can also come from combinations of ordinary values. The better question is not "how similar is this data" but "could an attacker find someone in it". This is the starting point of my MSc thesis on agentic privacy auditing of synthetic health data, where I test whether an LLM agent can reason like an attacker and catch leaks that simple metrics miss.
+
+## Reproduce it
+
+I have not run this yet. The authors build on public tools: reprosyn for the classical generators and MIDSTModels for the diffusion models.

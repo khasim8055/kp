@@ -1,4 +1,12 @@
 import type { ComponentProps, ReactNode } from "react";
+import {
+  FlowArrow,
+  FlowBox,
+  FlowDiagram,
+  FlowLane,
+  FlowSplit,
+  FlowStep,
+} from "@/components/mdx/flow-diagram";
 import { Link } from "@/i18n/navigation";
 
 const sectionIndex: Record<string, string> = {
@@ -91,6 +99,12 @@ function List(props: ComponentProps<"ul">) {
   );
 }
 
+function OrderedList(props: ComponentProps<"ol">) {
+  return (
+    <ol className="mt-3 list-decimal space-y-2 pl-5 leading-relaxed" {...props} />
+  );
+}
+
 function Anchor({ href = "", children }: ComponentProps<"a">) {
   if (href.startsWith("/")) {
     return (
@@ -136,8 +150,15 @@ export const paperMdxComponents = {
   h2: Heading,
   p: Paragraph,
   ul: List,
+  ol: OrderedList,
   a: Anchor,
   table: TableWrap,
   td: Cell,
   th: HeadCell,
+  FlowDiagram,
+  FlowBox,
+  FlowArrow,
+  FlowSplit,
+  FlowLane,
+  FlowStep,
 };
