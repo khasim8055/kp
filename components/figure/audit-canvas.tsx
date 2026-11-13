@@ -9,14 +9,13 @@ import {
   frameEdges,
   projectPoint,
 } from "@/lib/audit-field";
+import { createFrameGuard, linkProgram, parseColor, type Rgb } from "@/lib/webgl";
 
 export type AuditLabels = {
   record: string;
   tooClose: string;
   farEnough: string;
 };
-
-type Rgb = [number, number, number];
 
 const POINT_VS = `
 attribute vec3 aPos;
@@ -97,44 +96,6 @@ precision mediump float;
 varying vec4 vColor;
 void main() { gl_FragColor = vColor; }`;
 
-function parseColor(value: string, fallback: Rgb): Rgb {
-  const v = value.trim();
-  if (v.startsWith("#")) {
-    let hex = v.slice(1);
-    if (hex.length === 3) hex = hex.split("").map((part) => part + part).join("");
-    const n = Number.parseInt(hex.slice(0, 6), 16);
-    if (Number.isNaN(n)) return fallback;
-    return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
-  }
-  const match = v.match(/(\d+(?:\.\d+)?)[,\s]+(\d+(?:\.\d+)?)[,\s]+(\d+(?:\.\d+)?)/);
-  if (match) return [Number(match[1]) / 255, Number(match[2]) / 255, Number(match[3]) / 255];
-  return fallback;
-}
-
-function compile(gl: WebGLRenderingContext, type: number, source: string) {
-  const shader = gl.createShader(type);
-  if (!shader) return null;
-  gl.shaderSource(shader, source);
-  gl.compileShader(shader);
-  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    gl.deleteShader(shader);
-    return null;
-  }
-  return shader;
-}
-
-function link(gl: WebGLRenderingContext, vs: string, fs: string) {
-  const vertex = compile(gl, gl.VERTEX_SHADER, vs);
-  const fragment = compile(gl, gl.FRAGMENT_SHADER, fs);
-  const program = gl.createProgram();
-  if (!vertex || !fragment || !program) return null;
-  gl.attachShader(program, vertex);
-  gl.attachShader(program, fragment);
-  gl.linkProgram(program);
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return null;
-  return program;
-}
-
 /**
  * WebGL layer of the hero figure. It mounts on top of the static SVG and
  * replaces it once the first frame is drawn. If WebGL is missing, the context
@@ -164,8 +125,8 @@ export function AuditCanvas({ labels }: { labels: AuditLabels }) {
     });
     if (!gl) return;
 
-    const points = link(gl, POINT_VS, POINT_FS);
-    const lines = link(gl, LINE_VS, LINE_FS);
+    const points = linkProgram(gl, POINT_VS, POINT_FS);
+    const lines = linkProgram(gl, LINE_VS, LINE_FS);
     if (!points || !lines) return;
 
     const data = buildAuditData();
@@ -489,18 +450,11 @@ export function AuditCanvas({ labels }: { labels: AuditLabels }) {
       }
     };
 
-    // Slow-device guard. If the first frames come in under roughly 20 a second
-    // (weak GPU or software rendering), stop for good and leave the static SVG.
-    let guardFrames = 0;
-    let guardStart = 0;
+    // Slow-device guard: on a weak GPU the figure stops for good and the
+    // static SVG stays. Pauses are not counted as slow frames.
+    const frameGuard = createFrameGuard();
     const guard = (now: number) => {
-      if (guardFrames < 0) return false;
-      if (guardFrames === 3) guardStart = now;
-      guardFrames += 1;
-      if (guardFrames < 16) return false;
-      const average = (now - guardStart) / 12;
-      guardFrames = -1;
-      if (average <= 50) return false;
+      if (!frameGuard.tick(now)) return false;
       lost = true;
       delete host.dataset.live;
       label.style.opacity = "0";
@@ -513,6 +467,7 @@ export function AuditCanvas({ labels }: { labels: AuditLabels }) {
       const shouldRun = visible && !document.hidden && !lost;
       if (shouldRun && !raf) {
         last = 0;
+        frameGuard.resume();
         raf = requestAnimationFrame(draw);
       } else if (!shouldRun && raf) {
         cancelAnimationFrame(raf);

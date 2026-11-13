@@ -20,7 +20,7 @@ export function SectionHeader({
   className?: string;
 }) {
   return (
-    <header className={cn("max-w-[760px]", className)}>
+    <header className={cn("max-w-[760px]", className)} data-reveal>
       <Eyebrow index={index}>{eyebrow}</Eyebrow>
       <h2 id={id} className="type-h2 mt-3 text-balance">
         {title}

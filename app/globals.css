@@ -138,6 +138,426 @@ body {
   color: var(--text);
 }
 
+/* The 3D world behind every page. The CSS floor is the fallback: a flat grid
+   tipped back with a perspective transform. The WebGL scene fades in over it. */
+.world {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* A soft band of light where the floor meets the horizon. */
+.world-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(70% 16% at 50% 41%, color-mix(in srgb, var(--pulse) 26%, transparent), transparent 100%),
+    radial-gradient(50% 40% at 50% 42%, color-mix(in srgb, var(--pulse) 10%, transparent), transparent 80%);
+}
+
+.world-floor {
+  position: absolute;
+  left: -60%;
+  right: -60%;
+  top: 46%;
+  height: 120%;
+  transform-origin: 50% 0;
+  transform: perspective(520px) rotateX(74deg);
+  background-image:
+    repeating-linear-gradient(to right, color-mix(in srgb, var(--pulse) 34%, transparent) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(to bottom, color-mix(in srgb, var(--pulse) 34%, transparent) 0 1px, transparent 1px 72px);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 22%, #000 60%, transparent 96%);
+  opacity: 0.55;
+  transition: opacity 900ms ease;
+}
+
+.world-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+
+.world[data-live="true"] .world-canvas {
+  opacity: 1;
+}
+
+.world[data-live="true"] .world-floor {
+  opacity: 0;
+}
+
+/* Content sits on a veil so text stays readable over the moving world.
+   The hero has no veil: there the world is the picture. */
+main > section:not(.no-veil),
+main > div,
+main > article,
+main > header:not(.no-veil) {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--bg) 56%, transparent),
+    color-mix(in srgb, var(--bg) 68%, transparent)
+  );
+}
+
+main > article {
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+}
+
+/* Where the browser allows it the veil runs edge to edge, also behind
+   narrow reading columns, so the world never shows a box around the text. */
+@supports (overflow: clip) {
+  main {
+    overflow-x: clip;
+  }
+
+  main > section:not(.no-veil),
+  main > div,
+  main > article,
+  main > header:not(.no-veil) {
+    position: relative;
+    isolation: isolate;
+    background: none;
+  }
+
+  main > section:not(.no-veil)::before,
+  main > div::before,
+  main > article::before,
+  main > header:not(.no-veil)::before {
+    content: "";
+    position: absolute;
+    inset: 0 -100vw;
+    z-index: -1;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--bg) 56%, transparent),
+      color-mix(in srgb, var(--bg) 68%, transparent)
+    );
+    pointer-events: none;
+  }
+
+  /* Long reading pages get a calmer backdrop than the card sections. */
+  main > div::before {
+    background: color-mix(in srgb, var(--bg) 76%, transparent);
+  }
+
+  main > article::before {
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+  }
+}
+
+footer {
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 50% 42% at 50% 48%, color-mix(in srgb, var(--bg) 90%, transparent) 0%, color-mix(in srgb, var(--bg) 52%, transparent) 58%, transparent 82%),
+    linear-gradient(to bottom, transparent 86%, color-mix(in srgb, var(--bg) 78%, transparent) 100%);
+}
+
+@media (max-width: 767px) {
+  .hero-vignette {
+    background:
+      radial-gradient(ellipse 110% 40% at 50% 50%, color-mix(in srgb, var(--bg) 88%, transparent) 0%, color-mix(in srgb, var(--bg) 58%, transparent) 60%, transparent 90%),
+      linear-gradient(to bottom, transparent 86%, color-mix(in srgb, var(--bg) 78%, transparent) 100%);
+  }
+}
+
+.hero-name {
+  text-shadow: 0 0 46px color-mix(in srgb, var(--pulse) 42%, transparent);
+}
+
+.scroll-cue-line {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 40px;
+  overflow: hidden;
+  background: var(--border);
+}
+
+.scroll-cue-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--signal);
+  box-shadow: 0 0 8px var(--signal);
+  transform: translateX(-50%);
+  animation: scroll-cue 1.6s ease-in-out infinite;
+}
+
+@keyframes scroll-cue {
+  from {
+    top: 0;
+  }
+  to {
+    top: calc(100% - 5px);
+  }
+}
+
+.caret-blink {
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Cards: glowing panels that lean toward the pointer. --rx, --ry, --gx and
+   --gy are set by the Effects component while the pointer is over a card. */
+.card3d {
+  position: relative;
+  border: 1px solid color-mix(in srgb, var(--pulse) 24%, var(--border));
+  border-radius: 16px;
+  background: linear-gradient(
+    150deg,
+    color-mix(in srgb, var(--pulse) 11%, var(--surface)) 0%,
+    var(--surface) 44%,
+    color-mix(in srgb, var(--bg) 55%, var(--surface)) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 0 color-mix(in srgb, var(--text) 7%, transparent),
+    0 22px 48px -30px rgb(0 0 0 / 0.75);
+  transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition:
+    transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.card3d::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    280px circle at var(--gx, 50%) var(--gy, 50%),
+    color-mix(in srgb, var(--pulse) 30%, transparent),
+    transparent 64%
+  );
+  transition: opacity 220ms ease;
+}
+
+.card3d > * {
+  position: relative;
+  transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card3d[data-tilt]:hover {
+    border-color: color-mix(in srgb, var(--pulse) 62%, var(--border));
+    box-shadow:
+      inset 0 1px 0 0 color-mix(in srgb, var(--text) 10%, transparent),
+      0 30px 70px -34px color-mix(in srgb, var(--pulse) 70%, transparent);
+  }
+
+  .card3d[data-tilt]:hover::before {
+    opacity: 1;
+  }
+
+  /* While a card leans, its contents float a little above it. */
+  .card3d[data-tilting] {
+    transition-duration: 90ms;
+  }
+
+  .card3d[data-tilting] > * {
+    transform: translateZ(18px);
+  }
+
+  .card3d[data-tilting] .lift {
+    transform: translateZ(46px);
+  }
+}
+
+.lift {
+  transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.card3d-signal {
+  border-color: color-mix(in srgb, var(--signal) 48%, var(--border));
+  background: linear-gradient(
+    150deg,
+    color-mix(in srgb, var(--signal) 10%, var(--surface)) 0%,
+    var(--surface) 46%,
+    color-mix(in srgb, var(--bg) 55%, var(--surface)) 100%
+  );
+  animation: breathe 5s ease-in-out infinite;
+}
+
+.card3d-signal::before {
+  background: radial-gradient(
+    300px circle at var(--gx, 50%) var(--gy, 50%),
+    color-mix(in srgb, var(--signal) 24%, transparent),
+    transparent 64%
+  );
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 1px 0 0 color-mix(in srgb, var(--text) 7%, transparent),
+      0 0 0 0 color-mix(in srgb, var(--signal) 0%, transparent);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 0 color-mix(in srgb, var(--text) 7%, transparent),
+      0 0 44px -6px color-mix(in srgb, var(--signal) 30%, transparent);
+  }
+}
+
+/* Scroll reveal: blocks rise and tip into place. Only active once the script
+   has run (html.fx), so nothing is hidden without JavaScript. */
+html.fx [data-reveal] {
+  opacity: 0;
+  transform: perspective(1000px) translate3d(0, 38px, -70px) rotateX(14deg);
+  transform-origin: 50% 100%;
+  transition:
+    opacity 620ms ease,
+    transform 820ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--i, 0) * 85ms);
+}
+
+html.fx [data-reveal="flip"] {
+  transform: perspective(1000px) translate3d(-24px, 0, -90px) rotateY(-32deg);
+  transform-origin: 0 50%;
+}
+
+html.fx [data-reveal].in {
+  opacity: 1;
+  transform: none;
+}
+
+/* On paper there is no scrolling, so everything is shown and the backdrop goes. */
+@media print {
+  html.fx [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .world {
+    display: none;
+  }
+}
+
+/* Skills sphere. Before the script places the words they sit stacked in the
+   centre and stay invisible. */
+.skill-sphere {
+  position: relative;
+  width: min(100%, 440px);
+  margin-inline: auto;
+  aspect-ratio: 1 / 1;
+  touch-action: pan-y;
+}
+
+.skill-sphere-core {
+  position: absolute;
+  inset: 12%;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at 38% 32%,
+    color-mix(in srgb, var(--pulse) 26%, transparent),
+    color-mix(in srgb, var(--pulse) 6%, transparent) 55%,
+    transparent 72%
+  );
+  box-shadow: inset 0 0 60px color-mix(in srgb, var(--pulse) 18%, transparent);
+}
+
+/* Three orbit rings around the sphere, each tilted in 3D with a dot travelling on it. */
+.skill-sphere-rings {
+  position: absolute;
+  inset: 7%;
+}
+
+.skill-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid color-mix(in srgb, currentColor 34%, transparent);
+  border-radius: 999px;
+  color: var(--pulse);
+  animation: ring-a 16s linear infinite;
+}
+
+.skill-ring::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 12px 2px currentColor;
+}
+
+.skill-ring:nth-child(2) {
+  color: var(--signal);
+  animation: ring-b 22s linear infinite;
+}
+
+.skill-ring:nth-child(3) {
+  color: var(--pass);
+  animation: ring-c 28s linear infinite reverse;
+}
+
+@keyframes ring-a {
+  from {
+    transform: rotateX(72deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(72deg) rotateZ(360deg);
+  }
+}
+
+@keyframes ring-b {
+  from {
+    transform: rotateZ(58deg) rotateX(72deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(58deg) rotateX(72deg) rotateZ(360deg);
+  }
+}
+
+@keyframes ring-c {
+  from {
+    transform: rotateZ(-58deg) rotateX(72deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(-58deg) rotateX(72deg) rotateZ(360deg);
+  }
+}
+
+.skill-word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 14px;
+  white-space: nowrap;
+  will-change: transform, opacity;
+}
+
+.skill-sphere:not([data-ready]) .skill-word {
+  opacity: 0 !important;
+}
+
 /* A ruler: the site's one decorative motif. Small ticks, a taller one every fifth. */
 .rule-ticks {
   height: 9px;
@@ -337,53 +757,154 @@ body {
   }
 }
 
-/* Journey: one column with a rule on phones, a ruled grid from tablets up. */
-.journey-list {
+.fact-list-plain {
+  border-top: 0;
+}
+
+.fact-list-plain > div:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.fact-list-plain > div:first-child {
+  padding-top: 0;
+}
+
+/* Inner pages: the world shows through behind the title. */
+.page-hero {
+  background:
+    radial-gradient(ellipse 70% 90% at 30% 60%, color-mix(in srgb, var(--bg) 78%, transparent) 0%, transparent 80%),
+    linear-gradient(to bottom, color-mix(in srgb, var(--bg) 30%, transparent), color-mix(in srgb, var(--bg) 70%, transparent));
+}
+
+/* Contact: a lighter veil, so the world comes forward again at the end. */
+main > section.contact-band {
+  background: radial-gradient(
+    ellipse 60% 70% at 50% 50%,
+    color-mix(in srgb, var(--bg) 82%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 45%, transparent) 100%
+  );
+}
+
+main > section.contact-band::before {
+  content: none;
+}
+
+/* Journey: a glowing rail with a pulse running along it. One column on
+   phones, four across on desktop. Each stop hangs from the rail by a node. */
+.journey-rail {
+  position: relative;
   display: grid;
-  border-left: 1px solid var(--border);
+  gap: 1.1rem;
+  padding-left: 1.6rem;
+}
+
+.journey-rail::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: 5px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--signal) 85%, transparent),
+    color-mix(in srgb, var(--pulse) 70%, transparent)
+  );
+  box-shadow: 0 0 14px color-mix(in srgb, var(--signal) 55%, transparent);
+  border-radius: 2px;
 }
 
 .journey-stop {
   position: relative;
-  padding: 0 0 1.75rem 1.5rem;
 }
 
-.journey-stop:last-child {
-  padding-bottom: 0;
-}
-
-.journey-stop::before {
-  content: "";
+.journey-node {
   position: absolute;
-  top: 0.45rem;
-  left: -4px;
-  width: 7px;
-  height: 7px;
-  border: 1px solid var(--signal);
+  top: 1.35rem;
+  left: -1.6rem;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--signal);
   border-radius: 999px;
   background: var(--bg);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--signal) 75%, transparent);
 }
 
 @media (min-width: 768px) {
-  .journey-list {
+  .journey-rail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-left: 0;
+    column-gap: 1.1rem;
+    row-gap: 2.6rem;
+    padding-left: 0;
   }
 
-  .journey-stop,
-  .journey-stop:last-child {
-    padding: 1.4rem 1.75rem 2rem 0;
-    border-top: 1px solid var(--border);
+  .journey-rail::before {
+    display: none;
   }
 
+  .journey-stop {
+    padding-top: 1.6rem;
+  }
+
+  /* Each stop carries its own piece of rail, so every row gets one. */
   .journey-stop::before {
-    top: -4px;
-    left: 0;
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -0.55rem;
+    right: -0.55rem;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--signal) 80%, transparent),
+      color-mix(in srgb, var(--pulse) 70%, transparent)
+    );
+    box-shadow: 0 0 14px color-mix(in srgb, var(--signal) 50%, transparent);
+  }
+
+  .journey-node {
+    top: 0;
+    left: 1.1rem;
+  }
+
+  /* A pulse of light runs along each piece of rail, like a message in transit. */
+  .journey-stop::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: -0.55rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--signal);
+    box-shadow: 0 0 14px 2px var(--signal);
+    opacity: 0;
+    animation: rail-pulse 5.6s linear infinite;
+    animation-delay: calc(var(--i, 0) * 1.4s);
+  }
+}
+
+@keyframes rail-pulse {
+  0% {
+    left: -0.55rem;
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  21% {
+    opacity: 1;
+  }
+  25%,
+  100% {
+    left: calc(100% + 0.55rem - 8px);
+    opacity: 0;
   }
 }
 
 @media (min-width: 1024px) {
-  .journey-list {
+  .journey-rail {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
@@ -466,8 +987,28 @@ dialog:focus-visible {
     scroll-behavior: auto !important;
   }
 
-  .status-pulse {
+  .status-pulse,
+  .card3d-signal,
+  .scroll-cue-dot {
     animation: none !important;
     opacity: 1;
+  }
+
+  .journey-stop::after {
+    display: none;
+  }
+
+  .skill-ring {
+    animation-play-state: paused;
+  }
+
+  .caret-blink {
+    display: none;
+  }
+
+  html.fx [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

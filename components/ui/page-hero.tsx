@@ -18,7 +18,7 @@ export function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <header className="relative -mt-20 border-b border-border">
+    <header className="no-veil page-hero relative -mt-20 border-b border-border">
       <div
         className={cn(
           "relative mx-auto px-4 pb-12 pt-32 md:pb-14 md:pt-36",

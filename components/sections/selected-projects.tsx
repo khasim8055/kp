@@ -40,11 +40,15 @@ export async function SelectedProjects({ index }: { index?: string }) {
       </div>
 
       <GroupLabel label={t("done")} note={t("doneNote")} />
-      {featured ? <Featured project={featured} /> : null}
+      {featured ? (
+        <div className="mt-4" data-reveal>
+          <Featured project={featured} />
+        </div>
+      ) : null}
       {others.length > 0 ? (
         <ul className="mt-4 grid gap-4 md:grid-cols-3">
-          {others.map((project) => (
-            <li key={project.slug}>
+          {others.map((project, i) => (
+            <li key={project.slug} data-reveal style={{ "--i": i } as React.CSSProperties}>
               <CompactProject project={project} />
             </li>
           ))}
@@ -56,7 +60,7 @@ export async function SelectedProjects({ index }: { index?: string }) {
           <GroupLabel label={t("ongoing")} note={t("ongoingNote")} />
           <ul className="mt-4 grid gap-4">
             {ongoing.map((project) => (
-              <li key={project.slug}>
+              <li key={project.slug} data-reveal>
                 <Experiment project={project} />
               </li>
             ))}
@@ -83,7 +87,7 @@ async function Featured({ project }: { project: Project }) {
   const readouts = project.stats.slice(0, 3).map(splitStat);
 
   return (
-    <Card className="mt-4 p-6 md:p-8">
+    <Card tone="signal" className="p-6 md:p-8">
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-10">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
@@ -124,17 +128,17 @@ async function Featured({ project }: { project: Project }) {
             {project.url && project.linkLabel ? (
               <Button asChild variant="outline">
                 <a href={project.url} target="_blank" rel="noopener noreferrer">
-                  {t(project.linkLabel === "site" ? "visitSite" : "github")}
+                  {t(project.linkLabel)}
                 </a>
               </Button>
             ) : null}
           </div>
         </div>
         {project.slug === "klindok" ? (
-          <figure className="mx-auto w-full max-w-[396px]">
+          <figure className="lift mx-auto w-full max-w-[396px]">
             <Link
               href={`/projects/${project.slug}`}
-              className="block overflow-hidden rounded-[10px] border border-border"
+              className="block overflow-hidden rounded-[12px] border border-border shadow-[0_24px_60px_-28px_rgb(0_0_0/0.9)]"
             >
               <Image
                 src="/media/klindok-fact-check-panel.jpg"
@@ -217,7 +221,7 @@ async function Experiment({ project }: { project: Project }) {
             media={project.media}
             showCaption={false}
             sizes="(min-width: 768px) 440px, 100vw"
-            className="rounded-[10px]"
+            className="lift rounded-[12px]"
           />
         ) : null}
         <div className="min-w-0">

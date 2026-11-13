@@ -9,7 +9,7 @@ export async function ProjectCard({ project }: { project: Project }) {
   const t = await getTranslations("Projects");
 
   return (
-    <li className="h-full">
+    <li className="h-full" data-reveal>
       <Card className="flex h-full flex-col">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           <StatusBadge status={project.status} />

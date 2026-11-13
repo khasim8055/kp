@@ -15,8 +15,8 @@ export async function ResearchWork({ heading = "h3" }: { heading?: "h2" | "h3" }
 
   return (
     <ul className="grid gap-4 md:grid-cols-3">
-      {items.map((item) => (
-        <li key={item.key}>
+      {items.map((item, i) => (
+        <li key={item.key} data-reveal style={{ "--i": i } as React.CSSProperties}>
           <Card className="h-full">
             <StatusBadge status={item.status} />
             <Heading className="mt-3 font-display text-lg font-bold tracking-tight">

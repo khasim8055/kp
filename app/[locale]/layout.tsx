@@ -6,6 +6,8 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { BackToTop } from "@/components/ui/back-to-top";
+import { Effects } from "@/components/ui/effects";
+import { World } from "@/components/world/world";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { routing } from "@/i18n/routing";
 import { resolveLocale } from "@/lib/locale";
@@ -98,6 +100,8 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground antialiased">
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
+            <World />
+            <Effects />
             <ScrollProgress />
             <a
               href="#main"

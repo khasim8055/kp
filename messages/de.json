@@ -7,7 +7,7 @@
       "projects": "Abgeschlossene Projekte und laufende Experimente von Khasim Bin Saleh: klinische Dokumentation ohne Cloud, ein KI-Tutor, ML-Pipelines und ein Begleitroboter. Jedes Projekt zeigt, was gemessen wurde.",
       "research": "Forschung von Khasim Bin Saleh: Datenschutz-Audits synthetischer Gesundheitsdaten mit LLM-Agenten, KI-Agenten in Unternehmen und genaue Lektüre von Papers.",
       "papers": "Paper-Analysen von Khasim Bin Saleh. KI-Papers genau gelesen, mit Methode, wichtigsten Ergebnissen und offenen Fragen.",
-      "experience": "Erfahrung und Ausbildung von Khasim Bin Saleh: wissenschaftlicher Mitarbeiter und MSc-Student an der SRH Berlin, Machine-Learning-Praktikum bei Coschool und ein angemeldetes Patent.",
+      "experience": "Erfahrung und Ausbildung von Khasim Bin Saleh: wissenschaftliche Hilfskraft und MSc-Student an der SRH Berlin sowie Machine-Learning-Praktikum bei Coschool.",
       "contact": "Kontakt zu Khasim Bin Saleh für Stellen, Forschung oder Projekte in Gesundheits-KI, LLM-Evaluation und Robotik.",
       "now": "Woran Khasim Bin Saleh gerade arbeitet."
     }
@@ -38,13 +38,18 @@
     "backToTop": "Nach oben"
   },
   "Hero": {
-    "eyebrow": "KI-INGENIEUR · FORSCHER · BERLIN",
+    "eyebrow": "BERLIN · KI-INGENIEUR · FORSCHER",
     "question": "Können wir dem vertrauen, was KI uns sagt?",
     "line": "Ich baue KI-Systeme für Orte, an denen Fehler zählen, von klinischer Software bis zu Robotern, und ich messe sie, bevor ich ihnen vertraue.",
-    "now": "MSc Informatik (Big Data und KI) an der SRH Berlin. Ich schreibe meine Abschlussarbeit über Datenschutz-Audits synthetischer Gesundheitsdaten.",
     "projects": "Projekte ansehen",
     "research": "Forschung lesen",
-    "contact": "Kontakt aufnehmen"
+    "contact": "Kontakt aufnehmen",
+    "role1": "KI-Ingenieur",
+    "role2": "Forscher",
+    "role3": "Agentische KI",
+    "role4": "Gesundheits-KI",
+    "role5": "Robotik",
+    "scroll": "SCROLLEN"
   },
   "Figure": {
     "title": "Abb. 1 · Abstand zum nächsten Datensatz",
@@ -62,7 +67,7 @@
   "About": {
     "eyebrow": "ÜBER MICH",
     "title": "Vom IoT-Basteln zu vertrauenswürdiger KI",
-    "p1": "Ich habe mit einem B.Tech in Informatik an der Lovely Professional University begonnen, mit Schwerpunkt IoT. 2023 wurde ich Mit-Erfinder eines Patents für einen internetgesteuerten Futterspender für Haustiere.",
+    "p1": "Ich habe mit einem B.Tech in Informatik an der Lovely Professional University begonnen, mit Schwerpunkt IoT.",
     "p2": "Bei Coschool habe ich einen KI-Tutor gebaut, der 1.000+ Beta-Nutzer erreicht hat. Dabei habe ich gelernt: ein Modell ist nur so gut wie die Art, wie man es testet.",
     "p3": "Für einen MSc in Informatik mit Schwerpunkt Big Data und KI bin ich nach Berlin gezogen. Hier habe ich Klindok gebaut, eine Software ohne Cloud, die klinische Briefe entwirft und jede Angabe darin prüft. Jetzt schreibe ich meine Abschlussarbeit über Datenschutz-Audits synthetischer Gesundheitsdaten.",
     "p4": "Daneben arbeite ich an der KI-Seite von Kiko, einem Begleitroboter. Ich möchte verstehen, was sich ändert, wenn ein Modell den Bildschirm verlässt.",
@@ -82,10 +87,6 @@
       "languages": {
         "label": "Sprachen",
         "value": "Hindi (Muttersprache), Englisch (C1), Deutsch (B1, lerne ich)"
-      },
-      "patent": {
-        "label": "Patent",
-        "value": "Miterfinder. Anmeldung Nr. 202311073080, eingereicht im Oktober 2023."
       }
     }
   },
@@ -100,12 +101,6 @@
         "title": "B.Tech CSE begonnen",
         "body": "IoT-Schwerpunkt an der Lovely Professional University.",
         "tag": "Studium"
-      },
-      "patent": {
-        "year": "2023",
-        "title": "Mit-Erfinder eines IoT-Patents",
-        "body": "Ein internetgesteuerter Futterspender für Haustiere. Eingereicht im Oktober 2023.",
-        "tag": "Patent"
       },
       "coschool": {
         "year": "2023",
@@ -240,7 +235,6 @@
     "readCase": "Fallstudie lesen",
     "readMore": "Mehr über {title}",
     "site": "Seite",
-    "visitSite": "Seite öffnen",
     "github": "GitHub",
     "klindokSerif": "KI, die Patientendaten nirgends hinsendet.",
     "klindokShotAlt": "Die Faktenprüfung von Klindok. Ein Fehler blockiert die Freigabe: Ein Blutdruckwert steht im Entwurf, aber nicht in der Eingabe der Ärztin.",
@@ -289,9 +283,7 @@
     "title": "Werdegang",
     "range": "{start} bis {end}",
     "educationEyebrow": "// ausbildung",
-    "educationTitle": "Ausbildung",
-    "patentEyebrow": "patent",
-    "patentTitle": "Patent"
+    "educationTitle": "Ausbildung"
   },
   "Contact": {
     "eyebrow": "KONTAKT",

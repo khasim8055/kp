@@ -35,7 +35,7 @@ Rewrite the case studies. Each file is marked `DRAFT: Khasim to review`.
 
 ## Cinematic redesign
 
-- [ ] Home About story copy (`About.p1` to `About.p3` in `messages/en.json` and `messages/de.json`): marked `DRAFT: Khasim to review`. Facts only from the CV path (LPU IoT, patent 2023, Coschool tutor, Germany MSc, Klindok, synthetic health data thesis). Rewrite after review.
+- [ ] Home About story copy (`About.p1` to `About.p3` in `messages/en.json` and `messages/de.json`): marked `DRAFT: Khasim to review`. Facts only from the CV path (LPU IoT, Coschool tutor, Germany MSc, Klindok, synthetic health data thesis). Rewrite after review.
 - [ ] Home Research core question copy (`ResearchHome.coreP1` to `coreP3`): marked `DRAFT: Khasim to review`. Links thesis, Klindok offline data, and agent survey/pattern work only. Rewrite after review.
 - [ ] Home Skills levels in `data/skills.ts`: set `level` and `usedInKey` for every skill still marked `TODO`. Already proven and filled: RAG, GPT fine-tuning with guardrails, Milvus (production at Coschool); XGBoost, scikit-learn, pytest, Docker (project in Predictive Maintenance); ROS 2 and Robotics (studying). Pending: PyTorch, TensorFlow, Hugging Face Transformers, LangChain, OpenAI, OpenRouter, Gemini, Azure Document Intelligence, prompt engineering, real-time speech (Deepgram STT, TTS), evaluation harnesses, rubric-based LLM scoring, evidence-based model and prompt selection, statistical testing (Diebold Mariano, Friedman), time-series forecasting, ensemble methods, OpenCV, YOLO, ArUco marker tracking, real-time object detection, Python, SQL, CUDA, LaTeX, Git/GitHub, Linux (Ubuntu), Postgres, Prisma, FastAPI, Streamlit, React, Power BI.
 - [ ] `data/tracks.ts`: progress for Robotics and ROS 2, Computer Vision, and German B1 is `TODO`. Fill real progress later. Do not invent percentages.
@@ -58,3 +58,10 @@ Copy written during the redesign. Each item is marked `DRAFT: Khasim to review` 
 - [ ] German: new strings were written to match the existing informal voice. Read them once as a native reader would.
 - [ ] `data/skills.ts`: skills still marked `TODO` now appear under "Also worked with", without a level. Set a level only where a project on the site backs it up.
 - [ ] `public/profile*.jpg` are not used anywhere on the site. Delete them, or add the portrait where you want it.
+
+## Agent world redesign (November 2026)
+
+- [x] The patent is no longer mentioned anywhere on the site (home, experience, journey, metadata, both languages).
+- [x] Klindok has no external website link. It is shown as a finished project with its case study.
+- [ ] Hero role line (`Hero.role1` to `Hero.role5` in both message files): AI Engineer, Researcher, Agentic AI, Healthcare AI, Robotics. Change the list if you want different words typed.
+- [ ] Try the site on your own phone once it is live. The 3D background is built to switch itself off on slow devices, but only a real phone shows how it feels.

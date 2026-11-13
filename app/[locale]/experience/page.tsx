@@ -4,7 +4,6 @@ import { Timeline } from "@/components/sections/timeline";
 import { Card } from "@/components/ui/card";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { PageHero } from "@/components/ui/page-hero";
-import { achievements } from "@/data/achievements";
 import { education, experience } from "@/data/experience";
 import { resolveLocale } from "@/lib/locale";
 import { plainEyebrow } from "@/lib/plain-eyebrow";
@@ -28,7 +27,6 @@ export default async function ExperiencePage({ params }: Props) {
   await resolveLocale(params);
   const t = await getTranslations("Experience");
   const journey = await getTranslations("Journey");
-  const about = await getTranslations("About");
 
   return (
     <>
@@ -66,20 +64,6 @@ export default async function ExperiencePage({ params }: Props) {
               ))}
             </Spine>
           </div>
-        </section>
-        <section className="mt-16" aria-labelledby="patent-title">
-          <Eyebrow>{t("patentEyebrow")}</Eyebrow>
-          <h2 id="patent-title" className="mt-3 font-display text-3xl font-bold tracking-tight">
-            {t("patentTitle")}
-          </h2>
-          <Card className="mt-8">
-            <h3 className="font-display text-xl font-bold tracking-tight text-pretty">
-              {achievements.patent.title}
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
-              {about("facts.patent.value")}
-            </p>
-          </Card>
         </section>
       </div>
     </>

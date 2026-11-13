@@ -19,10 +19,13 @@ export async function ContactCta({
   return (
     <section
       id="contact"
-      className="border-t border-border"
+      className="contact-band border-t border-border"
       aria-labelledby="contact-title"
     >
-      <div className="mx-auto flex w-full min-w-0 max-w-[920px] flex-col items-center px-4 py-16 text-center sm:py-20 md:py-28">
+      <div
+        className="mx-auto flex w-full min-w-0 max-w-[920px] flex-col items-center px-4 py-16 text-center sm:py-20 md:py-28"
+        data-reveal
+      >
         <Eyebrow index={index}>{t("eyebrow")}</Eyebrow>
         <Heading
           id="contact-title"

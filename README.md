@@ -39,14 +39,23 @@ Papers have no schedule. A breakdown appears on the site when its `date` is set,
 - `media` is optional: one real recording or screenshot from `public/media/`. Set `loop: true` only for short silent clips. Long videos get player controls and load nothing until play is pressed. Encode video as H.264 MP4 so it plays in every browser.
 - Use these headings in the body: Problem, Approach, Implementation, What I measured, Current status, What I learned.
 
-## The hero figure
+## The 3D layer
 
-The figure on the home page and on `/research` is drawn twice from the same seeded data in `lib/audit-field.ts`:
+Everything 3D is built without a library and switches itself off where it would hurt.
 
-- `components/figure/audit-figure.tsx` renders it as a static SVG on the server. This is what loads first, and what stays without WebGL or with reduced motion.
-- `components/figure/audit-canvas.tsx` is the WebGL layer. It has no dependencies, loads after the page is idle, and only runs while it is on screen.
+- **The world** (`components/world/`): the background on every page. A grid floor, agents that float above it and pulses of light that travel between them. `world.tsx` renders a CSS-only floor first, `world-live.tsx` loads the WebGL scene once the page is idle, `world-canvas.tsx` draws it. The camera moves forward as the page scrolls.
+- **The figure** (`components/figure/`): the 3D scatter plot in the Research section and on `/research`. It is drawn twice from the same seeded data in `lib/audit-field.ts`: as a static SVG on the server, and as a WebGL layer on top. The points are illustrative and the caption says so. Do not replace them with real study data without changing the caption.
+- **Cards** (`components/ui/card.tsx`, `components/ui/effects.tsx`): every `Card` tilts toward the pointer and has a glow that follows it. `Effects` also fades sections in as they scroll into view (`data-reveal`).
+- **Skills sphere** (`components/sections/skill-sphere.tsx`): a turning sphere of skill names. Decoration only, the same skills are listed next to it.
 
-The points are illustrative and the caption says so. Do not replace them with real study data without changing the caption.
+Fallbacks, so nothing depends on 3D:
+
+- No WebGL: the CSS floor and the SVG figure stay.
+- Reduced motion: one still frame of the world, no typing, no tilt, no reveal animation.
+- Slow device: both scenes measure their own frame rate. Under about 20 frames a second they stop for good and the static version stays (`createFrameGuard` in `lib/webgl.ts`).
+- Touch devices: no tilt, and the world runs at 30 frames a second with fewer agents.
+
+Text sits on a veil over the world (`main > section` and friends in `app/globals.css`). Reading pages use a stronger veil than card sections. If text gets hard to read, raise the percentages there.
 
 ## Removed pages
 

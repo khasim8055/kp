@@ -7,7 +7,7 @@
       "projects": "Finished projects and ongoing experiments by Khasim Bin Saleh: offline clinical documentation, an AI tutor, ML pipelines and a companion robot. Each one says what was measured.",
       "research": "Research by Khasim Bin Saleh: privacy audits of synthetic health data with LLM agents, enterprise AI agents, and close readings of papers.",
       "papers": "Paper breakdowns by Khasim Bin Saleh. Close readings of AI papers with the method, the key results, and what I would question.",
-      "experience": "Experience and education of Khasim Bin Saleh: research assistant and MSc student at SRH Berlin, machine learning intern at Coschool, and a filed patent.",
+      "experience": "Experience and education of Khasim Bin Saleh: research assistant and MSc student at SRH Berlin, and machine learning intern at Coschool.",
       "contact": "Get in touch with Khasim Bin Saleh about roles, research or projects in healthcare AI, LLM evaluation and robotics.",
       "now": "What Khasim Bin Saleh is working on right now."
     }
@@ -38,13 +38,18 @@
     "backToTop": "Back to top"
   },
   "Hero": {
-    "eyebrow": "AI ENGINEER · RESEARCHER · BERLIN",
+    "eyebrow": "BERLIN · AI ENGINEER · RESEARCHER",
     "question": "Can we trust what AI tells us?",
     "line": "I build AI systems for places where mistakes matter, from clinical software to robots, and I measure them before I trust them.",
-    "now": "MSc Computer Science (Big Data and AI) at SRH Berlin. Writing my thesis on privacy audits of synthetic health data.",
     "projects": "See projects",
     "research": "Read the research",
-    "contact": "Get in touch"
+    "contact": "Get in touch",
+    "role1": "AI Engineer",
+    "role2": "Researcher",
+    "role3": "Agentic AI",
+    "role4": "Healthcare AI",
+    "role5": "Robotics",
+    "scroll": "SCROLL"
   },
   "Figure": {
     "title": "Fig. 1 · Distance to the closest record",
@@ -62,7 +67,7 @@
   "About": {
     "eyebrow": "ABOUT",
     "title": "From IoT tinkering to trustworthy AI",
-    "p1": "I started with a B.Tech in Computer Science at Lovely Professional University, with a specialisation in IoT. In 2023 I became a co-inventor on a patent for an internet controlled pet food dispenser.",
+    "p1": "I started with a B.Tech in Computer Science at Lovely Professional University, with a specialisation in IoT.",
     "p2": "At Coschool I built an AI tutor that reached 1,000+ beta users. That work taught me a model is only as good as how you test it.",
     "p3": "I moved to Berlin for an MSc in Computer Science with a focus on Big Data and AI. Here I built Klindok, offline software that drafts clinical letters and checks every fact in them. Now I am writing my thesis on privacy audits of synthetic health data.",
     "p4": "Alongside that I work on the AI side of Kiko, a companion robot, because I want to understand what changes when a model leaves the screen.",
@@ -82,10 +87,6 @@
       "languages": {
         "label": "Languages",
         "value": "Hindi (native), English (C1), German (B1, learning)"
-      },
-      "patent": {
-        "label": "Patent",
-        "value": "Co-inventor. Application no. 202311073080, filed October 2023."
       }
     }
   },
@@ -100,12 +101,6 @@
         "title": "Started B.Tech CSE",
         "body": "IoT specialisation at Lovely Professional University.",
         "tag": "Education"
-      },
-      "patent": {
-        "year": "2023",
-        "title": "Co-inventor on an IoT patent",
-        "body": "An internet controlled pet food dispenser. Filed in October 2023.",
-        "tag": "Patent"
       },
       "coschool": {
         "year": "2023",
@@ -240,7 +235,6 @@
     "readCase": "Read the case study",
     "readMore": "More about {title}",
     "site": "Site",
-    "visitSite": "Visit site",
     "github": "GitHub",
     "klindokSerif": "AI that never sends patient data anywhere.",
     "klindokShotAlt": "Klindok's fact check panel. One error blocks the release: a blood pressure value appears in the draft but not in the doctor's input.",
@@ -289,9 +283,7 @@
     "title": "Experience",
     "range": "{start} to {end}",
     "educationEyebrow": "// education",
-    "educationTitle": "Education",
-    "patentEyebrow": "patent",
-    "patentTitle": "Patent"
+    "educationTitle": "Education"
   },
   "Contact": {
     "eyebrow": "CONTACT",

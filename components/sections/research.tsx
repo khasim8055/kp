@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { AuditFigure } from "@/components/figure/audit-figure";
 import { PaperList } from "@/components/research/paper-list";
 import { ResearchWork } from "@/components/research/research-work";
 import { Button } from "@/components/ui/button";
@@ -17,15 +18,20 @@ export async function Research({ index }: { index?: string }) {
         eyebrow={t("eyebrow")}
         title={t("title")}
       />
-      <div className="mt-10 border-l-2 border-signal pl-5 md:pl-7">
-        <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink">
-          {t("coreEyebrow")}
-        </p>
-        {/* DRAFT: Khasim to review */}
-        <p className="type-serif mt-3 max-w-[820px] text-balance">{t("question")}</p>
-        <div className="mt-4 max-w-[720px] space-y-3 leading-relaxed text-muted">
-          <p>{t("coreP1")}</p>
-          <p>{t("coreP2")}</p>
+      <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:gap-12">
+        <div className="border-l-2 border-signal pl-5 md:pl-7" data-reveal>
+          <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-signal-ink">
+            {t("coreEyebrow")}
+          </p>
+          {/* DRAFT: Khasim to review */}
+          <p className="type-serif mt-3 text-balance">{t("question")}</p>
+          <div className="mt-4 max-w-[620px] space-y-3 leading-relaxed text-muted">
+            <p>{t("coreP1")}</p>
+            <p>{t("coreP2")}</p>
+          </div>
+        </div>
+        <div data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+          <AuditFigure className="mx-auto w-full max-w-[440px]" />
         </div>
       </div>
       <div className="mt-10">
