@@ -297,18 +297,15 @@
       "healthcare": "Healthcare AI",
       "agents": "Agents",
       "robotics": "Robotics"
-    }
+    },
+    "linkedinLine": "Message me here",
+    "githubLine": "The code behind the projects",
+    "newTab": "(opens in a new tab)"
   },
   "Footer": {
     "updated": "Last updated {date}",
     "nav": "Footer",
-    "rss": "RSS",
-    "built": "Designed and built by Khasim",
-    "site": "Site",
-    "notes": "Notes",
-    "elsewhere": "Elsewhere",
-    "linkedin": "LinkedIn",
-    "github": "GitHub"
+    "rss": "RSS"
   },
   "Now": {
     "title": "Now",

@@ -1,8 +1,7 @@
 import { getTranslations } from "next-intl/server";
-import { Button } from "@/components/ui/button";
+import { ContactNodes } from "@/components/contact/contact-nodes";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Tag } from "@/components/ui/tag";
-import { profile } from "@/data/profile";
 
 const interestKeys = ["llmEval", "healthcare", "agents", "robotics"] as const;
 
@@ -41,18 +40,7 @@ export async function ContactCta({
             </li>
           ))}
         </ul>
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <Button asChild>
-            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-              {t("linkedin")}
-            </a>
-          </Button>
-          <Button asChild variant="outline">
-            <a href={profile.github} target="_blank" rel="noopener noreferrer">
-              {t("github")}
-            </a>
-          </Button>
-        </div>
+        <ContactNodes size="lg" className="mt-12" />
         <p className="mt-8 font-mono text-[12px] uppercase tracking-[0.2em] text-muted">
           {t("based")}
         </p>

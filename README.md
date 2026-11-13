@@ -47,6 +47,7 @@ Everything 3D is built without a library and switches itself off where it would 
 - **The figure** (`components/figure/`): the 3D scatter plot in the Research section and on `/research`. It is drawn twice from the same seeded data in `lib/audit-field.ts`: as a static SVG on the server, and as a WebGL layer on top. The points are illustrative and the caption says so. Do not replace them with real study data without changing the caption.
 - **Cards** (`components/ui/card.tsx`, `components/ui/effects.tsx`): every `Card` tilts toward the pointer and has a glow that follows it. `Effects` also fades sections in as they scroll into view (`data-reveal`).
 - **Skills sphere** (`components/sections/skill-sphere.tsx`): a turning sphere of skill names. Decoration only, the same skills are listed next to it.
+- **Contact nodes** (`components/contact/`): LinkedIn and GitHub as two floating agents. Each has a turning wire cage (`node-cage.tsx`, a small 2D canvas), the official mark as its core, a tether to a landing ring, and a pulse travelling between the two. They are plain links and work without JavaScript. They sit in the Contact section, and in the footer on every page that has no Contact section (one CSS rule in `globals.css` decides).
 
 Fallbacks, so nothing depends on 3D:
 
@@ -54,6 +55,8 @@ Fallbacks, so nothing depends on 3D:
 - Reduced motion: one still frame of the world, no typing, no tilt, no reveal animation.
 - Slow device: both scenes measure their own frame rate. Under about 20 frames a second they stop for good and the static version stays (`createFrameGuard` in `lib/webgl.ts`).
 - Touch devices: no tilt, and the world runs at 30 frames a second with fewer agents.
+
+The LinkedIn and GitHub marks come from `@fortawesome/free-brands-svg-icons` (Font Awesome Free, icons under CC BY 4.0) and are drawn by `components/ui/brand-icon.tsx`. The marks belong to LinkedIn and GitHub and are only used to link to the matching profile. To add another profile, import its icon there and add an entry in `contact-nodes.tsx`.
 
 Text sits on a veil over the world (`main > section` and friends in `app/globals.css`). Reading pages use a stronger veil than card sections. If text gets hard to read, raise the percentages there.
 

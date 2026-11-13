@@ -249,8 +249,22 @@ main > article {
   }
 }
 
-footer {
+/* Footer: a slim line of links. On pages without the contact section it
+   opens with the two contact nodes, so every page ends on them. */
+.footer-line {
   background: color-mix(in srgb, var(--bg) 92%, transparent);
+}
+
+.footer-dock {
+  background: radial-gradient(
+    ellipse 60% 90% at 50% 50%,
+    color-mix(in srgb, var(--bg) 80%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 48%, transparent) 100%
+  );
+}
+
+body:has(#contact) .footer-dock {
+  display: none;
 }
 
 .hero-vignette {
@@ -790,6 +804,248 @@ main > section.contact-band::before {
   content: none;
 }
 
+/* Contact nodes: LinkedIn and GitHub as two agents of the world. Each floats
+   above the floor in a turning wire cage, tied to its landing ring, and a
+   pulse travels between the two. */
+.nodes {
+  --stage: clamp(104px, 28vw, 132px);
+  --gap: clamp(1rem, 7vw, 4.5rem);
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap);
+  width: min(100%, 520px);
+  margin-inline: auto;
+}
+
+.nodes-lg {
+  --stage: clamp(128px, 36vw, 190px);
+  width: min(100%, 600px);
+}
+
+.node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  color: var(--pulse);
+  text-align: center;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.node-github {
+  color: var(--text);
+}
+
+.node:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 10px;
+}
+
+.node-stage {
+  position: relative;
+  width: var(--stage);
+  height: var(--stage);
+  transform: perspective(700px) rotateX(calc(var(--rx, 0deg) * 2.4)) rotateY(calc(var(--ry, 0deg) * 2.4));
+  transform-style: preserve-3d;
+  transition: transform 300ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.node[data-tilting] .node-stage {
+  transition-duration: 90ms;
+}
+
+/* The cage is drawn larger than its box, so it has room to turn. */
+.node-cage {
+  position: absolute;
+  inset: -19%;
+  width: 138%;
+  height: 138%;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.node-cage[data-ready] {
+  opacity: 1;
+}
+
+/* The core: a lit disc that carries the official mark. */
+.node-core {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  width: 44%;
+  height: 44%;
+  margin: auto;
+  place-items: center;
+  border-radius: 999px;
+  background: radial-gradient(circle at 34% 28%, #ffffff 0%, #eef1f8 62%, #d9deea 100%);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.55),
+    0 0 26px 2px color-mix(in srgb, currentColor 50%, transparent),
+    0 14px 30px -10px rgb(0 0 0 / 0.6);
+  transform: translateZ(34px);
+  animation: node-float 5.2s ease-in-out infinite;
+  transition: box-shadow 260ms ease;
+}
+
+.node-github .node-core {
+  animation-delay: -2.6s;
+}
+
+.node-icon {
+  width: 56%;
+  height: 56%;
+}
+
+.node-linkedin .node-icon {
+  color: #0a66c2;
+}
+
+.node-github .node-icon {
+  color: #181717;
+}
+
+@keyframes node-float {
+  0%,
+  100% {
+    transform: translate3d(0, 3px, 34px);
+  }
+  50% {
+    transform: translate3d(0, -5px, 34px);
+  }
+}
+
+.node-tether {
+  width: 1px;
+  height: calc(var(--stage) * 0.2);
+  margin-top: calc(var(--stage) * 0.04);
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, currentColor 75%, transparent));
+}
+
+/* The landing ring on the floor, seen at an angle, with a ripple. */
+.node-floor {
+  position: relative;
+  width: calc(var(--stage) * 0.62);
+  height: calc(var(--stage) * 0.15);
+  border: 1px solid color-mix(in srgb, currentColor 46%, transparent);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, color-mix(in srgb, currentColor 18%, transparent), transparent 70%);
+}
+
+.node-floor::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1px solid var(--pass);
+  border-radius: 50%;
+  opacity: 0;
+  animation: node-ripple 3.4s ease-out infinite;
+}
+
+.node-github .node-floor::after {
+  animation-delay: -1.7s;
+}
+
+@keyframes node-ripple {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.6);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+
+.node-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.9rem;
+  color: var(--text);
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.nodes-lg .node-name {
+  font-size: 1.3rem;
+}
+
+.node-arrow {
+  width: 1em;
+  height: 1em;
+  color: var(--signal-ink);
+  transition: transform 220ms ease;
+}
+
+.node-line {
+  margin-top: 0.2rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* The line between the two cages, with a pulse going back and forth. */
+.nodes-link {
+  position: absolute;
+  top: calc(var(--stage) / 2);
+  right: calc(25% - var(--gap) / 4 + var(--stage) * 0.6);
+  left: calc(25% - var(--gap) / 4 + var(--stage) * 0.6);
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--pulse) 60%, transparent),
+    color-mix(in srgb, var(--pulse) 18%, transparent) 50%,
+    color-mix(in srgb, var(--text) 50%, transparent)
+  );
+  pointer-events: none;
+}
+
+.nodes-pulse {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  border-radius: 999px;
+  background: var(--signal);
+  box-shadow: 0 0 12px 2px var(--signal);
+  animation: nodes-pulse 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes nodes-pulse {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .node:hover .node-core {
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 0.8),
+      0 0 44px 8px color-mix(in srgb, currentColor 70%, transparent),
+      0 18px 34px -10px rgb(0 0 0 / 0.6);
+  }
+
+  .node:hover .node-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  .node:hover .node-floor::after {
+    animation-duration: 1.5s;
+  }
+}
+
 /* Journey: a glowing rail with a pulse running along it. One column on
    phones, four across on desktop. Each stop hangs from the rail by a node. */
 .journey-rail {
@@ -996,6 +1252,20 @@ dialog:focus-visible {
 
   .journey-stop::after {
     display: none;
+  }
+
+  .node-core,
+  .nodes-pulse,
+  .node-floor::after {
+    animation: none;
+  }
+
+  .node-core {
+    transform: translateZ(34px);
+  }
+
+  .nodes-pulse {
+    left: 50%;
   }
 
   .skill-ring {

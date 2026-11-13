@@ -47,18 +47,21 @@ export function linkProgram(gl: WebGLRenderingContext, vs: string, fs: string) {
  * `tick` returns true once and the scene should stop for good and leave its
  * static fallback in place.
  *
- * A long gap is a pause, not a slow frame: the scene left the screen or the
- * tab went to the background. The count then starts again. Call `resume`
- * whenever the frame loop restarts.
+ * One long gap is a pause, not a slow frame: the scene left the screen or the
+ * tab went to the background. The count then starts again. Four long gaps in
+ * a row are not a pause: the device cannot keep up at all, and the scene
+ * stops too. Call `resume` whenever the frame loop restarts.
  */
 export function createFrameGuard(slowFrameMs = 50) {
   let done = false;
   let count = 0;
   let sum = 0;
   let prev = 0;
+  let stalls = 0;
   return {
     resume() {
       prev = 0;
+      stalls = 0;
     },
     tick(now: number) {
       if (done) return false;
@@ -68,8 +71,12 @@ export function createFrameGuard(slowFrameMs = 50) {
       if (delta > 250) {
         count = 0;
         sum = 0;
-        return false;
+        stalls += 1;
+        if (stalls < 4) return false;
+        done = true;
+        return true;
       }
+      stalls = 0;
       count += 1;
       // The first frames include shader compilation, so they are not counted.
       if (count <= 3) return false;

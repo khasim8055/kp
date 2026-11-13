@@ -1,20 +1,19 @@
 import { getLocale, getTranslations } from "next-intl/server";
+import { ContactNodes } from "@/components/contact/contact-nodes";
 import { Link } from "@/i18n/navigation";
-import { profile } from "@/data/profile";
 
-const siteLinks = [
-  { href: "/", key: "home" },
-  { href: "/projects", key: "projects" },
-  { href: "/research", key: "research" },
+// Only the pages the top navigation cannot reach.
+const links = [
   { href: "/experience", key: "experience" },
-  { href: "/contact", key: "contact" },
-] as const;
-
-const noteLinks = [
   { href: "/papers", key: "papers" },
   { href: "/now", key: "now" },
 ] as const;
 
+/**
+ * One slim line of links. On pages that do not have the contact section,
+ * the footer opens with the LinkedIn and GitHub nodes, so every page ends
+ * on them. `globals.css` hides that dock where the section is present.
+ */
 export async function SiteFooter() {
   const t = await getTranslations("Footer");
   const nav = await getTranslations("Nav");
@@ -26,82 +25,35 @@ export async function SiteFooter() {
   }).format(new Date());
 
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto max-w-[1100px] px-4 py-12 md:py-14">
-        <div className="flex flex-col gap-10 md:flex-row md:justify-between">
-          <Link
-            href="/"
-            className="font-display self-start text-2xl font-bold tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--signal)]"
-            aria-label={`KS · ${nav("home")}`}
-          >
-            KS
-          </Link>
-          <nav aria-label={t("nav")} className="grid flex-1 grid-cols-2 gap-8 sm:grid-cols-3 md:max-w-[640px]">
-            <FooterColumn title={t("site")}>
-              {siteLinks.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="hover:text-foreground">
-                    {nav(item.key)}
-                  </Link>
-                </li>
-              ))}
-            </FooterColumn>
-            <FooterColumn title={t("notes")}>
-              {noteLinks.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="hover:text-foreground">
-                    {nav(item.key)}
-                  </Link>
-                </li>
-              ))}
-            </FooterColumn>
-            <FooterColumn title={t("elsewhere")}>
-              <li>
-                <a
-                  href={profile.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-foreground"
-                >
-                  {t("linkedin")}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={profile.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-foreground"
-                >
-                  {t("github")}
-                </a>
-              </li>
-            </FooterColumn>
-          </nav>
+    <footer>
+      <div className="footer-dock border-t border-border">
+        <div className="mx-auto max-w-[1100px] px-4 py-12 md:py-14">
+          <ContactNodes />
         </div>
-        <div className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border pt-6 font-mono text-[12px] uppercase tracking-[0.14em] text-muted">
-          <p>{t("updated", { date: updated })}</p>
-          <a href="/rss.xml" className="hover:text-foreground">
-            {t("rss")}
-          </a>
-          <p>{t("built")}</p>
+      </div>
+      <div className="footer-line border-t border-border">
+        <div className="mx-auto flex max-w-[1100px] flex-col gap-3 px-4 py-6 sm:flex-row sm:items-center sm:justify-between">
+          <nav aria-label={t("nav")}>
+            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
+              {links.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="hover:text-foreground">
+                    {nav(item.key)}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <a href="/rss.xml" className="hover:text-foreground">
+                  {t("rss")}
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-muted">
+            {t("updated", { date: updated })}
+          </p>
         </div>
       </div>
     </footer>
-  );
-}
-
-function FooterColumn({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-signal-ink">{title}</p>
-      <ul className="mt-3 space-y-2 text-sm text-muted">{children}</ul>
-    </div>
   );
 }

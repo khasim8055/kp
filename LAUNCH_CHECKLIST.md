@@ -65,3 +65,9 @@ Copy written during the redesign. Each item is marked `DRAFT: Khasim to review` 
 - [x] Klindok has no external website link. It is shown as a finished project with its case study.
 - [ ] Hero role line (`Hero.role1` to `Hero.role5` in both message files): AI Engineer, Researcher, Agentic AI, Healthcare AI, Robotics. Change the list if you want different words typed.
 - [ ] Try the site on your own phone once it is live. The 3D background is built to switch itself off on slow devices, but only a real phone shows how it feels.
+
+## Contact nodes and slim footer (November 2026)
+
+- [x] Footer is one line: Experience, Papers, Now, RSS and the last-updated date. Everything the top navigation already covers is gone (KS mark, Home, Projects, Research, Contact, the column headings), and so is the credit line.
+- [x] LinkedIn and GitHub are shown as two 3D nodes with their official marks, in the Contact section and at the end of every other page.
+- [ ] Node texts (`Contact.linkedinLine`, `Contact.githubLine` in both message files): "Message me here" and "The code behind the projects". Change them if you want different words.
