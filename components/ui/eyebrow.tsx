@@ -2,9 +2,11 @@ import { cn } from "@/lib/utils";
 
 export function Eyebrow({
   children,
+  index,
   className,
 }: {
   children: React.ReactNode;
+  index?: string;
   className?: string;
 }) {
   return (
@@ -14,7 +16,13 @@ export function Eyebrow({
         className,
       )}
     >
-      <span className="inline-block h-1.5 w-1.5 shrink-0 bg-signal" aria-hidden />
+      {index ? (
+        <span className="text-muted" aria-hidden>
+          {index}
+        </span>
+      ) : (
+        <span className="inline-block h-1.5 w-1.5 shrink-0 bg-signal" aria-hidden />
+      )}
       {children}
     </p>
   );

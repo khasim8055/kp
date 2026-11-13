@@ -1,25 +1,34 @@
 import { getTranslations } from "next-intl/server";
-import { GlowSpine } from "@/components/sections/glow-spine";
+import { Spine, SpineItem } from "@/components/sections/spine";
 import { Timeline } from "@/components/sections/timeline";
+import { Card } from "@/components/ui/card";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { GlowCard } from "@/components/ui/glow-card";
 import { PageHero } from "@/components/ui/page-hero";
-import { plainEyebrow } from "@/lib/plain-eyebrow";
+import { achievements } from "@/data/achievements";
 import { education, experience } from "@/data/experience";
 import { resolveLocale } from "@/lib/locale";
+import { plainEyebrow } from "@/lib/plain-eyebrow";
+import { pageMeta } from "@/lib/seo";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props) {
   const locale = await resolveLocale(params);
-  const t = await getTranslations({ locale, namespace: "Nav" });
-  return { title: t("experience") };
+  const nav = await getTranslations({ locale, namespace: "Nav" });
+  const meta = await getTranslations({ locale, namespace: "Meta" });
+  return pageMeta({
+    locale,
+    path: "/experience",
+    title: nav("experience"),
+    description: meta("pages.experience"),
+  });
 }
 
 export default async function ExperiencePage({ params }: Props) {
   await resolveLocale(params);
   const t = await getTranslations("Experience");
   const journey = await getTranslations("Journey");
+  const about = await getTranslations("About");
 
   return (
     <>
@@ -31,7 +40,7 @@ export default async function ExperiencePage({ params }: Props) {
       />
       <div className="mx-auto max-w-[760px] px-4 py-14 md:py-16">
         <Timeline items={experience} />
-        <section className="mt-16">
+        <section className="mt-16" aria-labelledby="education-title">
           <Eyebrow>{plainEyebrow(t("educationEyebrow"))}</Eyebrow>
           <h2
             id="education-title"
@@ -40,33 +49,37 @@ export default async function ExperiencePage({ params }: Props) {
             {t("educationTitle")}
           </h2>
           <div className="mt-8">
-            <GlowSpine>
+            <Spine>
               {education.map((item) => (
-                <li
-                  key={`${item.school}-${item.start}`}
-                  className="relative pl-8"
-                >
-                  <span
-                    className="absolute left-[3px] top-6 h-2 w-2 -translate-x-1/2 rounded-full bg-signal shadow-[0_0_8px_var(--signal)]"
-                    aria-hidden
-                  />
-                  <GlowCard>
+                <SpineItem key={`${item.school}-${item.start}`}>
+                  <Card>
                     <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-signal-ink">
-                      {t("range", { start: item.start, end: item.end })} ·{" "}
-                      {item.location}
+                      {t("range", { start: item.start, end: item.end })} · {item.location}
                     </p>
                     <h3 className="mt-2 font-display text-2xl font-bold tracking-tight">
                       {item.program}
                     </h3>
                     <p className="mt-1 text-sm text-muted">{item.school}</p>
-                    <p className="mt-4 text-sm leading-relaxed">
-                      {item.detail}
-                    </p>
-                  </GlowCard>
-                </li>
+                    <p className="mt-4 text-sm leading-relaxed">{item.detail}</p>
+                  </Card>
+                </SpineItem>
               ))}
-            </GlowSpine>
+            </Spine>
           </div>
+        </section>
+        <section className="mt-16" aria-labelledby="patent-title">
+          <Eyebrow>{t("patentEyebrow")}</Eyebrow>
+          <h2 id="patent-title" className="mt-3 font-display text-3xl font-bold tracking-tight">
+            {t("patentTitle")}
+          </h2>
+          <Card className="mt-8">
+            <h3 className="font-display text-xl font-bold tracking-tight text-pretty">
+              {achievements.patent.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              {about("facts.patent.value")}
+            </p>
+          </Card>
         </section>
       </div>
     </>

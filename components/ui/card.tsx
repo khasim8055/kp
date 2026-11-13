@@ -7,5 +7,14 @@ export function Card({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <div className={cn("lab-card p-5", className)}>{children}</div>;
+  return (
+    <div
+      className={cn(
+        "rounded-[14px] border border-border bg-surface p-5",
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
 }

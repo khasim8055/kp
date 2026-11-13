@@ -2,14 +2,16 @@
 title: Predictive Maintenance Pipeline
 slug: predictive-maintenance
 date: "2025-07"
+status: done
 url: https://github.com/khasim8055/predictive-ml-pipeline
 linkLabel: github
-summary: 22 derived features from 8 sensor streams, 5 models compared on F1 under class imbalance, 14 pytest tests, and a one-command Docker setup.
+summary: An end-to-end pipeline that predicts machine failures from sensor data. Five classifiers compared on F1 because failures are the rare class, with the full results table published, including the weak spots.
 stats:
-  - "22 features"
-  - "5 models"
+  - "5 models compared"
+  - "0.40 best F1"
   - "14 pytest tests"
 stack:
+  - scikit-learn
   - XGBoost
   - Docker
   - pytest
@@ -20,27 +22,81 @@ featured: 3
 
 ## Problem
 
-Sensor streams for maintenance are uneven, and the failure class is small. I needed a comparison that would not hide the rare cases.
+Machine failures are rare compared with normal operation. A model that always predicts "healthy" looks accurate and is useless. I needed a comparison that would not hide the rare cases.
 
-## What I built
+## Approach
 
-I derived 22 features from 8 sensor streams and added automated data quality checks. I benchmarked 5 models with stratified cross-validation: logistic regression, random forest, gradient boosting, XGBoost, and SVM. The choice used F1 under class imbalance.
+Pick the model by F1 instead of accuracy. In this data about 23% of samples are failures, so a model that predicts "healthy" every time already reaches 77% accuracy.
 
-## Architecture
+The sensor data is synthetic. I generate it with configurable failure patterns, which gives full control over the failure rate and keeps the whole pipeline reproducible from one seed.
 
-Training is deterministic. Evaluation reports are generated automatically. pytest covers 14 tests. Docker starts the pipeline with one command.
+## Implementation
 
-## Results
+- 22 features derived from 8 raw sensor readings: interaction terms, z-score anomaly flags, an anomaly count per observation, and machine age bins.
+- Automated cleaning and missing value imputation.
+- Five classifiers trained on a stratified train and test split: logistic regression, random forest, gradient boosting, XGBoost and an RBF SVM.
+- An evaluation report with a metrics table, a confusion matrix and feature importances, generated on every run.
+- 14 pytest tests, fixed random seeds, and a Dockerfile that runs the pipeline with one command.
 
-- 22 derived features from 8 sensor streams
-- 5 models compared with stratified cross-validation
-- Selection by F1 under class imbalance
-- 14 pytest tests and automated evaluation reports
+## What I measured
+
+Results from a 10,000-sample run:
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1</th>
+      <th>ROC AUC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Logistic regression</td>
+      <td>0.66</td>
+      <td>0.18</td>
+      <td>0.28</td>
+      <td>0.71</td>
+    </tr>
+    <tr>
+      <td>Random forest</td>
+      <td>0.69</td>
+      <td>0.24</td>
+      <td>0.35</td>
+      <td>0.77</td>
+    </tr>
+    <tr>
+      <td><strong>Gradient boosting</strong></td>
+      <td>0.62</td>
+      <td>0.29</td>
+      <td><strong>0.40</strong></td>
+      <td>0.77</td>
+    </tr>
+    <tr>
+      <td>XGBoost</td>
+      <td>0.58</td>
+      <td>0.28</td>
+      <td>0.38</td>
+      <td>0.74</td>
+    </tr>
+    <tr>
+      <td>SVM (RBF)</td>
+      <td>0.73</td>
+      <td>0.16</td>
+      <td>0.27</td>
+      <td>0.71</td>
+    </tr>
+  </tbody>
+</table>
+
+Gradient boosting wins on F1. Its recall is 0.29, which means it still misses most failures. That is the honest state of this pipeline.
+
+## Current status
+
+Finished and public on GitHub. Oversampling the failure class and hyperparameter tuning are the next steps listed in the repository, and neither is done yet.
 
 ## What I learned
 
-I picked the model by F1 because the classes were imbalanced.
-
-## Stack
-
-The benchmark included XGBoost. Docker packages the run. pytest locks the checks.
+Accuracy would have told me all five models were fine. F1 and recall showed that none of them is good enough to rely on yet.

@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 
 export function SectionHeader({
   eyebrow,
+  index,
   title,
   subtitle,
   serifLine,
@@ -10,6 +11,8 @@ export function SectionHeader({
   className,
 }: {
   eyebrow: string;
+  /** Section number, shown like a heading number in a paper. */
+  index?: string;
   title: string;
   subtitle?: string;
   serifLine?: string;
@@ -18,7 +21,7 @@ export function SectionHeader({
 }) {
   return (
     <header className={cn("max-w-[760px]", className)}>
-      <Eyebrow>{eyebrow}</Eyebrow>
+      <Eyebrow index={index}>{eyebrow}</Eyebrow>
       <h2 id={id} className="type-h2 mt-3 text-balance">
         {title}
       </h2>

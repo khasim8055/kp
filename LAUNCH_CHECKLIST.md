@@ -44,3 +44,17 @@ Rewrite the case studies. Each file is marked `DRAFT: Khasim to review`.
 
 - Request CV opens LinkedIn. There is no CV file and no `/cv` route.
 - Email is not on the site.
+
+## Hybrid 3D redesign (November 2026)
+
+Copy written during the redesign. Each item is marked `DRAFT: Khasim to review` in its file. Facts come from the Klindok walkthrough video, the two public GitHub repositories and the earlier site text. Nothing was estimated.
+
+- [ ] `content/projects/klindok.mdx`: status line says "has not been deployed in a clinic". Confirm, or reword.
+- [ ] `content/projects/klindok.mdx`: stack is Python, SQLCipher, GGUF models, PDF/A, pytest. SQLCipher is taken from the app's status bar in the video. Confirm it applies to both editions.
+- [ ] `content/projects/ai-tutor-coschool.mdx`: the 80%, 35% and 40% figures carry the note "internal evaluation during the internship". Add the baseline for each if you have it.
+- [ ] `content/projects/kiko.mdx`: short on purpose. Confirm the team is fine with the clip and the text, then add detail when there is something to show.
+- [ ] `content/projects/predictive-maintenance.mdx` and `content/projects/rag-pipeline-demo.mdx`: numbers are copied from the repository READMEs.
+- [ ] Home About (`About.p3`, `About.p4`), Research (`ResearchHome.question`, `coreP1`, `coreP2`) and `/research` (`ResearchPage.thesisP1` to `thesisP3`, `interests`) in both message files.
+- [ ] German: new strings were written to match the existing informal voice. Read them once as a native reader would.
+- [ ] `data/skills.ts`: skills still marked `TODO` now appear under "Also worked with", without a level. Set a level only where a project on the site backs it up.
+- [ ] `public/profile*.jpg` are not used anywhere on the site. Delete them, or add the portrait where you want it.

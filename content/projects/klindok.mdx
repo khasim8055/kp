@@ -2,20 +2,30 @@
 title: Klindok
 slug: klindok
 date: "2026-03"
-place: Germany
-status: building
+end: "2026-11"
+place: Berlin
+status: done
 url: https://klindok.xyz
 linkLabel: site
-summary: Offline, privacy-first AI medical documentation. GDPR-compliant Arztbriefe in under 30 seconds for DACH private practices.
+summary: Offline desktop software for private clinics. The doctor types bullet points, Klindok drafts the letter, checks every fact in the draft against what was typed, and exports a PDF. Nothing leaves the clinic computer.
 stats:
-  - "< 30s per Arztbrief"
   - "100% offline"
-  - "GDPR Art. 30 audit log"
+  - "5 kinds of fact checked"
+  - "2 editions"
 stack:
-  - SQLite
-  - Fernet
-  - bcrypt
+  - Python
+  - SQLCipher
+  - GGUF models
+  - PDF/A
   - pytest
+media:
+  type: video
+  src: /media/klindok-guide.mp4
+  poster: /media/klindok-fact-check.jpg
+  alt: Klindok showing a draft referral letter. The fact check panel reports one error, a blood pressure value in the draft that the doctor never typed, and the Release button is switched off.
+  caption: Full walkthrough of the Malaysian edition, 6 min 38 s, recorded with demo data. The poster frame shows the fact check blocking a release.
+  width: 1920
+  height: 1080
 featured: 1
 ---
 
@@ -23,28 +33,40 @@ featured: 1
 
 ## Problem
 
-Private practices in the DACH market need clinical letters (Arztbriefe) without sending patient data to a cloud service.
+A private clinic writes referral letters and medical reports every day. The content already exists as the doctor's short notes. Turning those notes into a formal letter takes time, and a cloud tool would mean patient data leaves the practice.
 
-## What I built
+## Approach
 
-Klindok is offline, privacy-first AI medical documentation. It writes GDPR-compliant Arztbriefe in under 30 seconds. It runs on my own small language model.
+Keep everything on one computer, and do not trust the language model with facts.
 
-Doctors and admins have separate access. Passwords use bcrypt. Patient data sits in a Fernet-encrypted SQLite database. Every patient-level action is written to a GDPR Art. 30 audit log.
+- The doctor types bullet points in their own shorthand. Klindok writes the letter.
+- A language model is optional. In template mode the bullet points are joined into sentences with no model at all. A model only improves the wording.
+- After the draft, a fact check compares the letter with what the doctor typed: numbers with units, dates, lab values, drugs with their doses, and left or right.
+- A mismatch is an error. The Release button stays switched off until a doctor resolves it.
 
-## Architecture
+## Implementation
 
-The app stays on the practice machine. The database schema comes first. Input is validated before it is stored. pytest covers auth and the audit log.
+- A desktop program with no network access. Patient data sits in an encrypted local database with a separate key file.
+- A model is a single GGUF file that is copied in by hand. Klindok never downloads anything. Before a model is activated, its checksum is compared with the one pinned in a registry, so a swapped or damaged file cannot be used.
+- Releasing is the signature. Only a doctor can release, the text is then frozen, and every earlier version is kept.
+- The export is PDF/A, the archive format, with the clinic letterhead.
+- The audit log records every sign-in, draft, release and export as a hash chain, and can verify that nothing in it was altered.
+- A privacy tab produces the data access report a patient may ask for, sets the retention period, and can erase one patient or the whole installation.
+- Two editions: a German one for the Arztbrief, and a Malaysian one for referral letters and medical reports.
 
-## Results
+## What I measured
 
-- Under 30 seconds per Arztbrief
-- 100% offline
-- GDPR Art. 30 audit log of every patient-level action
+- In testing, the model once wrote 620 mg where the doctor had typed 625 mg. The check caught it every time.
+- With a model, a letter takes a minute or two on a laptop without a graphics card.
+
+## Current status
+
+Finished as a working desktop build in both editions. It is a portfolio project and has not been deployed in a clinic.
+
+Klindok is a writing aid. It makes no diagnosis and gives no medical advice. The doctor decides and signs.
 
 ## What I learned
 
-Privacy is part of the build, not a later checklist. Encryption, separate roles, and an audit log have to exist before a letter is useful to a clinic.
+Privacy is part of the build, not a later checklist. Encryption, separate roles and an audit log have to exist before a letter is useful to a clinic.
 
-## Stack
-
-SQLite holds the data. Fernet encrypts it. bcrypt covers passwords. pytest checks auth and the audit log.
+The language model turned out to be the optional part. The checks around it are what make a letter safe to sign.

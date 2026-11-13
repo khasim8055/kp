@@ -5,6 +5,7 @@ import { projectMdxComponents } from "@/components/mdx/project-body";
 import { PageHero } from "@/components/ui/page-hero";
 import { getNow } from "@/lib/content/now";
 import { resolveLocale } from "@/lib/locale";
+import { pageMeta } from "@/lib/seo";
 import { daysSince } from "@/lib/site";
 import { isTodo } from "@/lib/utils";
 
@@ -13,7 +14,13 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props) {
   const locale = await resolveLocale(params);
   const t = await getTranslations({ locale, namespace: "Now" });
-  return { title: t("title") };
+  const meta = await getTranslations({ locale, namespace: "Meta" });
+  return pageMeta({
+    locale,
+    path: "/now",
+    title: t("title"),
+    description: meta("pages.now"),
+  });
 }
 
 export default async function NowPage({ params }: Props) {

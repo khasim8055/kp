@@ -12,12 +12,13 @@ import { resolveLocale } from "@/lib/locale";
 import { siteUrl } from "@/lib/site";
 import "../globals.css";
 
+// Inter (body) and Space Grotesk (the page headline) are preloaded and use a
+// metric-matched fallback, so text does not jump when the web font arrives.
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-inter",
   display: "swap",
-  adjustFontFallback: false,
 });
 
 const space = Space_Grotesk({
@@ -25,27 +26,24 @@ const space = Space_Grotesk({
   weight: ["500", "700"],
   variable: "--font-space",
   display: "swap",
-  preload: false,
-  adjustFontFallback: false,
 });
 
+// Small labels only, so it is not preloaded.
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-jetbrains",
   display: "swap",
   preload: false,
-  adjustFontFallback: false,
 });
 
+// The serif question is the second line of every hero, so it is preloaded too.
 const instrument = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
   style: "italic",
   variable: "--font-instrument",
   display: "swap",
-  preload: false,
-  adjustFontFallback: false,
 });
 
 type Props = {
@@ -70,11 +68,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       template: `%s · ${t("title")}`,
     },
     description: t("description"),
+    authors: [{ name: t("title"), url: siteUrl() }],
+    creator: t("title"),
     openGraph: {
+      siteName: t("title"),
       title: t("title"),
       description: t("description"),
       locale: locale === "de" ? "de_DE" : "en_US",
       type: "website",
+    },
+    twitter: { card: "summary_large_image" },
+    alternates: {
+      types: { "application/rss+xml": "/rss.xml" },
     },
   };
 }

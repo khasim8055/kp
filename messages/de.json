@@ -1,17 +1,25 @@
 {
   "Meta": {
     "title": "Khasim Bin Saleh",
-    "description": "AI/ML Engineer in Deutschland. Ich baue LLM- und ML-Systeme von Anfang bis Ende, und ich messe sie, bevor ich ihnen vertraue."
+    "titleHome": "Khasim Bin Saleh · KI-Ingenieur und Forscher in Berlin",
+    "description": "KI-Ingenieur und Forscher in Berlin. Ich baue KI-Systeme für Orte, an denen Fehler zählen, von klinischer Software bis zu Robotern, und ich messe sie, bevor ich ihnen vertraue.",
+    "pages": {
+      "projects": "Abgeschlossene Projekte und laufende Experimente von Khasim Bin Saleh: klinische Dokumentation ohne Cloud, ein KI-Tutor, ML-Pipelines und ein Begleitroboter. Jedes Projekt zeigt, was gemessen wurde.",
+      "research": "Forschung von Khasim Bin Saleh: Datenschutz-Audits synthetischer Gesundheitsdaten mit LLM-Agenten, KI-Agenten in Unternehmen und genaue Lektüre von Papers.",
+      "papers": "Paper-Analysen von Khasim Bin Saleh. KI-Papers genau gelesen, mit Methode, wichtigsten Ergebnissen und offenen Fragen.",
+      "experience": "Erfahrung und Ausbildung von Khasim Bin Saleh: wissenschaftlicher Mitarbeiter und MSc-Student an der SRH Berlin, Machine-Learning-Praktikum bei Coschool und ein angemeldetes Patent.",
+      "contact": "Kontakt zu Khasim Bin Saleh für Stellen, Forschung oder Projekte in Gesundheits-KI, LLM-Evaluation und Robotik.",
+      "now": "Woran Khasim Bin Saleh gerade arbeitet."
+    }
   },
   "Nav": {
     "primary": "Hauptnavigation",
     "home": "Start",
     "about": "Über",
-    "lab": "Labor",
     "research": "Forschung",
     "papers": "Papers",
-    "learning": "Lernen",
     "projects": "Projekte",
+    "journey": "Weg",
     "experience": "Werdegang",
     "contact": "Kontakt",
     "menu": "Menü",
@@ -27,47 +35,65 @@
     "requestCv": "Lebenslauf anfragen",
     "themeToggle": "Farbschema wechseln",
     "language": "Sprache",
-    "backToTop": "Nach oben",
-    "scrollProgress": "Seitenfortschritt",
-    "evidence": "Album"
+    "backToTop": "Nach oben"
   },
   "Hero": {
-    "title": "AI/ML Engineer",
-    "location": "Deutschland",
-    "oneLiner": "Ich baue LLM- und ML-Systeme von Anfang bis Ende, und ich messe sie, bevor ich ihnen vertraue.",
-    "focus": "// fokus",
-    "requestCv": "Lebenslauf anfragen",
-    "latestPaper": "Neueste Paper-Analyse lesen",
-    "linkedin": "LinkedIn",
-    "github": "GitHub",
-    "eyebrow": "GERMANY · AI/ML ENGINEER",
-    "role1": "KI/ML-Ingenieur",
-    "role2": "Evaluation zuerst",
-    "role3": "Klindok bauen",
-    "role4": "Gesundheits-KI",
+    "eyebrow": "KI-INGENIEUR · FORSCHER · BERLIN",
     "question": "Können wir dem vertrauen, was KI uns sagt?",
-    "line": "Ich baue KI-Systeme für Orte, an denen Fehler zählen, und ich messe sie, bevor ich ihnen vertraue.",
-    "explore": "Forschung ansehen",
-    "built": "Was ich gebaut habe",
-    "scroll": "SCROLLEN"
+    "line": "Ich baue KI-Systeme für Orte, an denen Fehler zählen, von klinischer Software bis zu Robotern, und ich messe sie, bevor ich ihnen vertraue.",
+    "now": "MSc Informatik (Big Data und KI) an der SRH Berlin. Ich schreibe meine Abschlussarbeit über Datenschutz-Audits synthetischer Gesundheitsdaten.",
+    "projects": "Projekte ansehen",
+    "research": "Forschung lesen",
+    "contact": "Kontakt aufnehmen"
+  },
+  "Figure": {
+    "title": "Abb. 1 · Abstand zum nächsten Datensatz",
+    "caption": "Jeder Punkt ist ein synthetischer Datensatz. Jeder Ring ist der Datensatz einer echten Person. Ein Punkt, der auf einem Ring liegt, kann diese Person verraten. Solche Fälle zu finden, ist das Thema meiner Abschlussarbeit.",
+    "legendReal": "Echter Datensatz",
+    "legendSynth": "Synthetischer Datensatz",
+    "legendFlag": "Zu nah: {flagged} von {total}",
+    "hint": "Zeiger bewegen, um einen Datensatz zu prüfen.",
+    "note": "Beispieldaten, keine Studienergebnisse.",
+    "record": "Datensatz",
+    "tooClose": "zu nah",
+    "farEnough": "weit genug",
+    "alt": "Dreidimensionales Streudiagramm mit {total} synthetischen Datensätzen und den echten Datensätzen, aus denen sie erzeugt wurden. {flagged} synthetische Datensätze liegen fast genau auf einem echten Datensatz und sind als zu nah markiert."
   },
   "About": {
     "eyebrow": "ÜBER MICH",
     "title": "Vom IoT-Basteln zu vertrauenswürdiger KI",
     "p1": "Ich habe mit einem B.Tech in Informatik an der Lovely Professional University begonnen, mit Schwerpunkt IoT. 2023 wurde ich Mit-Erfinder eines Patents für einen internetgesteuerten Futterspender für Haustiere.",
     "p2": "Bei Coschool habe ich einen KI-Tutor gebaut, der 1.000+ Beta-Nutzer erreicht hat. Dabei habe ich gelernt: ein Modell ist nur so gut wie die Art, wie man es testet.",
-    "p3": "Für den MSc in KI bin ich nach Deutschland gezogen. Jetzt baue ich Klindok und schreibe meine Thesis: Agentic Privacy Auditing of Synthetic Health Data: Evaluating LLM Audit Agents against Attack-Based Re-identification Metrics.",
-    "years": "Jahre mit ML- und LLM-Systemen",
-    "users": "erreichte Beta-Nutzer",
-    "patent": "Patent",
-    "languages": "Sprachen",
-    "languagesLine": "Hindi · Englisch · Deutsch (B1, lerne)"
+    "p3": "Für einen MSc in Informatik mit Schwerpunkt Big Data und KI bin ich nach Berlin gezogen. Hier habe ich Klindok gebaut, eine Software ohne Cloud, die klinische Briefe entwirft und jede Angabe darin prüft. Jetzt schreibe ich meine Abschlussarbeit über Datenschutz-Audits synthetischer Gesundheitsdaten.",
+    "p4": "Daneben arbeite ich an der KI-Seite von Kiko, einem Begleitroboter. Ich möchte verstehen, was sich ändert, wenn ein Modell den Bildschirm verlässt.",
+    "facts": {
+      "based": {
+        "label": "Wohnort",
+        "value": "Berlin, Deutschland"
+      },
+      "studying": {
+        "label": "Studium",
+        "value": "MSc Informatik, Big Data und KI, an der SRH University of Applied Sciences Berlin. 2025 bis 2027."
+      },
+      "before": {
+        "label": "Davor",
+        "value": "Machine-Learning-Praktikum bei Coschool, Hyderabad. B.Tech in Informatik, Schwerpunkt IoT."
+      },
+      "languages": {
+        "label": "Sprachen",
+        "value": "Hindi (Muttersprache), Englisch (C1), Deutsch (B1, lerne ich)"
+      },
+      "patent": {
+        "label": "Patent",
+        "value": "Miterfinder. Anmeldung Nr. 202311073080, eingereicht im Oktober 2023."
+      }
+    }
   },
   "Journey": {
     "eyebrow": "WEG",
     "title": "Wie ich hierher kam",
     "serif": "Jeder Schritt hat einen weiteren Test hinzugefügt.",
-    "full": "Voller Werdegang",
+    "full": "Erfahrung und Ausbildung im Detail",
     "stops": {
       "btech": {
         "year": "2020",
@@ -78,7 +104,7 @@
       "patent": {
         "year": "2023",
         "title": "Mit-Erfinder eines IoT-Patents",
-        "body": "Eingereicht im Oktober 2023.",
+        "body": "Ein internetgesteuerter Futterspender für Haustiere. Eingereicht im Oktober 2023.",
         "tag": "Patent"
       },
       "coschool": {
@@ -89,93 +115,91 @@
       },
       "berlin": {
         "year": "2025",
-        "title": "Nach Deutschland gezogen",
-        "body": "MSc KI an der SRH Deutschland.",
+        "title": "Umzug nach Berlin",
+        "body": "MSc Informatik, Big Data und KI, an der SRH Berlin.",
         "tag": "MSc"
       },
       "research": {
         "year": "2026",
         "title": "Wissenschaftliche Hilfskraft",
-        "body": "Enterprise-KI-Agenten und Agent-Design-Patterns.",
+        "body": "KI-Agenten in Unternehmen und Entwurfsmuster für Agenten. Juni bis Oktober.",
         "tag": "Forschung"
       },
       "klindok": {
         "year": "2026",
-        "title": "Klindok gestartet",
-        "body": "Offline-Dokumentation für Praxen.",
-        "tag": "Klindok"
+        "title": "Klindok gebaut",
+        "body": "Klinische Dokumentation ohne Cloud, mit Faktenprüfung."
+      },
+      "thesis": {
+        "year": "2026",
+        "title": "Abschlussarbeit begonnen",
+        "body": "Datenschutz-Audits synthetischer Gesundheitsdaten mit LLM-Agenten."
+      },
+      "kiko": {
+        "year": "2026",
+        "title": "Kiko",
+        "body": "Ein Begleitroboter mit einem kleinen studentischen Team. Ich arbeite an der KI-Seite."
       }
     }
   },
-  "CurrentWork": {
-    "eyebrow": "// aktuelle arbeit",
-    "title": "Aktuelle Arbeit",
-    "inProgress": "In Arbeit",
-    "building": "Im Aufbau",
-    "ongoing": "Laufend",
-    "site": "Seite"
-  },
   "ResearchHome": {
     "eyebrow": "FORSCHUNG",
-    "title": "Forschung und akademische Arbeit",
+    "title": "Woran ich forsche und warum",
     "coreEyebrow": "ZENTRALE FORSCHUNGSFRAGE",
-    "coreP1": "Meine Thesis ist Agentic Privacy Auditing of Synthetic Health Data: Evaluating LLM Audit Agents against Attack-Based Re-identification Metrics.",
-    "coreP2": "Klindok hält klinische Daten offline, damit das Modell die Praxis nicht verlassen muss.",
-    "coreP3": "Meine Agentenarbeit schaut, warum gemeldete Adoption so stark schwankt, und welche Designmuster in echten Einsätzen halten.",
+    "question": "Findet ein LLM-Agent die Datenschutzrisiken in synthetischen Gesundheitsdaten, die Standardtests als sicher einstufen?",
+    "coreP1": "Kliniken und Forschende geben synthetische Daten weiter, statt echter Patientendaten. Ob das sicher ist, hängt vom Test ab, mit dem man es prüft. Verbreitete Tests können Datensätze übersehen, die weiterhin auf eine echte Person zeigen.",
+    "coreP2": "Dieselbe Frage zieht sich durch alles, was ich sonst mache: ein System messen, bevor man ihm vertraut.",
     "thesisTitle": "Masterarbeit",
     "thesisBody": "Agentic Privacy Auditing of Synthetic Health Data: Evaluating LLM Audit Agents against Attack-Based Re-identification Metrics",
     "agentsTitle": "KI-Agenten in Unternehmen",
     "agentsBody": "Vier Umfragen aus 2026 verglichen, in denen die gemeldete Adoption zwischen 17% und 65% lag, und den Gründen nachgegangen.",
     "patternsTitle": "Agenten-Designmuster",
     "patternsBody": "ReAct, Reflection, Planning, Tool use und Multi-agent, abgeglichen mit echten Einsätzen und mit MCP und A2A.",
+    "more": "Forschung im Überblick",
     "collab": "Offen für Forschungskooperationen",
     "linkedin": "LinkedIn"
   },
-  "Lab": {
-    "eyebrow": "DAS LABOR",
-    "title": "Öffentlich lernen, jede Woche",
-    "serif": "Ein Paper. Eine Lektion. Jede Woche.",
-    "streak": "{count, plural, one {Woche Serie} other {Wochen Serie}}",
-    "papers": "{count, plural, one {Paper gelesen} other {Paper gelesen}}",
-    "weeks": "{count, plural, one {Woche geloggt} other {Wochen geloggt}}",
-    "paperOfWeek": "Paper der Woche",
-    "learned": "Diese Woche gelernt",
-    "tracks": "Forschungswege",
-    "heatmap": "Letzte 12 Wochen",
-    "allPapers": "Alle Paper-Analysen",
-    "allLearning": "Vollständiges Lernlog",
-    "paperMissing": "Noch keine Paper-Analyse.",
-    "learningMissing": "Noch keine Lernwoche.",
-    "scoreMissing": "Noch keine Wertung"
-  },
-  "Learning": {
-    "indexEyebrow": "// lernen",
-    "indexTitle": "Lernen",
-    "serif": "Eine Lektion. Jede Woche.",
-    "viewAll": "Alle Wochen",
-    "heatmap": "Letzte 52 Wochen",
-    "heatmapLabel": "{count, plural, one {# Woche in den letzten 52 Wochen} other {# Wochen in den letzten 52 Wochen}}",
-    "legendEmpty": "Kein Eintrag",
-    "legendSome": "Wenige Stunden",
-    "legendMore": "Mehr Stunden",
-    "currentStreak": "Aktuelle Serie",
-    "longestStreak": "Längste Serie",
-    "weeks": "{count, plural, one {# Woche} other {# Wochen}}",
-    "allTopics": "Alle Themen",
-    "empty": "Keine Wochen zu diesem Thema.",
-    "week": "Woche {week}",
-    "range": "{start} bis {end}",
-    "readWeek": "Woche lesen",
-    "hours": "{count} Std.",
-    "hoursMissing": "Stunden folgen noch",
-    "missing": "Folgt noch"
+  "ResearchPage": {
+    "title": "Forschung",
+    "thesisEyebrow": "MSc-Abschlussarbeit · in Arbeit",
+    "thesisP1": "Synthetische Gesundheitsdaten sollen die Muster echter Patientendaten behalten, ohne einen echten Patienten zu enthalten. Bevor man sie weitergibt, muss jemand prüfen, dass kein synthetischer Datensatz noch auf eine echte Person zeigt.",
+    "thesisP2": "Ein verbreiteter Schnelltest misst, wie weit jeder synthetische Datensatz vom nächsten echten entfernt ist. Das zeigt die Abbildung. Strengere Prüfungen greifen die Daten tatsächlich an und zählen, wie oft sich eine Person wiedererkennen lässt.",
+    "thesisP3": "Meine Arbeit fragt, ob ein LLM-Agent, der dieselben Daten prüft, Risiken findet, die solche angriffsbasierten Metriken als gering einstufen. Die Arbeit läuft noch, Ergebnisse gibt es bisher nicht.",
+    "workEyebrow": "Bisherige Arbeit",
+    "workTitle": "Forschung und akademische Arbeit",
+    "workMore": "Details auf der Seite Erfahrung",
+    "interestsEyebrow": "Interessen",
+    "interestsTitle": "Wohin meine Neugier geht",
+    "interests": {
+      "health": {
+        "label": "Gesundheits-KI und Datenschutz",
+        "body": "Software, die einer Praxis nützt, ohne dass Patientendaten das Haus verlassen. Mit Klindok habe ich gelernt, was das bedeutet."
+      },
+      "evaluation": {
+        "label": "LLMs und Agenten evaluieren",
+        "body": "Prüfen, was ein Modell oder ein Agent wirklich tut, bevor man sich darauf verlässt. Und klar sagen, was nicht getestet wurde."
+      },
+      "robotics": {
+        "label": "Robotik",
+        "body": "Was sich ändert, wenn ein Modell auf einem echten Gerät läuft. Das Feld ist neu für mich, ich lerne es mit Kiko."
+      },
+      "twins": {
+        "label": "Digitale Zwillinge",
+        "body": "Simulierte Kopien physischer Systeme, um Verhalten zu testen, bevor die Hardware existiert. Ein Interesse, das ich gerade erst beginne zu erkunden."
+      }
+    },
+    "readingTitle": "Papers, die ich genau gelesen habe"
   },
   "Papers": {
     "indexEyebrow": "// papers",
     "indexTitle": "Papers",
     "serif": "Ein Paper, genau gelesen.",
-    "viewAll": "Alle Papers",
-    "paperOfTheWeek": "Paper der Woche",
+    "breakdowns": "Paper-Analysen",
+    "breakdown": "Paper-Analyse",
+    "cadence": "Erscheint, wenn ich ein Paper gründlich gelesen habe. Kein fester Rhythmus.",
+    "latest": "Neueste Analyse",
+    "none": "Noch keine Paper-Analysen.",
+    "viewAll": "Alle Paper-Analysen",
     "search": "Papers durchsuchen",
     "verdict": "Urteil",
     "year": "Jahr",
@@ -186,7 +210,6 @@
     "sortNewest": "Neueste",
     "sortScore": "Höchste Bewertung",
     "empty": "Keine Papers für diese Filter.",
-    "week": "Woche {week}",
     "difficulty": "Schwierigkeit {value} von 5",
     "minutes": "{count} Min.",
     "missing": "Folgt noch",
@@ -198,39 +221,44 @@
     "rigor": "Strenge",
     "reproducibility": "Reproduzierbarkeit",
     "practicalImpact": "Praktischer Nutzen",
-    "prev": "Vorheriges",
-    "next": "Nächstes",
-    "related": "Verwandte Analysen",
-    "readingProgress": "Lesefortschritt"
+    "prev": "Neuer",
+    "next": "Älter",
+    "related": "Verwandte Analysen"
   },
   "Projects": {
     "eyebrow": "PROJEKTE",
     "title": "Gebaut, getestet, gemessen",
-    "subtitle": "Nicht nur Ideen. Jedes Projekt zeigt, was ich gemessen habe.",
+    "subtitle": "Erst abgeschlossene Arbeit, dann Experimente. Jede Seite sagt, was gemessen wurde und wo das Projekt steht.",
+    "done": "Abgeschlossen",
+    "doneNote": "Fertige Arbeit.",
+    "ongoing": "Laufende Experimente",
+    "ongoingNote": "Bewusst unfertig. Noch keine Ergebnisse behauptet.",
     "viewAll": "Alle Projekte",
     "indexEyebrow": "// projekte",
     "indexTitle": "Projekte",
     "caseStudy": "Fallstudie",
+    "readCase": "Fallstudie lesen",
+    "readMore": "Mehr über {title}",
     "site": "Seite",
     "visitSite": "Seite öffnen",
     "github": "GitHub",
-    "building": "Im Aufbau",
-    "flagship": "FLAGSCHIFF",
     "klindokSerif": "KI, die Patientendaten nirgends hinsendet.",
-    "arztbrief": "pro Arztbrief",
-    "offline": "offline",
-    "audit": "DSGVO-Audit-Log",
-    "flowNotes": "Arztnotizen",
-    "flowModel": "Lokales Modell",
-    "flowLetter": "Arztbrief",
-    "details": "Details",
-    "hideDetails": "Details schließen"
+    "klindokShotAlt": "Die Faktenprüfung von Klindok. Ein Fehler blockiert die Freigabe: Ein Blutdruckwert steht im Entwurf, aber nicht in der Eingabe der Ärztin.",
+    "klindokShotCaption": "Die Faktenprüfung hat einen Blutdruckwert gefunden, den die Ärztin nie eingegeben hat. Der Brief kann erst freigegeben werden, wenn das behoben ist.",
+    "status": "Status",
+    "period": "Zeitraum",
+    "role": "Rolle",
+    "stack": "Technik",
+    "link": "Link",
+    "more": "Weitere Projekte",
+    "prev": "Vorheriges Projekt",
+    "next": "Nächstes Projekt"
   },
   "Skills": {
     "eyebrow": "KENNTNISSE",
     "title": "Technische Tiefe",
-    "subtitle": "Ehrliche Stufen: in Produktion, in einem Projekt, oder beim Lernen.",
-    "tabsLabel": "Kenntnisgruppen",
+    "subtitle": "Ehrliche Stufen: produktiv eingesetzt, in einem Projekt eingesetzt oder im Studium. Eine Stufe gibt es nur, wenn ein Projekt auf dieser Seite sie belegt.",
+    "also": "Außerdem gearbeitet mit",
     "tabs": {
       "aiml": "KI und ML",
       "llms": "LLMs und Agenten",
@@ -251,34 +279,27 @@
       "studying": "Beim Lernen"
     },
     "levels": {
-      "production": "PRODUKTION",
-      "project": "PROJEKT",
-      "studying": "LERNE"
+      "production": "Produktion",
+      "project": "Projekt",
+      "studying": "Lerne"
     }
   },
   "Experience": {
     "eyebrow": "// werdegang",
     "title": "Werdegang",
-    "viewAll": "Vollständiger Werdegang",
     "range": "{start} bis {end}",
     "educationEyebrow": "// ausbildung",
-    "educationTitle": "Ausbildung"
-  },
-  "Beyond": {
-    "eyebrow": "// neben dem code",
-    "title": "Neben dem Code",
-    "patent": "Patent",
-    "council": "Studierendenvertretung",
-    "interests": "Interessen",
-    "languages": "Sprachen"
+    "educationTitle": "Ausbildung",
+    "patentEyebrow": "patent",
+    "patentTitle": "Patent"
   },
   "Contact": {
     "eyebrow": "KONTAKT",
     "title": "Lass uns KI bauen, der man vertrauen kann.",
-    "line": "Du stellst ein, forschst oder baust im Bereich Healthcare AI? Ich würde gern von dir hören.",
+    "line": "Du stellst ein, forschst oder baust im Bereich Healthcare AI oder Robotik? Ich würde gern von dir hören. Am schnellsten erreichst du mich über LinkedIn.",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "based": "Mit Sitz in Deutschland",
+    "based": "Wohnhaft in Berlin, Deutschland",
     "interests": {
       "llmEval": "LLM Evaluation",
       "healthcare": "Healthcare AI",
@@ -292,7 +313,7 @@
     "rss": "RSS",
     "built": "Entworfen und gebaut von Khasim",
     "site": "Seite",
-    "lab": "Labor",
+    "notes": "Notizen",
     "elsewhere": "Anderswo",
     "linkedin": "LinkedIn",
     "github": "GitHub"
@@ -305,26 +326,6 @@
     "updatedOne": "Vor 1 Tag aktualisiert",
     "updatedMany": "Vor {count} Tagen aktualisiert",
     "missing": "Aktualisierungsdatum folgt noch"
-  },
-  "Recruiter": {
-    "open": "Überblick in 60 Sekunden",
-    "eyebrow": "// 60 sekunden",
-    "title": "Überblick in 60 Sekunden",
-    "role": "Rolle",
-    "roleValue": "AI/ML Engineer",
-    "location": "Ort",
-    "locationValue": "Deutschland",
-    "skills": "Fokus",
-    "proof": "Belege",
-    "proof1": "Einen KI-Tutor an 1.000+ Beta-Nutzer ausgeliefert.",
-    "proof2": "Falsche oder themenfremde Antworten um 80%+ über 500+ Testfälle gesenkt.",
-    "proof3": "Klindok schreibt einen Arztbrief in unter 30 Sekunden, vollständig offline.",
-    "requestCv": "Lebenslauf anfragen",
-    "close": "Schließen"
-  },
-  "Placeholder": {
-    "eyebrow": "// notiz",
-    "body": "Diese Seite schreibe ich noch."
   },
   "NotFound": {
     "eyebrow": "// 404",
@@ -343,23 +344,12 @@
     "title": "Komponenten",
     "intro": "Diese Bausteine sind nicht in der Navigation verlinkt.",
     "eyebrow": "Signal",
-    "sectionTitle": "Abschnittskopf",
-    "sectionSubtitle": "Eine kurze Zeile unter dem Titel.",
     "serifLine": "Können wir dem vertrauen, was KI uns sagt?",
     "readoutLabel": "Beispielwert",
     "readoutStatic": "Fester Wert",
-    "cardBody": "Ein weicher Schein folgt dem Zeiger in der Karte.",
+    "cardBody": "Eine schlichte Karte: ein Rahmen, eine Fläche, keine Effekte.",
     "tag": "RAG",
-    "reveal": "Dieser Block blendet einmal nach oben ein.",
     "darkSample": "Dunkel",
     "lightSample": "Hell"
-  },
-  "Evidence": {
-    "eyebrow": "ALBUM",
-    "title": "Album",
-    "subtitle": "Aufnahmen und Bilder aus der Arbeit. Mehr folgt.",
-    "items": {
-      "recording01": "Arbeitsaufnahme"
-    }
   }
 }

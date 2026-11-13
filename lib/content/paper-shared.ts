@@ -9,13 +9,19 @@ export function isUrl(value: string) {
   return value.length > 0 && !isTodo(value);
 }
 
-export function paperOfTheWeek(papers: PaperCardData[]) {
-  const dated = papers.filter((paper) => !isTodo(paper.date));
-  return (
-    [...dated].sort(
-      (a, b) => b.date.localeCompare(a.date) || b.week - a.week,
-    )[0] ?? null
-  );
+/** Newest breakdown first. Entries without a date go last. */
+export function sortByDate<T extends { date: string; title: string }>(
+  papers: T[],
+) {
+  return [...papers].sort((a, b) => {
+    const aDate = isTodo(a.date) ? "" : a.date;
+    const bDate = isTodo(b.date) ? "" : b.date;
+    return bDate.localeCompare(aDate) || a.title.localeCompare(b.title);
+  });
+}
+
+export function latestPaper(papers: PaperCardData[]) {
+  return sortByDate(papers.filter((paper) => !isTodo(paper.date)))[0] ?? null;
 }
 
 export function paperNeighbors(papers: PaperCardData[], slug: string) {
@@ -87,7 +93,7 @@ export function filterPapers(
     }
     const aDate = isTodo(a.date) ? "" : a.date;
     const bDate = isTodo(b.date) ? "" : b.date;
-    return bDate.localeCompare(aDate) || b.week - a.week;
+    return bDate.localeCompare(aDate) || a.title.localeCompare(b.title);
   });
 
   if (!filtering && filters.featuredSlug) {

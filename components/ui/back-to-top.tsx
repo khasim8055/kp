@@ -19,6 +19,8 @@ export function BackToTop() {
     <button
       type="button"
       aria-label={t("backToTop")}
+      tabIndex={visible ? 0 : -1}
+      aria-hidden={visible ? undefined : true}
       className={
         visible
           ? "fixed bottom-6 right-6 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-surface text-foreground"

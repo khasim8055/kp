@@ -1,5 +1,4 @@
 import { getTranslations } from "next-intl/server";
-import { NeuralSlot } from "@/components/sections/hero-canvas";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Tag } from "@/components/ui/tag";
@@ -9,8 +8,10 @@ const interestKeys = ["llmEval", "healthcare", "agents", "robotics"] as const;
 
 export async function ContactCta({
   heading = "h2",
+  index,
 }: {
   heading?: "h1" | "h2";
+  index?: string;
 }) {
   const t = await getTranslations("Contact");
   const Heading = heading;
@@ -18,22 +19,11 @@ export async function ContactCta({
   return (
     <section
       id="contact"
-      className="relative overflow-hidden border-t border-border"
+      className="border-t border-border"
       aria-labelledby="contact-title"
     >
-      <div className="pointer-events-none absolute inset-0 opacity-55" aria-hidden="true">
-        <NeuralSlot density={0.42} />
-      </div>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, transparent 20%, var(--bg) 82%), linear-gradient(to bottom, color-mix(in srgb, var(--bg) 55%, transparent) 0%, transparent 35%, color-mix(in srgb, var(--bg) 70%, transparent) 100%)",
-        }}
-      />
-      <div className="relative z-10 mx-auto flex w-full min-w-0 max-w-[920px] flex-col items-center px-4 py-16 text-center sm:py-20 md:py-28">
-        <Eyebrow>{t("eyebrow")}</Eyebrow>
+      <div className="mx-auto flex w-full min-w-0 max-w-[920px] flex-col items-center px-4 py-16 text-center sm:py-20 md:py-28">
+        <Eyebrow index={index}>{t("eyebrow")}</Eyebrow>
         <Heading
           id="contact-title"
           className="mt-5 max-w-full font-serif text-[32px] italic leading-[1.1] text-balance sm:text-[40px] md:text-[56px]"

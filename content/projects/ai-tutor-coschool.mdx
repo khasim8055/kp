@@ -1,13 +1,16 @@
 ---
 title: AI Tutor at Coschool
 slug: ai-tutor-coschool
-date: "2023"
-summary: Built and shipped a 0 to 1 AI tutor serving 1,000+ beta users.
+date: "2023-03"
+end: "2023-08"
+place: Hyderabad
+status: done
+role: Machine Learning Intern
+summary: An AI tutor built from zero during my internship and shipped to 1,000+ beta users, with evaluation pipelines to keep its answers on topic.
 stats:
   - "1,000+ beta users"
   - "80%+ fewer off-topic answers"
-  - "+35% contextual accuracy"
-  - "-40% retrieval latency"
+  - "500+ test cases"
 stack:
   - RAG
   - Milvus
@@ -21,25 +24,29 @@ featured: 2
 
 The tutor had to stay on topic. Incorrect or off-topic answers were the gap I measured.
 
-## What I built
+## Approach
 
-I built and shipped a 0 to 1 AI tutor for 1,000+ beta users. Evaluation pipelines caught unsafe or off-topic outputs. I fine-tuned GPT models with guardrails.
+Treat the off-topic rate as a number. Evaluation pipelines flagged unsafe or off-topic outputs, and 500+ test cases showed whether a change helped.
 
-## Architecture
+## Implementation
 
-A RAG pipeline sits in front of the model. Documents are split with semantic chunking and stored in Milvus. The ingestion path covered 10K+ documents.
+- Evaluation pipelines that catch unsafe or off-topic outputs.
+- GPT models fine-tuned with guardrails.
+- A RAG pipeline in front of the model. Documents are split with semantic chunking and stored in Milvus.
+- An ingestion path that covered 10K+ documents.
 
-## Results
+## What I measured
 
-- 1,000+ beta users
 - 80%+ fewer incorrect or off-topic answers across 500+ test cases
-- 35%+ higher contextual accuracy
-- 40% lower retrieval latency
+- 35%+ higher contextual accuracy after adding the RAG pipeline
+- 40% lower retrieval latency after semantic chunking and Milvus ingestion
+
+These figures come from internal evaluation during the internship in 2023. The test sets are not public.
+
+## Current status
+
+Shipped to 1,000+ beta users during the internship, which ended in August 2023.
 
 ## What I learned
 
 A guardrail is only real if I measure it. The 500+ test cases were how I knew the off-topic rate had dropped.
-
-## Stack
-
-GPT for the tutor, RAG for context, Milvus for the document index.

@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* The theme is a class on <html> (set by the toggle), not the OS setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Dark is the default. .light overrides it when the theme toggle is on. */
 :root,
 .dark {
@@ -15,6 +18,7 @@
   --on-signal: #07090a;
   --signal-ink: #f5b947;
   --pass-ink: #34d6b0;
+  --pulse-ink: #9db4ff;
   --accent: var(--signal);
   --accent-2: var(--pass);
   --on-accent: var(--on-signal);
@@ -37,6 +41,7 @@
   /* Darker than the fills so 12px labels stay WCAG AA on light surfaces. */
   --signal-ink: #926011;
   --pass-ink: #0c7962;
+  --pulse-ink: #3550c4;
   --accent: var(--signal);
   --accent-2: var(--pass);
   --on-accent: var(--on-signal);
@@ -55,6 +60,7 @@
   --color-pass: var(--pass);
   --color-pass-ink: var(--pass-ink);
   --color-pulse: var(--pulse);
+  --color-pulse-ink: var(--pulse-ink);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--on-accent);
   --color-accent-ink: var(--accent-ink);
@@ -83,57 +89,13 @@ body {
   overflow-x: clip;
 }
 
-#about,
-#journey,
-#research,
 #projects,
-#lab,
+#research,
+#journey,
+#about,
 #skills,
 #contact {
   scroll-margin-top: 96px;
-}
-
-/* Tall pin: vertical scroll drives the horizontal journey track. */
-.journey-pin {
-  --journey-span: 340vh;
-}
-
-.journey-cards {
-  --card-w: min(320px, calc(100vw - 3rem));
-}
-
-.journey-glow {
-  background: var(--signal);
-  box-shadow:
-    0 0 8px var(--signal),
-    0 0 18px color-mix(in srgb, var(--signal) 70%, transparent);
-}
-
-.question-block {
-  margin-top: 2.5rem;
-  border-left: 2px solid var(--signal);
-  padding-left: 1rem;
-}
-
-.question-block > h2 {
-  margin-top: 0;
-}
-
-@media (min-width: 768px) {
-  .journey-pin {
-    height: var(--journey-span);
-  }
-
-  .journey-sticky {
-    position: sticky;
-    top: 0;
-    display: flex;
-    width: 100%;
-    height: 100svh;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-  }
 }
 
 ::selection {
@@ -151,7 +113,7 @@ body {
 
 .type-h1 {
   font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(2.25rem, 8vw, 4.5rem);
+  font-size: clamp(2.5rem, 7.2vw, 4.5rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 0.95;
@@ -176,86 +138,290 @@ body {
   color: var(--text);
 }
 
-.glow-card {
-  --glow-x: 50%;
-  --glow-y: 50%;
+/* A ruler: the site's one decorative motif. Small ticks, a taller one every fifth. */
+.rule-ticks {
+  height: 9px;
+  border-top: 1px solid var(--border);
+  background-image:
+    repeating-linear-gradient(to right, var(--muted) 0 1px, transparent 1px 60px),
+    repeating-linear-gradient(to right, var(--border) 0 1px, transparent 1px 12px);
+  background-size:
+    100% 9px,
+    100% 5px;
+  background-repeat: no-repeat;
+  opacity: 0.8;
 }
 
-.glow-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0;
-  background: radial-gradient(
-    180px circle at var(--glow-x) var(--glow-y),
-    color-mix(in srgb, var(--pulse) 45%, transparent),
-    transparent 65%
-  );
-  transition: opacity 200ms ease;
+/* Hero figure. The SVG is the figure. The canvas replaces it when WebGL runs. */
+.audit-figure {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
 }
 
-.glow-card:hover::before {
-  opacity: 1;
-}
-
-.glow-card-signal {
-  border-color: color-mix(in srgb, var(--signal) 40%, transparent);
-  animation: breathe-glow 4.5s ease-in-out infinite;
-}
-
-@keyframes breathe-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 0%, transparent);
-  }
-  50% {
-    box-shadow: 0 0 36px 0 color-mix(in srgb, var(--signal) 22%, transparent);
-  }
-}
-
-.section-divider {
+.audit-stage {
   position: relative;
-  height: 1px;
-  background: var(--border);
+  width: 100%;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 
-.section-divider-dot {
+.audit-svg,
+.audit-canvas {
   position: absolute;
-  top: 50%;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--signal);
-  box-shadow: 0 0 10px var(--signal);
-  transform: translateY(-50%);
-  animation: divider-travel 4.5s linear infinite;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
-@keyframes divider-travel {
-  from {
+.audit-svg {
+  transition: opacity 500ms ease;
+}
+
+.audit-svg > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.audit-canvas {
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.audit-live {
+  display: contents;
+}
+
+.audit-stage[data-live="true"] .audit-canvas {
+  opacity: 1;
+}
+
+.audit-stage[data-live="true"] .audit-svg {
+  opacity: 0;
+}
+
+.audit-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  gap: 2px;
+  padding: 6px 9px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1.3;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  will-change: transform;
+}
+
+.audit-stage:not([data-live="true"]) .audit-label {
+  opacity: 0 !important;
+}
+
+.audit-label span:first-child {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.audit-label[data-state="flag"] span:last-child {
+  color: var(--signal-ink);
+}
+
+.audit-label[data-state="pass"] span:last-child {
+  color: var(--pass-ink);
+}
+
+.audit-caption {
+  max-width: 34rem;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.audit-caption-title {
+  margin-bottom: 6px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.audit-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 10px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+}
+
+.audit-key {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 7px;
+  border-radius: 999px;
+  vertical-align: -1px;
+}
+
+.audit-key-ring {
+  border: 1.5px solid var(--text);
+  opacity: 0.7;
+}
+
+.audit-key-dot {
+  background: var(--pulse);
+}
+
+.audit-key-flag {
+  background: var(--signal);
+}
+
+.audit-note {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.audit-hint {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .audit-stage[data-live="true"] + .audit-caption .audit-hint {
+    display: inline;
+  }
+}
+
+/* Label and value rows: project facts, about facts, research interests. */
+.fact-list {
+  border-top: 1px solid var(--border);
+}
+
+.fact-list > div {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.fact-list dt {
+  padding-top: 0.25rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.fact-list dd {
+  min-width: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .fact-list > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.2rem;
+  }
+}
+
+/* Journey: one column with a rule on phones, a ruled grid from tablets up. */
+.journey-list {
+  display: grid;
+  border-left: 1px solid var(--border);
+}
+
+.journey-stop {
+  position: relative;
+  padding: 0 0 1.75rem 1.5rem;
+}
+
+.journey-stop:last-child {
+  padding-bottom: 0;
+}
+
+.journey-stop::before {
+  content: "";
+  position: absolute;
+  top: 0.45rem;
+  left: -4px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--signal);
+  border-radius: 999px;
+  background: var(--bg);
+}
+
+@media (min-width: 768px) {
+  .journey-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-left: 0;
+  }
+
+  .journey-stop,
+  .journey-stop:last-child {
+    padding: 1.4rem 1.75rem 2rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .journey-stop::before {
+    top: -4px;
     left: 0;
   }
-  to {
-    left: calc(100% - 6px);
+}
+
+@media (min-width: 1024px) {
+  .journey-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
-@keyframes rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
+.question-block {
+  margin-top: 2.5rem;
+  border-left: 2px solid var(--signal);
+  padding-left: 1rem;
+}
+
+.question-block > h2 {
+  margin-top: 0;
+}
+
+/* Scroll progress. Pure CSS, shown only where scroll timelines exist. */
+.scroll-bar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 2px;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: left center;
+  display: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-bar {
+    display: block;
+    animation: scroll-grow linear both;
+    animation-timeline: scroll(root block);
   }
 }
 
-.rise-in {
-  animation: rise-in 0.35s ease-out both;
+@keyframes scroll-grow {
+  to {
+    transform: scaleX(1);
+  }
 }
 
 @keyframes status-pulse {
@@ -270,74 +436,6 @@ body {
 
 .status-pulse {
   animation: status-pulse 1.8s ease-in-out infinite;
-}
-
-.hero-scrim {
-  background:
-    linear-gradient(to right, var(--bg) 0%, color-mix(in srgb, var(--bg) 94%, transparent) 58%, transparent 82%),
-    linear-gradient(to bottom, transparent 58%, var(--bg) 100%);
-}
-
-@media (min-width: 768px) {
-  .hero-scrim {
-    background:
-      linear-gradient(to right, var(--bg) 0%, color-mix(in srgb, var(--bg) 82%, transparent) 38%, transparent 62%),
-      linear-gradient(to bottom, transparent 48%, var(--bg) 100%);
-  }
-}
-
-.scroll-cue-line {
-  position: relative;
-  display: block;
-  width: 1px;
-  height: 40px;
-  overflow: hidden;
-  background: var(--border);
-}
-
-.scroll-cue-dot {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  border-radius: 999px;
-  background: var(--signal);
-  transform: translateX(-50%);
-  animation: scroll-cue 1.6s ease-in-out infinite;
-}
-
-.caret-blink {
-  animation: caret-blink 1s steps(1) infinite;
-}
-
-@keyframes scroll-cue {
-  from {
-    top: 0;
-  }
-  to {
-    top: calc(100% - 5px);
-  }
-}
-
-@keyframes caret-blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-.flow-dot-static {
-  display: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .flow-dot {
-    display: none;
-  }
-
-  .flow-dot-static {
-    display: block;
-  }
 }
 
 dialog:not([open]) {
@@ -364,68 +462,12 @@ dialog:focus-visible {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 
-  .rise-in,
-  .status-pulse,
-  .section-divider-dot,
-  .scroll-cue-dot,
-  .caret-blink,
-  .glow-card-signal {
-    animation: none !important;
-  }
-
-  .rise-in {
-    opacity: 1;
-    transform: none;
-  }
-
   .status-pulse {
+    animation: none !important;
     opacity: 1;
-  }
-
-  .section-divider-dot {
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .scroll-cue-dot {
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .caret-blink {
-    display: none;
-  }
-
-  .glow-card::before {
-    display: none;
-  }
-
-  .glow-card-signal {
-    box-shadow: 0 0 18px 0 color-mix(in srgb, var(--signal) 14%, transparent);
-  }
-
-  .journey-pin {
-    height: auto;
-  }
-
-  .journey-sticky {
-    position: static;
-    height: auto;
-    overflow: visible;
-    display: block;
-  }
-
-  .journey-horizontal {
-    display: none !important;
-  }
-
-  .journey-vertical {
-    display: block !important;
   }
 }

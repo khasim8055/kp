@@ -2,28 +2,25 @@
 
 import { Menu, Search, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LocaleToggle } from "@/components/layout/locale-toggle";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Link, usePathname } from "@/i18n/navigation";
 import { homeNav } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
-const routeMatch: Record<string, string> = {
-  research: "/research",
-  projects: "/projects",
-  contact: "/contact",
-};
-
 export function FloatingNav({ command }: { command: React.ReactNode }) {
   const t = useTranslations("Nav");
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const menuPanel = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const nodes = homeNav
-      .map((item) => document.getElementById(item.id))
+    // The hero is watched too, so no link stays lit once the visitor is back at the top.
+    const nodes = ["top", ...homeNav.map((item) => item.id)]
+      .map((id) => document.getElementById(id))
       .filter((node): node is HTMLElement => node !== null);
     if (!nodes.length) return;
 
@@ -32,7 +29,8 @@ export function FloatingNav({ command }: { command: React.ReactNode }) {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible?.target.id) setActive(visible.target.id);
+        if (!visible?.target.id) return;
+        setActive(visible.target.id === "top" ? null : visible.target.id);
       },
       { rootMargin: "-30% 0px -55% 0px", threshold: [0.15, 0.4] },
     );
@@ -44,6 +42,8 @@ export function FloatingNav({ command }: { command: React.ReactNode }) {
     if (!open) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const button = menuButton.current;
+    menuPanel.current?.querySelector<HTMLElement>("a")?.focus();
     function onKey(event: KeyboardEvent) {
       if (event.key === "Escape") setOpen(false);
     }
@@ -51,13 +51,18 @@ export function FloatingNav({ command }: { command: React.ReactNode }) {
     return () => {
       document.body.style.overflow = previous;
       window.removeEventListener("keydown", onKey);
+      button?.focus();
     };
   }, [open]);
 
   function isCurrent(id: string) {
-    if (pathname === "/" && active === id) return true;
-    const route = routeMatch[id];
-    return route ? pathname === route || pathname.startsWith(`${route}/`) : false;
+    if (pathname === "/") return active === id;
+    const item = homeNav.find((entry) => entry.id === id);
+    return Boolean(
+      item?.routes.some(
+        (route) => pathname === route || pathname.startsWith(`${route}/`),
+      ),
+    );
   }
 
   function goToSection(event: React.MouseEvent<HTMLAnchorElement>, id: string) {
@@ -107,6 +112,7 @@ export function FloatingNav({ command }: { command: React.ReactNode }) {
             {command}
           </div>
           <button
+            ref={menuButton}
             type="button"
             className="inline-flex h-9 w-9 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--signal)] lg:hidden"
             aria-expanded={open}
@@ -120,6 +126,7 @@ export function FloatingNav({ command }: { command: React.ReactNode }) {
       </header>
       {open ? (
         <div
+          ref={menuPanel}
           id="mobile-nav"
           role="dialog"
           aria-modal="true"

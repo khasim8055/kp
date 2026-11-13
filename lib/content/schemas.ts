@@ -6,18 +6,43 @@ const todo = z.string().regex(/^TODO_[A-Z0-9_]+$/);
 const scoreOrTodo = z.union([score, todo]);
 const linkOrTodo = z.union([z.string().url(), todo, z.literal("")]);
 
+export const projectStatuses = ["done", "building", "ongoing"] as const;
+
+const month = z.string().regex(/^\d{4}(-\d{2})?$/);
+const publicPath = z.string().regex(/^\/[\w\-./]+$/);
+
 export const projectSchema = z
   .object({
     title: z.string().min(1),
     slug,
-    date: z.string().regex(/^\d{4}(-\d{2})?$/),
+    /** Start, as YYYY or YYYY-MM. */
+    date: month,
+    /** End, as YYYY or YYYY-MM. Leave out for a single date or ongoing work. */
+    end: month.optional(),
     place: z.string().min(1).optional(),
-    status: z.enum(["building"]).optional(),
+    /** done: finished work. building or ongoing: listed as an experiment. */
+    status: z.enum(projectStatuses),
+    role: z.string().min(1).optional(),
     url: z.string().url().optional(),
     linkLabel: z.enum(["site", "github"]).optional(),
     summary: z.string().min(1),
-    stats: z.array(z.string().min(1)).min(1),
+    /** "value label" pairs, for example "5 models compared". Only measured facts. */
+    stats: z.array(z.string().min(1)).default([]),
     stack: z.array(z.string().min(1)).min(1),
+    /** One real recording or screenshot of the work. Files live in /public. */
+    media: z
+      .object({
+        type: z.enum(["video", "image"]),
+        src: publicPath,
+        poster: publicPath.optional(),
+        alt: z.string().min(1),
+        caption: z.string().min(1).optional(),
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+        /** Short silent clips can loop. Long recordings get controls instead. */
+        loop: z.boolean().default(false),
+      })
+      .optional(),
     featured: z.number().int().positive(),
   })
   .refine((value) => !value.url || Boolean(value.linkLabel), {
@@ -35,7 +60,7 @@ export const paperVerdicts = [
 export const paperSchema = z.object({
   title: z.string().min(1),
   slug,
-  week: z.number().int().positive(),
+  /** Day the breakdown was published. */
   date: z.union([z.string().regex(/^\d{4}-\d{2}-\d{2}$/), todo]),
   authors: z.array(z.string().min(1)).min(1),
   venue: z.string().min(1),
@@ -55,24 +80,6 @@ export const paperSchema = z.object({
   tldr: z.string().min(1),
 });
 
-export const learningSchema = z.object({
-  week: z.number().int().positive(),
-  dateStart: z.union([z.string().regex(/^\d{4}-\d{2}-\d{2}$/), todo]),
-  dateEnd: z.union([z.string().regex(/^\d{4}-\d{2}-\d{2}$/), todo]),
-  title: z.string().min(1),
-  tags: z.array(z.string().min(1)).min(1),
-  hoursSpent: z.union([z.number().positive(), todo]),
-  mood: z.string().optional(),
-  links: z
-    .array(
-      z.object({
-        label: z.string().min(1),
-        url: z.string().url(),
-      }),
-    )
-    .default([]),
-});
-
 export const nowSchema = z.object({
   title: z.string().min(1),
   updated: z.union([z.string().regex(/^\d{4}-\d{2}-\d{2}$/), todo]),
@@ -80,5 +87,4 @@ export const nowSchema = z.object({
 
 export type ProjectFrontmatter = z.infer<typeof projectSchema>;
 export type PaperFrontmatter = z.infer<typeof paperSchema>;
-export type LearningFrontmatter = z.infer<typeof learningSchema>;
 export type NowFrontmatter = z.infer<typeof nowSchema>;

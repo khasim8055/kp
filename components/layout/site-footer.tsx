@@ -4,15 +4,14 @@ import { profile } from "@/data/profile";
 
 const siteLinks = [
   { href: "/", key: "home" },
-  { href: "/research", key: "research" },
   { href: "/projects", key: "projects" },
+  { href: "/research", key: "research" },
   { href: "/experience", key: "experience" },
   { href: "/contact", key: "contact" },
 ] as const;
 
-const labLinks = [
+const noteLinks = [
   { href: "/papers", key: "papers" },
-  { href: "/learning", key: "learning" },
   { href: "/now", key: "now" },
 ] as const;
 
@@ -47,8 +46,8 @@ export async function SiteFooter() {
                 </li>
               ))}
             </FooterColumn>
-            <FooterColumn title={t("lab")}>
-              {labLinks.map((item) => (
+            <FooterColumn title={t("notes")}>
+              {noteLinks.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="hover:text-foreground">
                     {nav(item.key)}

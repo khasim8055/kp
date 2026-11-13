@@ -8,12 +8,12 @@ import { useTheme } from "next-themes";
 import { useRouter } from "@/i18n/navigation";
 
 export type CommandLink = {
-  group: "pages" | "papers" | "projects" | "learning";
+  group: "pages" | "papers" | "projects";
   label: string;
   href: string;
 };
 
-const groups = ["pages", "papers", "projects", "learning"] as const;
+const groups = ["pages", "papers", "projects"] as const;
 
 export function CommandDialog({
   links,
@@ -66,6 +66,11 @@ export function CommandDialog({
         open={open}
         onOpenChange={setOpen}
         label={t("commandTitle")}
+        // Plain substring match. The default fuzzy match ranked unrelated
+        // titles above the page the visitor typed.
+        filter={(value, search) =>
+          value.toLowerCase().includes(search.trim().toLowerCase()) ? 1 : 0
+        }
         overlayClassName="fixed inset-0 z-50 bg-black/40"
         contentClassName="fixed left-1/2 top-[18vh] z-50 w-[min(100%-2rem,28rem)] -translate-x-1/2 border border-border bg-background"
       >

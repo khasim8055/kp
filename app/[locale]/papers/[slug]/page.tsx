@@ -8,7 +8,6 @@ import {
 } from "@/lib/unfinished-mdx";
 import { DifficultyDots } from "@/components/papers/difficulty-dots";
 import { PaperNav } from "@/components/papers/paper-nav";
-import { ReadingProgress } from "@/components/papers/reading-progress";
 import { ScoreBars } from "@/components/papers/score-bars";
 import { Tag } from "@/components/ui/tag";
 import { PageHero } from "@/components/ui/page-hero";
@@ -22,7 +21,10 @@ import {
   relatedPapers,
   toCardData,
 } from "@/lib/content/papers";
+import { profile } from "@/data/profile";
 import { resolveLocale } from "@/lib/locale";
+import { jsonLdString, localizedPath, pageMeta } from "@/lib/seo";
+import { siteUrl } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -33,14 +35,27 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  await resolveLocale(params);
+  const locale = await resolveLocale(params);
   const { slug } = await params;
   const paper = getPaper(slug);
-  return { title: paper?.title ?? "Paper" };
+  if (!paper) return {};
+  return {
+    ...pageMeta({
+      locale,
+      path: `/papers/${paper.slug}`,
+      title: paper.title,
+      description: isTodo(paper.tldr) ? paper.title : paper.tldr,
+      image: {
+        url: `/${locale}/papers/${paper.slug}/opengraph-image`,
+        alt: paper.title,
+      },
+    }),
+    authors: [{ name: profile.name }],
+  };
 }
 
 export default async function PaperPage({ params }: Props) {
-  await resolveLocale(params);
+  const locale = await resolveLocale(params);
   const { slug } = await params;
   const paper = getPaper(slug);
   if (!paper) notFound();
@@ -52,17 +67,32 @@ export default async function PaperPage({ params }: Props) {
   const related = relatedPapers(papers, card);
   const scores = Object.entries(paper.scores);
   const scoresReady = scores.every(([, value]) => typeof value === "number");
-  const week = String(paper.week).padStart(2, "0");
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: paper.title,
+    description: isTodo(paper.tldr) ? undefined : paper.tldr,
+    datePublished: isTodo(paper.date) ? undefined : paper.date,
+    inLanguage: "en",
+    author: { "@type": "Person", name: profile.name, url: siteUrl() },
+    mainEntityOfPage: `${siteUrl()}${localizedPath(locale, `/papers/${paper.slug}`)}`,
+    about: isUrl(paper.paperUrl)
+      ? { "@type": "ScholarlyArticle", name: paper.title, url: paper.paperUrl }
+      : undefined,
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdString(articleJsonLd) }}
+      />
       <PageHero
         width="760"
-        eyebrow={t("week", { week })}
+        eyebrow={t("breakdown")}
         title={paper.title}
         serif={t("serif")}
       />
-      <ReadingProgress>
         <article className="mx-auto max-w-[760px] px-4 py-14 md:py-16">
           <Link
             href="/papers"
@@ -154,7 +184,6 @@ export default async function PaperPage({ params }: Props) {
           </div>
           <PaperNav prev={prev} next={next} related={related} />
         </article>
-      </ReadingProgress>
     </>
   );
 }

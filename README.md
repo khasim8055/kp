@@ -1,6 +1,6 @@
 # Khasim Bin Saleh
 
-Personal site for an AI/ML engineer in Germany. English is at `/`. German UI is at `/de`.
+Personal site of Khasim Bin Saleh, AI engineer and researcher in Berlin. English is at `/`. German UI is at `/de`.
 
 ## Run locally
 
@@ -24,11 +24,33 @@ Invalid MDX frontmatter fails the build. Files in `content/` that start with `_`
 
 ## Add content
 
-1. Copy a template. Papers use `content/papers/_template.mdx`. The learning log uses `content/learning/_template.mdx`. Projects use `content/projects/_template.mdx`. The Now page is `content/now.mdx`.
-2. Rename the copy and drop the leading `_`. A project filename must match its `slug`. A paper filename can differ from its `slug`, as in `week-03-some-paper.mdx`. A learning filename is the URL, so `week-03.mdx` is `/learning/week-03`, and `week` in the frontmatter must be `3`.
-3. Fill the frontmatter. Dates are `YYYY-MM-DD`. Leave unknown values as `TODO_` plus capitals, for example `TODO_HOURS`. Scores are whole numbers from 1 to 5, or `TODO_SCORE`. A verdict is `Must read`, `Worth reading`, `Skim`, `Skip`, or `TODO_VERDICT`.
+1. Copy a template. Papers use `content/papers/_template.mdx`. Projects use `content/projects/_template.mdx`. The Now page is `content/now.mdx`.
+2. Rename the copy and drop the leading `_`. A project filename must match its `slug`. A paper filename can differ from its `slug`.
+3. Fill the frontmatter. Dates are `YYYY-MM-DD`. Leave unknown values as `TODO_` plus capitals, for example `TODO_DATE`. Scores are whole numbers from 1 to 5, or `TODO_SCORE`. A verdict is `Must read`, `Worth reading`, `Skim`, `Skip`, or `TODO_VERDICT`.
 4. Write the body in English. Page chrome is translated in `messages/en.json` and `messages/de.json`. Mark prose you still want to rewrite with `{/* DRAFT: Khasim to review */}`.
 5. Run `npm run lint` and `npm run build`.
+
+Papers have no schedule. A breakdown appears on the site when its `date` is set, newest first.
+
+### Projects
+
+- `status` is `done` for finished work, and `building` or `ongoing` for work in progress. The site lists the two groups separately: "Completed" and "Ongoing experiments".
+- `stats` are optional "value label" pairs, for example `"5 models compared"`. Only add numbers that were measured. Leave `stats` out when there is nothing to report yet.
+- `media` is optional: one real recording or screenshot from `public/media/`. Set `loop: true` only for short silent clips. Long videos get player controls and load nothing until play is pressed. Encode video as H.264 MP4 so it plays in every browser.
+- Use these headings in the body: Problem, Approach, Implementation, What I measured, Current status, What I learned.
+
+## The hero figure
+
+The figure on the home page and on `/research` is drawn twice from the same seeded data in `lib/audit-field.ts`:
+
+- `components/figure/audit-figure.tsx` renders it as a static SVG on the server. This is what loads first, and what stays without WebGL or with reduced motion.
+- `components/figure/audit-canvas.tsx` is the WebGL layer. It has no dependencies, loads after the page is idle, and only runs while it is on screen.
+
+The points are illustrative and the caption says so. Do not replace them with real study data without changing the caption.
+
+## Removed pages
+
+`/learning` and two old paper pages redirect to `/papers`. The list is in `next.config.ts`.
 
 ## Deploy
 

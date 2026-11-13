@@ -10,8 +10,8 @@ export type ExperienceItem = {
 export const experience: ExperienceItem[] = [
   {
     role: "Research Assistant",
-    org: "SRH Germany University of Applied Sciences",
-    location: "Germany",
+    org: "SRH University of Applied Sciences Berlin",
+    location: "Berlin",
     start: "06/2026",
     end: "10/2026",
     points: [
@@ -45,9 +45,9 @@ export type EducationItem = {
 
 export const education: EducationItem[] = [
   {
-    school: "SRH Germany University of Applied Sciences",
-    program: "MSc Artificial Intelligence",
-    location: "Germany",
+    school: "SRH University of Applied Sciences Berlin",
+    program: "MSc Computer Science, Big Data and AI",
+    location: "Berlin",
     start: "04/2025",
     end: "03/2027",
     detail:

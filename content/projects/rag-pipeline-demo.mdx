@@ -1,0 +1,55 @@
+---
+title: RAG Pipeline from Scratch
+slug: rag-pipeline-demo
+date: "2026-04"
+status: done
+url: https://github.com/khasim8055/rag-pipeline-demo
+linkLabel: github
+summary: A retrieval-augmented generation pipeline rebuilt in plain Python, so every step between question and answer is visible. Evaluated with hit rate and mean reciprocal rank on a small labelled set.
+stats:
+  - "88% hit rate at k=3"
+  - "0.79 MRR"
+  - "12 pytest tests"
+stack:
+  - Python
+  - scikit-learn
+  - NumPy
+  - Docker
+  - pytest
+featured: 4
+---
+
+{/* DRAFT: Khasim to review */}
+
+## Problem
+
+Most RAG tutorials wrap everything in a framework. You can ship a demo that way without understanding what happens between the question and the answer.
+
+## Approach
+
+Rebuild the full pipeline in plain Python with a deliberately simple baseline, and make every stage swappable so it can be upgraded one file at a time.
+
+## Implementation
+
+- Document ingestion with sentence-aware chunking instead of fixed windows.
+- TF-IDF embeddings and cosine-similarity search over an in-memory NumPy matrix.
+- Context assembly from the top 3 chunks, then a template-based answer that always returns its sources.
+- Each stage is one module: the embedder, the vector store and the generator can be replaced without touching the rest.
+- 12 pytest tests and a Dockerfile.
+
+## What I measured
+
+Retrieval quality on a small hand-labelled set of questions against the three sample documents that ship with the repository:
+
+- Hit rate at k=3: 88%
+- Mean reciprocal rank: 0.79
+
+These are baseline numbers for the TF-IDF retriever on a small corpus. They say the pipeline works end to end. They do not say how it would perform on a large or messy document set.
+
+## Current status
+
+Finished and public on GitHub as a learning project. Neural embeddings, a real vector store and an LLM generator are listed as future work and are not implemented.
+
+## What I learned
+
+Chunking and scoring decide most of the retrieval quality before any language model is involved.

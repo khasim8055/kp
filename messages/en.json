@@ -1,17 +1,25 @@
 {
   "Meta": {
     "title": "Khasim Bin Saleh",
-    "description": "AI/ML engineer in Germany. I build LLM and ML systems end to end, and I measure them before I trust them."
+    "titleHome": "Khasim Bin Saleh · AI engineer and researcher in Berlin",
+    "description": "AI engineer and researcher in Berlin. I build AI systems for places where mistakes matter, from clinical software to robots, and I measure them before I trust them.",
+    "pages": {
+      "projects": "Finished projects and ongoing experiments by Khasim Bin Saleh: offline clinical documentation, an AI tutor, ML pipelines and a companion robot. Each one says what was measured.",
+      "research": "Research by Khasim Bin Saleh: privacy audits of synthetic health data with LLM agents, enterprise AI agents, and close readings of papers.",
+      "papers": "Paper breakdowns by Khasim Bin Saleh. Close readings of AI papers with the method, the key results, and what I would question.",
+      "experience": "Experience and education of Khasim Bin Saleh: research assistant and MSc student at SRH Berlin, machine learning intern at Coschool, and a filed patent.",
+      "contact": "Get in touch with Khasim Bin Saleh about roles, research or projects in healthcare AI, LLM evaluation and robotics.",
+      "now": "What Khasim Bin Saleh is working on right now."
+    }
   },
   "Nav": {
     "primary": "Primary",
     "home": "Home",
     "about": "About",
-    "lab": "Lab",
     "research": "Research",
     "papers": "Papers",
-    "learning": "Learning",
     "projects": "Projects",
+    "journey": "Journey",
     "experience": "Experience",
     "contact": "Contact",
     "menu": "Menu",
@@ -27,47 +35,65 @@
     "requestCv": "Request CV",
     "themeToggle": "Toggle color theme",
     "language": "Language",
-    "backToTop": "Back to top",
-    "scrollProgress": "Page scroll",
-    "evidence": "Album"
+    "backToTop": "Back to top"
   },
   "Hero": {
-    "title": "AI/ML Engineer",
-    "location": "Germany",
-    "oneLiner": "I build LLM and ML systems end to end, and I measure them before I trust them.",
-    "focus": "// focus",
-    "requestCv": "Request CV",
-    "latestPaper": "Read my latest paper breakdown",
-    "linkedin": "LinkedIn",
-    "github": "GitHub",
-    "eyebrow": "GERMANY · AI/ML ENGINEER",
-    "role1": "AI/ML Engineer",
-    "role2": "Evaluation first",
-    "role3": "Building Klindok",
-    "role4": "Healthcare AI",
+    "eyebrow": "AI ENGINEER · RESEARCHER · BERLIN",
     "question": "Can we trust what AI tells us?",
-    "line": "I build AI systems for places where mistakes matter, and I measure them before I trust them.",
-    "explore": "Explore my research",
-    "built": "See what I built",
-    "scroll": "SCROLL"
+    "line": "I build AI systems for places where mistakes matter, from clinical software to robots, and I measure them before I trust them.",
+    "now": "MSc Computer Science (Big Data and AI) at SRH Berlin. Writing my thesis on privacy audits of synthetic health data.",
+    "projects": "See projects",
+    "research": "Read the research",
+    "contact": "Get in touch"
+  },
+  "Figure": {
+    "title": "Fig. 1 · Distance to the closest record",
+    "caption": "Each dot is a synthetic record. Each ring is a real person's record. A dot that lands on a ring can give that person away. Finding those cases is what my thesis is about.",
+    "legendReal": "Real record",
+    "legendSynth": "Synthetic record",
+    "legendFlag": "Too close: {flagged} of {total}",
+    "hint": "Move the pointer to audit a record.",
+    "note": "Illustrative data, not study results.",
+    "record": "Record",
+    "tooClose": "too close",
+    "farEnough": "far enough",
+    "alt": "Three-dimensional scatter plot of {total} synthetic records and the real records they were generated from. {flagged} synthetic records sit almost on top of a real record and are marked as too close."
   },
   "About": {
     "eyebrow": "ABOUT",
     "title": "From IoT tinkering to trustworthy AI",
     "p1": "I started with a B.Tech in Computer Science at Lovely Professional University, with a specialisation in IoT. In 2023 I became a co-inventor on a patent for an internet controlled pet food dispenser.",
     "p2": "At Coschool I built an AI tutor that reached 1,000+ beta users. That work taught me a model is only as good as how you test it.",
-    "p3": "I moved to Germany for an MSc in AI. Now I am building Klindok, and writing my thesis: Agentic Privacy Auditing of Synthetic Health Data: Evaluating LLM Audit Agents against Attack-Based Re-identification Metrics.",
-    "years": "years building ML and LLM systems",
-    "users": "beta users reached",
-    "patent": "patent",
-    "languages": "languages",
-    "languagesLine": "Hindi · English · German (B1, learning)"
+    "p3": "I moved to Berlin for an MSc in Computer Science with a focus on Big Data and AI. Here I built Klindok, offline software that drafts clinical letters and checks every fact in them. Now I am writing my thesis on privacy audits of synthetic health data.",
+    "p4": "Alongside that I work on the AI side of Kiko, a companion robot, because I want to understand what changes when a model leaves the screen.",
+    "facts": {
+      "based": {
+        "label": "Based in",
+        "value": "Berlin, Germany"
+      },
+      "studying": {
+        "label": "Studying",
+        "value": "MSc Computer Science, Big Data and AI, at SRH University of Applied Sciences Berlin. 2025 to 2027."
+      },
+      "before": {
+        "label": "Before",
+        "value": "Machine learning intern at Coschool, Hyderabad. B.Tech in Computer Science and Engineering, IoT specialisation."
+      },
+      "languages": {
+        "label": "Languages",
+        "value": "Hindi (native), English (C1), German (B1, learning)"
+      },
+      "patent": {
+        "label": "Patent",
+        "value": "Co-inventor. Application no. 202311073080, filed October 2023."
+      }
+    }
   },
   "Journey": {
     "eyebrow": "JOURNEY",
     "title": "How I got here",
     "serif": "Every step added one more test.",
-    "full": "Full experience",
+    "full": "Full experience and education",
     "stops": {
       "btech": {
         "year": "2020",
@@ -78,104 +104,102 @@
       "patent": {
         "year": "2023",
         "title": "Co-inventor on an IoT patent",
-        "body": "Filed in October 2023.",
+        "body": "An internet controlled pet food dispenser. Filed in October 2023.",
         "tag": "Patent"
       },
       "coschool": {
         "year": "2023",
-        "title": "ML Intern at Coschool",
+        "title": "ML intern at Coschool",
         "body": "Shipped an AI tutor to 1,000+ beta users.",
         "tag": "Internship"
       },
       "berlin": {
         "year": "2025",
-        "title": "Moved to Germany",
-        "body": "MSc AI at SRH Germany.",
+        "title": "Moved to Berlin",
+        "body": "MSc Computer Science, Big Data and AI, at SRH Berlin.",
         "tag": "MSc"
       },
       "research": {
         "year": "2026",
-        "title": "Research Assistant",
-        "body": "Enterprise AI agents and agent design patterns.",
+        "title": "Research assistant",
+        "body": "Enterprise AI agents and agent design patterns. June to October.",
         "tag": "Research"
       },
       "klindok": {
         "year": "2026",
-        "title": "Started building Klindok",
-        "body": "Offline clinical documentation for private practices.",
-        "tag": "Klindok"
+        "title": "Built Klindok",
+        "body": "Offline clinical documentation software with a fact check."
+      },
+      "thesis": {
+        "year": "2026",
+        "title": "Started the MSc thesis",
+        "body": "Privacy audits of synthetic health data with LLM agents."
+      },
+      "kiko": {
+        "year": "2026",
+        "title": "Kiko",
+        "body": "A companion robot with a small student team. I work on the AI side."
       }
     }
   },
-  "CurrentWork": {
-    "eyebrow": "// current work",
-    "title": "Current work",
-    "inProgress": "In progress",
-    "building": "Building",
-    "ongoing": "Ongoing",
-    "site": "Site"
-  },
   "ResearchHome": {
     "eyebrow": "RESEARCH",
-    "title": "Research and academic work",
+    "title": "What I research, and why",
     "coreEyebrow": "CORE RESEARCH QUESTION",
-    "coreP1": "My thesis is Agentic Privacy Auditing of Synthetic Health Data: Evaluating LLM Audit Agents against Attack-Based Re-identification Metrics.",
-    "coreP2": "Klindok keeps clinical data offline, so the model does not need to leave the practice.",
-    "coreP3": "My agent work looks at why reported adoption swings so widely, and which design patterns hold up in real deployments.",
+    "question": "Can an LLM agent find the privacy risks in synthetic health data that standard tests rate as safe?",
+    "coreP1": "Hospitals and researchers share synthetic data in place of real patient records. Whether that is safe depends on the test used to check it, and popular tests can miss records that still point to a real person.",
+    "coreP2": "The same question runs through everything else I do: measure a system before you trust it.",
     "thesisTitle": "MSc thesis",
     "thesisBody": "Agentic Privacy Auditing of Synthetic Health Data: Evaluating LLM Audit Agents against Attack-Based Re-identification Metrics",
     "agentsTitle": "Enterprise AI agents",
     "agentsBody": "Compared four 2026 surveys where reported adoption ranged from 17% to 65%, and traced why.",
     "patternsTitle": "Agent design patterns",
     "patternsBody": "ReAct, Reflection, Planning, Tool use and Multi-agent, matched to real deployments and to MCP and A2A.",
+    "more": "Research overview",
     "collab": "Open to research collaborations",
     "linkedin": "LinkedIn"
   },
-  "Lab": {
-    "eyebrow": "THE LAB",
-    "title": "Learning in public, every week",
-    "serif": "One paper. One lesson. Every week.",
-    "streak": "{count, plural, one {week streak} other {week streak}}",
-    "papers": "{count, plural, one {paper read} other {papers read}}",
-    "weeks": "{count, plural, one {week logged} other {weeks logged}}",
-    "paperOfWeek": "Paper of the week",
-    "learned": "This week I learned",
-    "tracks": "Research tracks",
-    "heatmap": "Last 12 weeks",
-    "allPapers": "All paper breakdowns",
-    "allLearning": "Full learning log",
-    "paperMissing": "No paper breakdown yet.",
-    "learningMissing": "No learning week yet.",
-    "scoreMissing": "Not scored yet"
-  },
-  "Learning": {
-    "indexEyebrow": "// learning",
-    "indexTitle": "Learning",
-    "serif": "One lesson. Every week.",
-    "viewAll": "All weeks",
-    "heatmap": "Last 52 weeks",
-    "heatmapLabel": "{count, plural, one {# week logged in the last 52 weeks} other {# weeks logged in the last 52 weeks}}",
-    "legendEmpty": "No entry",
-    "legendSome": "Some hours",
-    "legendMore": "More hours",
-    "currentStreak": "Current streak",
-    "longestStreak": "Longest streak",
-    "weeks": "{count, plural, one {# week} other {# weeks}}",
-    "allTopics": "All topics",
-    "empty": "No weeks for this topic.",
-    "week": "Week {week}",
-    "range": "{start} to {end}",
-    "readWeek": "Read the week",
-    "hours": "{count} h",
-    "hoursMissing": "Hours not added yet",
-    "missing": "Not added yet"
+  "ResearchPage": {
+    "title": "Research",
+    "thesisEyebrow": "MSc thesis · in progress",
+    "thesisP1": "Synthetic health data is meant to keep the patterns of real patient records without containing any real patient. Before it is shared, someone has to check that no synthetic record still points to a real person.",
+    "thesisP2": "A common quick check measures how far each synthetic record is from the closest real one, which is what the figure shows. Stronger checks run real attacks against the data and count how often a person can be re-identified.",
+    "thesisP3": "My thesis asks whether an LLM agent that audits the same data can find risks that those attack-based metrics rate as low. The work is in progress and there are no results to report yet.",
+    "workEyebrow": "Work so far",
+    "workTitle": "Research and academic work",
+    "workMore": "Details on the experience page",
+    "interestsEyebrow": "Interests",
+    "interestsTitle": "Where my curiosity goes",
+    "interests": {
+      "health": {
+        "label": "Healthcare AI and privacy",
+        "body": "Software that is useful to a clinic without moving patient data. Klindok was my way of learning what that takes."
+      },
+      "evaluation": {
+        "label": "Evaluating LLMs and agents",
+        "body": "Testing what a model or an agent really does before relying on it, and being clear about what was not tested."
+      },
+      "robotics": {
+        "label": "Robotics",
+        "body": "What changes when a model runs on a real device. I am new to this field and learning it through Kiko."
+      },
+      "twins": {
+        "label": "Digital twins",
+        "body": "Simulated copies of physical systems, for testing behaviour before the hardware exists. An interest I am starting to explore."
+      }
+    },
+    "readingTitle": "Papers I have read closely"
   },
   "Papers": {
     "indexEyebrow": "// papers",
     "indexTitle": "Papers",
     "serif": "One paper, read closely.",
-    "viewAll": "All papers",
-    "paperOfTheWeek": "Paper of the week",
+    "breakdowns": "Paper breakdowns",
+    "breakdown": "Paper breakdown",
+    "cadence": "Published whenever I finish reading a paper properly. No fixed schedule.",
+    "latest": "Latest breakdown",
+    "none": "No paper breakdowns yet.",
+    "viewAll": "All paper breakdowns",
     "search": "Search papers",
     "verdict": "Verdict",
     "year": "Year",
@@ -186,7 +210,6 @@
     "sortNewest": "Newest",
     "sortScore": "Highest score",
     "empty": "No papers match these filters.",
-    "week": "Week {week}",
     "difficulty": "Difficulty {value} of 5",
     "minutes": "{count} min",
     "missing": "Not added yet",
@@ -198,39 +221,44 @@
     "rigor": "Rigor",
     "reproducibility": "Reproducibility",
     "practicalImpact": "Practical impact",
-    "prev": "Previous",
-    "next": "Next",
-    "related": "Related breakdowns",
-    "readingProgress": "Reading progress"
+    "prev": "Newer",
+    "next": "Older",
+    "related": "Related breakdowns"
   },
   "Projects": {
     "eyebrow": "PROJECTS",
     "title": "Built, tested, measured",
-    "subtitle": "Not just ideas. Each project shows what I measured.",
+    "subtitle": "Finished work first, experiments after. Each page says what was measured and where the project stands.",
+    "done": "Completed",
+    "doneNote": "Finished work.",
+    "ongoing": "Ongoing experiments",
+    "ongoingNote": "Unfinished on purpose. No results claimed yet.",
     "viewAll": "All projects",
     "indexEyebrow": "// projects",
     "indexTitle": "Projects",
     "caseStudy": "Case study",
+    "readCase": "Read the case study",
+    "readMore": "More about {title}",
     "site": "Site",
     "visitSite": "Visit site",
     "github": "GitHub",
-    "building": "Building",
-    "flagship": "FLAGSHIP",
     "klindokSerif": "AI that never sends patient data anywhere.",
-    "arztbrief": "per Arztbrief",
-    "offline": "offline",
-    "audit": "GDPR audit log",
-    "flowNotes": "Doctor notes",
-    "flowModel": "Local model",
-    "flowLetter": "Arztbrief",
-    "details": "Details",
-    "hideDetails": "Hide details"
+    "klindokShotAlt": "Klindok's fact check panel. One error blocks the release: a blood pressure value appears in the draft but not in the doctor's input.",
+    "klindokShotCaption": "The fact check found a blood pressure value the doctor never typed. The letter cannot be released until it is fixed.",
+    "status": "Status",
+    "period": "Period",
+    "role": "Role",
+    "stack": "Stack",
+    "link": "Link",
+    "more": "More projects",
+    "prev": "Previous project",
+    "next": "Next project"
   },
   "Skills": {
     "eyebrow": "SKILLS",
     "title": "Technical depth",
-    "subtitle": "Honest levels: used in production, used in a project, or studying.",
-    "tabsLabel": "Skill groups",
+    "subtitle": "Honest levels: used in production, used in a project, or studying. A skill only gets a level when a project on this site backs it up.",
+    "also": "Also worked with",
     "tabs": {
       "aiml": "AI and ML",
       "llms": "LLMs and Agents",
@@ -251,34 +279,27 @@
       "studying": "Studying"
     },
     "levels": {
-      "production": "PRODUCTION",
-      "project": "PROJECT",
-      "studying": "STUDYING"
+      "production": "Production",
+      "project": "Project",
+      "studying": "Studying"
     }
   },
   "Experience": {
     "eyebrow": "// experience",
     "title": "Experience",
-    "viewAll": "Full timeline",
     "range": "{start} to {end}",
     "educationEyebrow": "// education",
-    "educationTitle": "Education"
-  },
-  "Beyond": {
-    "eyebrow": "// beyond code",
-    "title": "Beyond code",
-    "patent": "Patent",
-    "council": "Student Council",
-    "interests": "Interests",
-    "languages": "Languages"
+    "educationTitle": "Education",
+    "patentEyebrow": "patent",
+    "patentTitle": "Patent"
   },
   "Contact": {
     "eyebrow": "CONTACT",
     "title": "Let's build AI people can trust.",
-    "line": "Hiring, researching or building in Healthcare AI? I would like to hear from you.",
+    "line": "Hiring, researching or building in healthcare AI or robotics? I would like to hear from you. LinkedIn is the fastest way to reach me.",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "based": "Based in Germany",
+    "based": "Based in Berlin, Germany",
     "interests": {
       "llmEval": "LLM Evaluation",
       "healthcare": "Healthcare AI",
@@ -292,7 +313,7 @@
     "rss": "RSS",
     "built": "Designed and built by Khasim",
     "site": "Site",
-    "lab": "Lab",
+    "notes": "Notes",
     "elsewhere": "Elsewhere",
     "linkedin": "LinkedIn",
     "github": "GitHub"
@@ -305,26 +326,6 @@
     "updatedOne": "Updated 1 day ago",
     "updatedMany": "Updated {count} days ago",
     "missing": "Updated date not added yet"
-  },
-  "Recruiter": {
-    "open": "60 second summary",
-    "eyebrow": "// 60 seconds",
-    "title": "60 second summary",
-    "role": "Role",
-    "roleValue": "AI/ML Engineer",
-    "location": "Location",
-    "locationValue": "Germany",
-    "skills": "Focus",
-    "proof": "Proof",
-    "proof1": "Shipped an AI tutor to 1,000+ beta users.",
-    "proof2": "Cut incorrect or off-topic answers by 80%+ across 500+ test cases.",
-    "proof3": "Klindok writes an Arztbrief in under 30 seconds, fully offline.",
-    "requestCv": "Request CV",
-    "close": "Close"
-  },
-  "Placeholder": {
-    "eyebrow": "// note",
-    "body": "I am still writing this page."
   },
   "NotFound": {
     "eyebrow": "// 404",
@@ -343,23 +344,12 @@
     "title": "Style guide",
     "intro": "These components are not linked in the navigation.",
     "eyebrow": "Signal",
-    "sectionTitle": "Section header",
-    "sectionSubtitle": "A short line under the title.",
     "serifLine": "Can we trust what AI tells us?",
     "readoutLabel": "Sample readout",
     "readoutStatic": "Static value",
-    "cardBody": "A soft glow follows the pointer inside the card.",
+    "cardBody": "A plain card: one border, one surface, no effects.",
     "tag": "RAG",
-    "reveal": "This block fades up once.",
     "darkSample": "Dark",
     "lightSample": "Light"
-  },
-  "Evidence": {
-    "eyebrow": "ALBUM",
-    "title": "Album",
-    "subtitle": "Recordings and images from the work. More coming.",
-    "items": {
-      "recording01": "Work recording"
-    }
   }
 }

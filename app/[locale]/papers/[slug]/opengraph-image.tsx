@@ -25,12 +25,14 @@ export default async function Image({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#FAFAF9",
-          color: "#1C1917",
+          background: "#07090a",
+          color: "#eef2f0",
           padding: "72px",
         }}
       >
-        <div style={{ fontSize: 28, color: "#0F766E" }}>Khasim Bin Saleh</div>
+        <div style={{ display: "flex", fontSize: 24, letterSpacing: 4, color: "#f5b947" }}>
+          PAPER BREAKDOWN · KHASIM BIN SALEH
+        </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 60, lineHeight: 1.15 }}>{title}</div>
           {verdict ? (
@@ -38,8 +40,8 @@ export default async function Image({
               style={{
                 marginTop: 28,
                 fontSize: 28,
-                color: "#0F766E",
-                border: "2px solid #0F766E",
+                color: "#34d6b0",
+                border: "2px solid #34d6b0",
                 padding: "8px 16px",
                 alignSelf: "flex-start",
               }}
