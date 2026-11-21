@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { FactCheckDemo } from "@/components/demo/fact-check-demo";
 import { projectMdxComponents } from "@/components/mdx/project-body";
 import { PageHero } from "@/components/ui/page-hero";
 import { ProjectMedia } from "@/components/ui/project-media";
@@ -125,6 +126,7 @@ export default async function ProjectPage({ params }: Props) {
         ) : null}
 
         {project.media ? <ProjectMedia media={project.media} className="mt-8" /> : null}
+        {project.slug === "klindok" ? <FactCheckDemo className="mt-8" stacked /> : null}
 
         <div className="mt-2 text-[16px] leading-relaxed">
           <MDXRemote source={project.body} components={projectMdxComponents} />

@@ -9,7 +9,7 @@ export const profile = {
     "LLM and agent evaluation",
     "Healthcare AI",
     "Privacy of synthetic data",
-    "Robotics",
+    "Computer vision",
     "Digital twins",
   ],
 } as const;

@@ -2,13 +2,13 @@
   "Meta": {
     "title": "Khasim Bin Saleh",
     "titleHome": "Khasim Bin Saleh · KI-Ingenieur und Forscher in Berlin",
-    "description": "KI-Ingenieur und Forscher in Berlin. Ich baue KI-Systeme für Orte, an denen Fehler zählen, von klinischer Software bis zu Robotern, und ich messe sie, bevor ich ihnen vertraue.",
+    "description": "KI-Ingenieur und Forscher in Berlin. Ich baue KI-Systeme für Orte, an denen Fehler zählen, von klinischer Software bis Computer Vision, und ich messe sie, bevor ich ihnen vertraue.",
     "pages": {
-      "projects": "Abgeschlossene Projekte und laufende Experimente von Khasim Bin Saleh: klinische Dokumentation ohne Cloud, ein KI-Tutor, ML-Pipelines und ein Begleitroboter. Jedes Projekt zeigt, was gemessen wurde.",
+      "projects": "Abgeschlossene Projekte und laufende Experimente von Khasim Bin Saleh: klinische Dokumentation ohne Cloud, ein KI-Tutor, ML-Pipelines und ein Computer-Vision-Prototyp. Jedes Projekt zeigt, was gemessen wurde.",
       "research": "Forschung von Khasim Bin Saleh: Datenschutz-Audits synthetischer Gesundheitsdaten mit LLM-Agenten, KI-Agenten in Unternehmen und genaue Lektüre von Papers.",
       "papers": "Paper-Analysen von Khasim Bin Saleh. KI-Papers genau gelesen, mit Methode, wichtigsten Ergebnissen und offenen Fragen.",
       "experience": "Erfahrung und Ausbildung von Khasim Bin Saleh: wissenschaftliche Hilfskraft und MSc-Student an der SRH Berlin sowie Machine-Learning-Praktikum bei Coschool.",
-      "contact": "Kontakt zu Khasim Bin Saleh für Stellen, Forschung oder Projekte in Gesundheits-KI, LLM-Evaluation und Robotik.",
+      "contact": "Kontakt zu Khasim Bin Saleh für Stellen, Forschung oder Projekte in Gesundheits-KI, LLM-Evaluation und Computer Vision.",
       "now": "Woran Khasim Bin Saleh gerade arbeitet."
     }
   },
@@ -35,20 +35,18 @@
     "requestCv": "Lebenslauf anfragen",
     "themeToggle": "Farbschema wechseln",
     "language": "Sprache",
-    "backToTop": "Nach oben"
+    "backToTop": "Nach oben",
+    "downloadCv": "CV herunterladen"
   },
   "Hero": {
     "eyebrow": "BERLIN · KI-INGENIEUR · FORSCHER",
     "question": "Können wir dem vertrauen, was KI uns sagt?",
-    "line": "Ich baue KI-Systeme für Orte, an denen Fehler zählen, von klinischer Software bis zu Robotern, und ich messe sie, bevor ich ihnen vertraue.",
+    "line": "Ich baue KI-Systeme für Orte, an denen Fehler zählen, von klinischer Software bis Computer Vision, und ich messe sie, bevor ich ihnen vertraue.",
     "projects": "Projekte ansehen",
     "research": "Forschung lesen",
     "contact": "Kontakt aufnehmen",
-    "role1": "KI-Ingenieur",
-    "role2": "Forscher",
-    "role3": "Agentische KI",
-    "role4": "Gesundheits-KI",
-    "role5": "Robotik",
+    "open": "Offen für Vollzeitstellen im KI-Bereich und Promotionsstellen",
+    "cv": "CV herunterladen",
     "scroll": "SCROLLEN"
   },
   "Figure": {
@@ -70,7 +68,7 @@
     "p1": "Ich habe mit einem B.Tech in Informatik an der Lovely Professional University begonnen, mit Schwerpunkt IoT.",
     "p2": "Bei Coschool habe ich einen KI-Tutor gebaut, der 1.000+ Beta-Nutzer erreicht hat. Dabei habe ich gelernt: ein Modell ist nur so gut wie die Art, wie man es testet.",
     "p3": "Für einen MSc in Informatik mit Schwerpunkt Big Data und KI bin ich nach Berlin gezogen. Hier habe ich Klindok gebaut, eine Software ohne Cloud, die klinische Briefe entwirft und jede Angabe darin prüft. Jetzt schreibe ich meine Abschlussarbeit über Datenschutz-Audits synthetischer Gesundheitsdaten.",
-    "p4": "Daneben arbeite ich an der KI-Seite von Kiko, einem Begleitroboter. Ich möchte verstehen, was sich ändert, wenn ein Modell den Bildschirm verlässt.",
+    "p4": "Daneben arbeite ich an Computer Vision für Kiko, ein kleines Begleitgerät mit Gesicht. Ich möchte verstehen, was sich ändert, wenn ein Modell den Bildschirm verlässt.",
     "facts": {
       "based": {
         "label": "Wohnort",
@@ -133,7 +131,7 @@
       "kiko": {
         "year": "2026",
         "title": "Kiko",
-        "body": "Ein Begleitroboter mit einem kleinen studentischen Team. Ich arbeite an der KI-Seite."
+        "body": "Computer Vision für ein Begleitgerät, mit einem kleinen studentischen Team."
       }
     }
   },
@@ -174,9 +172,9 @@
         "label": "LLMs und Agenten evaluieren",
         "body": "Prüfen, was ein Modell oder ein Agent wirklich tut, bevor man sich darauf verlässt. Und klar sagen, was nicht getestet wurde."
       },
-      "robotics": {
-        "label": "Robotik",
-        "body": "Was sich ändert, wenn ein Modell auf einem echten Gerät läuft. Das Feld ist neu für mich, ich lerne es mit Kiko."
+      "vision": {
+        "label": "Computer Vision",
+        "body": "Was sich ändert, wenn ein Modell durch eine echte Kamera sehen muss, in einem echten Raum. Das Feld ist neu für mich, ich lerne es mit Kiko."
       },
       "twins": {
         "label": "Digitale Zwillinge",
@@ -248,6 +246,39 @@
     "prev": "Vorheriges Projekt",
     "next": "Nächstes Projekt"
   },
+  "Demo": {
+    "eyebrow": "AUSPROBIEREN",
+    "title": "Ändere den Brief. Die Prüfung merkt es.",
+    "intro": "Eine vereinfachte Browser-Version der Faktenprüfung von Klindok, mit erfundenen Patientendaten. Bearbeite den Entwurf: Jeder Wert, jede Dosis, jedes Datum und jede Seite, die nicht in den Notizen steht, blockiert die Freigabe.",
+    "notesLabel": "Notizen der Ärztin",
+    "draftLabel": "Briefentwurf",
+    "draftHint": "Diesen Text bearbeiten",
+    "resultLabel": "Faktenprüfung",
+    "summary": "Fehler: {errors}, Warnungen: {warnings}.",
+    "errors": "Fehler (blockieren die Freigabe)",
+    "warnings": "Warnungen",
+    "errorItem": "Im Entwurf, aber nicht in den Notizen:",
+    "warningItem": "In den Notizen, fehlt im Entwurf:",
+    "clean": "Jede Angabe im Entwurf stimmt mit den Notizen überein.",
+    "release": "Brief freigeben",
+    "blocked": "Freigabe blockiert",
+    "released": "Freigegeben. In Klindok ist der Text jetzt eingefroren und signiert.",
+    "reset": "Zurücksetzen",
+    "fix": "Entwurf korrigieren",
+    "note": "Nur eine Demo. Sie läuft in deinem Browser, und nichts, was du tippst, wird gesendet. Die echte Prüfung deckt auch Laborwerte und Medikamentennamen ab.",
+    "left": "links",
+    "right": "rechts",
+    "notes": [
+      "58 J., männlich, Vorstellung am 12.11.2026",
+      "RR 142/88 mmHg, Puls 76/min",
+      "HbA1c 7,4 %",
+      "Metformin 500 mg zweimal täglich",
+      "Amoxicillin/Clavulansäure 625 mg für 7 Tage",
+      "Schmerzen im linken Knie, Röntgen angefordert"
+    ],
+    "draft": "Sehr geehrte Kollegin, sehr geehrter Kollege,\n\nvielen Dank für die Mitbeurteilung des 58-jährigen Patienten, vorgestellt am 12.11.2026. Der Blutdruck lag bei 150/90 mmHg, der Puls bei 76/min. Der HbA1c beträgt 7,4 %.\n\nEr nimmt Metformin 500 mg zweimal täglich und erhielt Amoxicillin/Clavulansäure 620 mg für 7 Tage. Er berichtet über Schmerzen im linken Knie, ein Röntgen wurde angefordert.",
+    "fixed": "Sehr geehrte Kollegin, sehr geehrter Kollege,\n\nvielen Dank für die Mitbeurteilung des 58-jährigen Patienten, vorgestellt am 12.11.2026. Der Blutdruck lag bei 142/88 mmHg, der Puls bei 76/min. Der HbA1c beträgt 7,4 %.\n\nEr nimmt Metformin 500 mg zweimal täglich und erhielt Amoxicillin/Clavulansäure 625 mg für 7 Tage. Er berichtet über Schmerzen im linken Knie, ein Röntgen wurde angefordert."
+  },
   "Skills": {
     "eyebrow": "KENNTNISSE",
     "title": "Technische Tiefe",
@@ -256,14 +287,14 @@
     "tabs": {
       "aiml": "KI und ML",
       "llms": "LLMs und Agenten",
-      "vision": "Computer Vision und Robotik",
+      "vision": "Computer Vision",
       "engineering": "Engineering",
       "evaluation": "Evaluation"
     },
     "summaries": {
       "aiml": "Modelle, die ich trainiere und vergleiche, wenn die Daten unruhig sind.",
       "llms": "Systeme, die antworten, abrufen und beim Thema bleiben.",
-      "vision": "Die Welt sehen, und lernen, sich darin zu bewegen.",
+      "vision": "Einer Kamera beibringen, zu erkennen, was sie sieht.",
       "engineering": "Die Werkzeuge, die aus einem Notebook ein System machen.",
       "evaluation": "Wie ich entscheide, ob ein Modell gut genug ist."
     },
@@ -288,7 +319,7 @@
   "Contact": {
     "eyebrow": "KONTAKT",
     "title": "Lass uns KI bauen, der man vertrauen kann.",
-    "line": "Du stellst ein, forschst oder baust im Bereich Healthcare AI oder Robotik? Ich würde gern von dir hören. Am schnellsten erreichst du mich über LinkedIn.",
+    "line": "Du stellst ein, forschst oder baust im Bereich Healthcare AI, LLM-Evaluation oder Computer Vision? Ich würde gern von dir hören. Am schnellsten erreichst du mich über LinkedIn.",
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "based": "Wohnhaft in Berlin, Deutschland",
@@ -296,11 +327,13 @@
       "llmEval": "LLM Evaluation",
       "healthcare": "Healthcare AI",
       "agents": "Agenten",
-      "robotics": "Robotik"
+      "vision": "Computer Vision"
     },
     "linkedinLine": "Schreib mir hier",
     "githubLine": "Der Code hinter den Projekten",
-    "newTab": "(öffnet in neuem Tab)"
+    "newTab": "(öffnet in neuem Tab)",
+    "cv": "CV herunterladen",
+    "cvLine": "PDF, ein Klick"
   },
   "Footer": {
     "updated": "Zuletzt aktualisiert {date}",

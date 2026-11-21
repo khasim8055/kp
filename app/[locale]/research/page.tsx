@@ -12,7 +12,7 @@ import { pageMeta } from "@/lib/seo";
 
 type Props = { params: Promise<{ locale: string }> };
 
-const interests = ["health", "evaluation", "robotics", "twins"] as const;
+const interests = ["health", "evaluation", "vision", "twins"] as const;
 
 export async function generateMetadata({ params }: Props) {
   const locale = await resolveLocale(params);

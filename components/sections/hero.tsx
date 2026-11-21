@@ -1,10 +1,9 @@
+import { Download } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import { RoleLine } from "@/components/sections/role-line";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { cvFile } from "@/data/cv";
 import { profile } from "@/data/profile";
-
-const roleKeys = ["role1", "role2", "role3", "role4", "role5"] as const;
 
 /**
  * Centered hero. It has no picture of its own: the 3D agent world behind the
@@ -12,7 +11,6 @@ const roleKeys = ["role1", "role2", "role3", "role4", "role5"] as const;
  */
 export async function Hero() {
   const t = await getTranslations("Hero");
-  const roles = roleKeys.map((key) => t(key));
 
   return (
     <section
@@ -26,7 +24,10 @@ export async function Hero() {
         <h1 id="hero-title" className="type-h1 hero-name mt-5 text-balance">
           {profile.name}
         </h1>
-        <RoleLine roles={roles} />
+        <p className="hero-open mt-5">
+          <span className="hero-open-dot" aria-hidden="true" />
+          {t("open")}
+        </p>
         <p className="mt-6 font-serif text-[32px] italic leading-tight text-balance text-foreground sm:text-[40px] md:text-[50px]">
           {t("question")}
         </p>
@@ -35,9 +36,18 @@ export async function Hero() {
           <Button asChild>
             <a href="#projects">{t("projects")}</a>
           </Button>
-          <Button asChild variant="outline">
-            <a href="#research">{t("research")}</a>
-          </Button>
+          {cvFile ? (
+            <Button asChild variant="outline">
+              <a href={cvFile} download>
+                <Download className="h-4 w-4" aria-hidden />
+                {t("cv")}
+              </a>
+            </Button>
+          ) : (
+            <Button asChild variant="outline">
+              <a href="#research">{t("research")}</a>
+            </Button>
+          )}
           <Button asChild variant="outline">
             <a href="#contact">{t("contact")}</a>
           </Button>

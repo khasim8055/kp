@@ -2,13 +2,13 @@
   "Meta": {
     "title": "Khasim Bin Saleh",
     "titleHome": "Khasim Bin Saleh · AI engineer and researcher in Berlin",
-    "description": "AI engineer and researcher in Berlin. I build AI systems for places where mistakes matter, from clinical software to robots, and I measure them before I trust them.",
+    "description": "AI engineer and researcher in Berlin. I build AI systems for places where mistakes matter, from clinical software to computer vision, and I measure them before I trust them.",
     "pages": {
-      "projects": "Finished projects and ongoing experiments by Khasim Bin Saleh: offline clinical documentation, an AI tutor, ML pipelines and a companion robot. Each one says what was measured.",
+      "projects": "Finished projects and ongoing experiments by Khasim Bin Saleh: offline clinical documentation, an AI tutor, ML pipelines and a computer vision prototype. Each one says what was measured.",
       "research": "Research by Khasim Bin Saleh: privacy audits of synthetic health data with LLM agents, enterprise AI agents, and close readings of papers.",
       "papers": "Paper breakdowns by Khasim Bin Saleh. Close readings of AI papers with the method, the key results, and what I would question.",
       "experience": "Experience and education of Khasim Bin Saleh: research assistant and MSc student at SRH Berlin, and machine learning intern at Coschool.",
-      "contact": "Get in touch with Khasim Bin Saleh about roles, research or projects in healthcare AI, LLM evaluation and robotics.",
+      "contact": "Get in touch with Khasim Bin Saleh about roles, research or projects in healthcare AI, LLM evaluation and computer vision.",
       "now": "What Khasim Bin Saleh is working on right now."
     }
   },
@@ -35,20 +35,18 @@
     "requestCv": "Request CV",
     "themeToggle": "Toggle color theme",
     "language": "Language",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "downloadCv": "Download CV"
   },
   "Hero": {
     "eyebrow": "BERLIN · AI ENGINEER · RESEARCHER",
     "question": "Can we trust what AI tells us?",
-    "line": "I build AI systems for places where mistakes matter, from clinical software to robots, and I measure them before I trust them.",
+    "line": "I build AI systems for places where mistakes matter, from clinical software to computer vision, and I measure them before I trust them.",
     "projects": "See projects",
     "research": "Read the research",
     "contact": "Get in touch",
-    "role1": "AI Engineer",
-    "role2": "Researcher",
-    "role3": "Agentic AI",
-    "role4": "Healthcare AI",
-    "role5": "Robotics",
+    "open": "Open to full-time AI roles and PhD positions",
+    "cv": "Download CV",
     "scroll": "SCROLL"
   },
   "Figure": {
@@ -70,7 +68,7 @@
     "p1": "I started with a B.Tech in Computer Science at Lovely Professional University, with a specialisation in IoT.",
     "p2": "At Coschool I built an AI tutor that reached 1,000+ beta users. That work taught me a model is only as good as how you test it.",
     "p3": "I moved to Berlin for an MSc in Computer Science with a focus on Big Data and AI. Here I built Klindok, offline software that drafts clinical letters and checks every fact in them. Now I am writing my thesis on privacy audits of synthetic health data.",
-    "p4": "Alongside that I work on the AI side of Kiko, a companion robot, because I want to understand what changes when a model leaves the screen.",
+    "p4": "Alongside that I work on computer vision for Kiko, a small companion device with a face, because I want to understand what changes when a model leaves the screen.",
     "facts": {
       "based": {
         "label": "Based in",
@@ -133,7 +131,7 @@
       "kiko": {
         "year": "2026",
         "title": "Kiko",
-        "body": "A companion robot with a small student team. I work on the AI side."
+        "body": "Computer vision for a companion device, with a small student team."
       }
     }
   },
@@ -174,9 +172,9 @@
         "label": "Evaluating LLMs and agents",
         "body": "Testing what a model or an agent really does before relying on it, and being clear about what was not tested."
       },
-      "robotics": {
-        "label": "Robotics",
-        "body": "What changes when a model runs on a real device. I am new to this field and learning it through Kiko."
+      "vision": {
+        "label": "Computer vision",
+        "body": "What changes when a model has to see through a real camera, in a real room. I am new to this field and learning it through Kiko."
       },
       "twins": {
         "label": "Digital twins",
@@ -248,6 +246,39 @@
     "prev": "Previous project",
     "next": "Next project"
   },
+  "Demo": {
+    "eyebrow": "TRY IT",
+    "title": "Change the letter. The check will catch it.",
+    "intro": "A simplified browser version of Klindok's fact check, with made-up patient data. Edit the draft: any value, dose, date or side the doctor did not type blocks the release.",
+    "notesLabel": "Doctor's notes",
+    "draftLabel": "Draft letter",
+    "draftHint": "Edit this text",
+    "resultLabel": "Fact check",
+    "summary": "Errors: {errors}, warnings: {warnings}.",
+    "errors": "Errors (block the release)",
+    "warnings": "Warnings",
+    "errorItem": "In the draft but not in the notes:",
+    "warningItem": "In the notes, missing from the draft:",
+    "clean": "Every fact in the draft matches the notes.",
+    "release": "Release letter",
+    "blocked": "Release blocked",
+    "released": "Released. In Klindok the text is now frozen and signed.",
+    "reset": "Reset",
+    "fix": "Fix the draft",
+    "note": "Demo only. It runs in your browser and nothing you type is sent anywhere. The real check also covers lab values and drug names.",
+    "left": "left",
+    "right": "right",
+    "notes": [
+      "58 y/o male, seen on 12.11.2026",
+      "BP 142/88 mmHg, pulse 76 bpm",
+      "HbA1c 7.4 %",
+      "Metformin 500 mg twice daily",
+      "Amoxicillin/clavulanate 625 mg for 7 days",
+      "Pain in the left knee, X-ray requested"
+    ],
+    "draft": "Dear colleague,\n\nthank you for seeing this 58-year-old gentleman, reviewed on 12.11.2026. His blood pressure was 150/90 mmHg with a pulse of 76 bpm. His HbA1c is 7.4 %.\n\nHe takes Metformin 500 mg twice daily and was started on amoxicillin/clavulanate 620 mg for 7 days. He reports pain in the left knee, and an X-ray has been requested.",
+    "fixed": "Dear colleague,\n\nthank you for seeing this 58-year-old gentleman, reviewed on 12.11.2026. His blood pressure was 142/88 mmHg with a pulse of 76 bpm. His HbA1c is 7.4 %.\n\nHe takes Metformin 500 mg twice daily and was started on amoxicillin/clavulanate 625 mg for 7 days. He reports pain in the left knee, and an X-ray has been requested."
+  },
   "Skills": {
     "eyebrow": "SKILLS",
     "title": "Technical depth",
@@ -256,14 +287,14 @@
     "tabs": {
       "aiml": "AI and ML",
       "llms": "LLMs and Agents",
-      "vision": "Computer Vision and Robotics",
+      "vision": "Computer Vision",
       "engineering": "Engineering",
       "evaluation": "Evaluation"
     },
     "summaries": {
       "aiml": "Models I train and compare when the data is messy.",
       "llms": "Systems that answer, retrieve, and stay on topic.",
-      "vision": "Seeing the world, and learning to move in it.",
+      "vision": "Teaching a camera to recognise what it sees.",
       "engineering": "The tools that turn a notebook into a system.",
       "evaluation": "How I decide whether a model is good enough."
     },
@@ -288,7 +319,7 @@
   "Contact": {
     "eyebrow": "CONTACT",
     "title": "Let's build AI people can trust.",
-    "line": "Hiring, researching or building in healthcare AI or robotics? I would like to hear from you. LinkedIn is the fastest way to reach me.",
+    "line": "Hiring, researching or building in healthcare AI, LLM evaluation or computer vision? I would like to hear from you. LinkedIn is the fastest way to reach me.",
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "based": "Based in Berlin, Germany",
@@ -296,11 +327,13 @@
       "llmEval": "LLM Evaluation",
       "healthcare": "Healthcare AI",
       "agents": "Agents",
-      "robotics": "Robotics"
+      "vision": "Computer Vision"
     },
     "linkedinLine": "Message me here",
     "githubLine": "The code behind the projects",
-    "newTab": "(opens in a new tab)"
+    "newTab": "(opens in a new tab)",
+    "cv": "Download CV",
+    "cvLine": "PDF, one click"
   },
   "Footer": {
     "updated": "Last updated {date}",

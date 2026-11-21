@@ -18,9 +18,12 @@ const groups = ["pages", "papers", "projects"] as const;
 export function CommandDialog({
   links,
   linkedin,
+  cv,
 }: {
   links: CommandLink[];
   linkedin: string;
+  /** Path of the public CV. Without one, the action asks for it on LinkedIn. */
+  cv: string | null;
 }) {
   const t = useTranslations("Nav");
   const { resolvedTheme, setTheme } = useTheme();
@@ -117,14 +120,14 @@ export function CommandDialog({
               {t("themeToggle")}
             </Command.Item>
             <Command.Item
-              value={t("requestCv")}
+              value={cv ? t("downloadCv") : t("requestCv")}
               onSelect={() => {
-                window.open(linkedin, "_blank", "noopener,noreferrer");
+                window.open(cv ?? linkedin, "_blank", "noopener,noreferrer");
                 setOpen(false);
               }}
               className="cursor-pointer px-2 py-2 text-sm text-foreground data-[selected=true]:bg-border"
             >
-              {t("requestCv")}
+              {cv ? t("downloadCv") : t("requestCv")}
             </Command.Item>
           </Command.Group>
         </Command.List>

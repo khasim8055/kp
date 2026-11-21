@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { FactCheckDemo } from "@/components/demo/fact-check-demo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ProjectMedia } from "@/components/ui/project-media";
@@ -43,6 +44,11 @@ export async function SelectedProjects({ index }: { index?: string }) {
       {featured ? (
         <div className="mt-4" data-reveal>
           <Featured project={featured} />
+        </div>
+      ) : null}
+      {featured?.slug === "klindok" ? (
+        <div className="mt-4" data-reveal>
+          <FactCheckDemo />
         </div>
       ) : null}
       {others.length > 0 ? (

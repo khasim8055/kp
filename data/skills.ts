@@ -143,13 +143,6 @@ const allSkillTabs: SkillTab[] = [
         usedInKey: null,
         level: "TODO",
       },
-      { id: "ros2", name: "ROS 2", usedInKey: "studying", level: "studying" },
-      {
-        id: "robotics",
-        name: "Robotics",
-        usedInKey: "studying",
-        level: "studying",
-      },
     ],
   },
   {

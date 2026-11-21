@@ -1,9 +1,12 @@
+import { Download } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { ContactNodes } from "@/components/contact/contact-nodes";
+import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Tag } from "@/components/ui/tag";
+import { cvFile } from "@/data/cv";
 
-const interestKeys = ["llmEval", "healthcare", "agents", "robotics"] as const;
+const interestKeys = ["llmEval", "healthcare", "agents", "vision"] as const;
 
 export async function ContactCta({
   heading = "h2",
@@ -41,6 +44,17 @@ export async function ContactCta({
           ))}
         </ul>
         <ContactNodes size="lg" className="mt-12" />
+        {cvFile ? (
+          <div className="mt-10 flex flex-col items-center gap-2">
+            <Button asChild variant="outline">
+              <a href={cvFile} download>
+                <Download className="h-4 w-4" aria-hidden />
+                {t("cv")}
+              </a>
+            </Button>
+            <p className="font-mono text-[12px] text-muted">{t("cvLine")}</p>
+          </div>
+        ) : null}
         <p className="mt-8 font-mono text-[12px] uppercase tracking-[0.2em] text-muted">
           {t("based")}
         </p>

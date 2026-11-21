@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { CommandDialog, type CommandLink } from "@/components/layout/command-dialog";
+import { cvFile } from "@/data/cv";
 import { profile } from "@/data/profile";
 import { getPapers } from "@/lib/content/papers";
 import { getProjects } from "@/lib/content/projects";
@@ -25,5 +26,5 @@ export async function CommandMenu() {
     })),
   ];
 
-  return <CommandDialog links={links} linkedin={profile.linkedin} />;
+  return <CommandDialog links={links} linkedin={profile.linkedin} cv={cvFile} />;
 }
